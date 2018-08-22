@@ -12,7 +12,7 @@ These are the commands to do
 [Demo Commands]
 
 /register 0x00000000 <-- Wallet Address you want items spawned into
-/unregister <-- You don't need this but it lets you re-register your address in case you fuck up
+/unregister <-- You don't need this but it lets you re-register your address in case you
 /wallet <-- Shows your current Address
 
 [Items to Spawn]
