@@ -1,0 +1,12 @@
+item.lootcoin-gold.name=A Tokenizable Asset!
+item.lootcoin-silver.name=A Tokenizable Asset!
+item.lootcoin-copper.name=A Tokenizable Asset!
+
+entity.lootskele.name=LootSafe Boss Skeleton
+entity.lootspider.name=LootSafe Boss Spider
+
+tile.test.name=Test
+tile.loot_chest=LootSafe
+LootSafe.name=LootSafe Safe
+
+container.loot_chest=LootSafe

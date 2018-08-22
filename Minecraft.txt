@@ -1,0 +1,19 @@
+[What's done]
+
+- Set up local / Online enviroments
+- Custom Mob Egg (can spawn monsters using dispenseries)
+- Custom Mob (can skin, name etc monsters how we like)
+- Custom Item (can skin, name etc Items how we like)
+- Placing Loot on monster death straight to inventory
+- Custom message pushed to user (we can privately tell players e.g Recieved SPECIALAWESOMEITEM)
+- Custom tooltips (inventory shows item descriptions)
+- Custom Client Command (we can use this to enable the player e.g to spawn their special item once daily, show a list of items they own on the blockchain etc)
+
+[What's Left]
+
+- Design arena / tutorial area
+- Hook Up Adam API
+- Look into NBT for managing unique item variables
+- Brainstorm what happens when a player dies with item
+- Export mod to server
+- Learn how to pack the full client for investors
