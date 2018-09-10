@@ -14,10 +14,9 @@ import net.minecraft.util.text.TextFormatting;
 public class NetworkHandler {
 		
     private NodeHandler nh;
-    private ServiceProvider sv; 
-    private static NetworkHandler instance = null;     
+    private ServiceProvider sv;    
     
-    private NetworkHandler(){
+    public NetworkHandler(){
     	
         sv = new ServiceProvider.ServiceBuilder()
 		        .withVersion(Reference.version)
@@ -35,16 +34,7 @@ public class NetworkHandler {
 		    throw new RuntimeException("Could not start up the LootSafe Service! Is your config in order?");
 		}	    	
 		
-		System.out.println("all good");
     }
-    
-    public static NetworkHandler getInstance() 
-    { 
-        if (instance == null) 
-        	instance = new NetworkHandler(); 
-  
-        return instance; 
-    } 
     
     public boolean GivePlayerItem(EntityPlayer player, String playerAddress, ItemBase item) {
     	

@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 public class CommonProxy {
 	
 	private PlayerHandler playerHandler;
+	private NetworkHandler networkHandler;
 	
 	/*				*/
 	
@@ -34,6 +35,7 @@ public class CommonProxy {
 	
 	public void preInitRegistries() {
 		playerHandler = new PlayerHandler();
+		networkHandler = new NetworkHandler();
 		
 		CustomInit.registerEntities();		
 		FMLCommonHandler.instance().bus().register(new RegistryHandlerServer());
@@ -70,9 +72,9 @@ public class CommonProxy {
 	
 	public void addTokenizedItemStr(EntityPlayer player,ItemBase item){
 		
-		System.out.println("fix here - NetworkHandler.getInstance().GivePlayerItem");
+		System.out.println("FMLCommonHandler.instance().getEffectiveSide()" + FMLCommonHandler.instance().getEffectiveSide());
 		
-		NetworkHandler.getInstance().GivePlayerItem(player, playerHandler.getPlayerWalletAddress(player.getName()),  item);			
+		networkHandler.GivePlayerItem(player, playerHandler.getPlayerWalletAddress(player.getName()),  item);			
 		playerHandler.addTokenizedItemStr(player, item);
 	}
 
