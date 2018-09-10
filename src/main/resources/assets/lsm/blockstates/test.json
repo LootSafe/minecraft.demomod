@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "lsm:test" }
+        "normal": { "model": "lsm:loot_chest" }
     }
 }

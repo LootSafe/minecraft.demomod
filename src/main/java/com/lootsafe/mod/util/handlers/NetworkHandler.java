@@ -13,9 +13,9 @@ import net.minecraft.util.text.TextFormatting;
 
 public class NetworkHandler {
 		
-    private static NetworkHandler instance = null;
     private NodeHandler nh;
-    private ServiceProvider sv;
+    private ServiceProvider sv; 
+    private static NetworkHandler instance = null;     
     
     private NetworkHandler(){
     	
@@ -34,18 +34,20 @@ public class NetworkHandler {
 		} else {
 		    throw new RuntimeException("Could not start up the LootSafe Service! Is your config in order?");
 		}	    	
-    }
- 
-    public static NetworkHandler getInstance()
-    {
-        if (instance == null)
-        	instance = new NetworkHandler();
- 
-        return instance;
+		
+		System.out.println("all good");
     }
     
+    public static NetworkHandler getInstance() 
+    { 
+        if (instance == null) 
+        	instance = new NetworkHandler(); 
+  
+        return instance; 
+    } 
+    
     public boolean GivePlayerItem(EntityPlayer player, String playerAddress, ItemBase item) {
-		
+    	
 		player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Sending Player Item"));
     	
         try {

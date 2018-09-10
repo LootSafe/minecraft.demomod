@@ -1,8 +1,8 @@
 package com.lootsafe.mod.blocks.container;
 
+import com.lootsafe.mod.Main;
 import com.lootsafe.mod.Items.ItemBase;
 import com.lootsafe.mod.blocks.tileenity.TileEntityLootChest;
-import com.lootsafe.mod.util.handlers.PlayerHandler;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -64,12 +64,13 @@ public class ContainerLootChest extends Container
 				
 				if(currentItem.getIsTokenizable()){
 					
-					PlayerHandler.getInstance().addTokenizedItemStr(player, currentItem);		
+					Main.proxy.addTokenizedItemStr(player, currentItem);
+					
 					player.closeScreen();									
 			
 					itemstack1 = null;
 					
-					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Sending item to your wallet @ " + PlayerHandler.getInstance().getPlayerWalletAddress(player.getName())));					
+					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Sending item to your wallet @ " + Main.proxy.getPlayerWalletAddress(player.getName())));					
 				}
 			}
 		
@@ -82,7 +83,7 @@ public class ContainerLootChest extends Container
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn)
 	{
-		boolean flag = PlayerHandler.getInstance().isPlayerRegistered(playerIn.getName());
+		boolean flag = Main.proxy.isPlayerRegistered(playerIn.getName());
 		
 		if(flag == false){
 			playerIn.sendMessage(new TextComponentString(TextFormatting.RED + "Please Register Your Wallet Address."));	

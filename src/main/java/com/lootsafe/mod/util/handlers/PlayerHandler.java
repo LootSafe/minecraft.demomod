@@ -9,26 +9,24 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class PlayerHandler {
 	
-	List<LootPlayer> lootplayers;
-	
-    private static PlayerHandler instance = null;
+	private List<LootPlayer> lootplayers;	
  
-    private PlayerHandler()
+	/* Constructors & Init */
+	
+    public PlayerHandler()
     {
     	lootplayers = loadLootPlayers();
-    }
- 
-    public static PlayerHandler getInstance()
-    {
-        if (instance == null)
-        	instance = new PlayerHandler();
- 
-        return instance;
     }
 	
 	public ArrayList<LootPlayer> loadLootPlayers(){
 		// Or load from file?
 		return new ArrayList<LootPlayer>();
+	}
+	
+	/* Wallet */
+	
+	public void registerPlayerWallet(String playerName, String playerWalletAddress){	
+		lootplayers.add(new LootPlayer(playerName, playerWalletAddress));	
 	}
 	
 	public boolean unregisterPlayerWallet(String playerName){
@@ -56,18 +54,6 @@ public class PlayerHandler {
 		
 		return false;
 	}
-	
-	public boolean registerPlayerWallet(String playerName, String playerWalletAddress){
-		
-		if(isPlayerRegistered(playerName)){
-			// Already exists, can't register twice!
-			return false;
-		}
-		
-		lootplayers.add(new LootPlayer(playerName, playerWalletAddress));
-		
-		return true;
-	}
 
 	public String getPlayerWalletAddress(String playerName){
 		
@@ -83,7 +69,7 @@ public class PlayerHandler {
 		
 		return null;
 	}
-
+	
 	public boolean registerPlayerLoot(String playerName, String lootAddress){
 		
 		for(LootPlayer lootplayer : lootplayers){
@@ -91,33 +77,6 @@ public class PlayerHandler {
 				lootplayer.addTokenizedItemStr(lootAddress);
 				return true;
 			}
-		}
-		
-		// Something bad happened...
-		
-		return false;
-	}
-	
-	public boolean addTokenizedItemStr(EntityPlayer player,ItemBase item){
-		
-		for(LootPlayer lootplayer : lootplayers){
-			
-			if(lootplayer.getPlayerName().equals(player.getName())){								
-				NetworkHandler.getInstance().GivePlayerItem(player, lootplayer.getPlayerWalletAddress(),  item);					
-				lootplayer.addTokenizedItemStr(item.getItemAddress());
-				return true;
-			}				 
-		}
-		
-		return false;
-	}
-
-	public boolean hasKilledBossBefore(String playerName,String bossName){
-			
-		for(LootPlayer lootplayer : lootplayers){				
-			if(lootplayer.getPlayerName().equals(playerName)){
-				return lootplayer.hasKilledBossBefore(bossName);					
-			}				
 		}
 		
 		return false;
@@ -137,7 +96,31 @@ public class PlayerHandler {
 		else{
 			return false;
 		}
+		
 	}	
+	
+	/* Helpers */
+	
+	public void addTokenizedItemStr(EntityPlayer player,ItemBase item){
+		
+		for(LootPlayer lootplayer : lootplayers){
+			
+			if(lootplayer.getPlayerName().equals(player.getName())){					
+				lootplayer.addTokenizedItemStr(item.getItemAddress());
+			}				 
+		}
+	}
+
+	public boolean hasKilledBossBefore(String playerName,String bossName){
+			
+		for(LootPlayer lootplayer : lootplayers){				
+			if(lootplayer.getPlayerName().equals(playerName)){
+				return lootplayer.hasKilledBossBefore(bossName);					
+			}				
+		}
+		
+		return false;
+	}
 	
 	public List<String> getPlayerTokenizedItemList(String playerName){
 		
