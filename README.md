@@ -18,8 +18,8 @@ These are the commands to do
 ## Items to Spawn
 
 * LootSafe Safe <Looks like an enderchest>
-* Spawn LootSafe Boss Skeleton - Drops Gold Once.... 
-* Spawn LootSafe Boss Spider - Drops Silver Once....
+* Spawn LootSafe Boss Skeleton **- Drops Gold Once...** 
+* Spawn LootSafe Boss Spider **- Drops Silver Once...**
 
 ### WALKTHROUGH
 
