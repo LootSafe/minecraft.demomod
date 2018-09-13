@@ -6,6 +6,7 @@ import java.util.List;
 import com.lootsafe.mod.blocks.BlockLootChest;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 
 public class BlockInit {
 	

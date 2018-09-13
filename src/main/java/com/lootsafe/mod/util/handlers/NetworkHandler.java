@@ -5,8 +5,8 @@ import javax.json.JsonObject;
 import com.lootsafe.mod.Items.ItemBase;
 import com.lootsafe.mod.util.Reference;
 
-import io.lootsafe.api.ServiceProvider;
 import io.lootsafe.api.Requests.NodeHandler;
+import io.lootsafe.api.ServiceProvider;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;

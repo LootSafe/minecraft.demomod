@@ -34,11 +34,12 @@ public class CommonProxy {
 	}
 	
 	public void preInitRegistries() {
-		playerHandler = new PlayerHandler();
-		networkHandler = new NetworkHandler();
 		
 		CustomInit.registerEntities();		
 		FMLCommonHandler.instance().bus().register(new RegistryHandlerServer());
+		
+		playerHandler = new PlayerHandler();
+		networkHandler = new NetworkHandler();
 	}
 	
 	/* Registering  */

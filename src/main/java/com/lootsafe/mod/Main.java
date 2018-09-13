@@ -59,14 +59,13 @@ public class Main {
 		proxy.initRegistries();
 	}
 	
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event)
-	{			
-		proxy.preInitRegistries();
-		
+	{	
 		MinecraftForge.EVENT_BUS.register(customEventHandler);
-		FMLCommonHandler.instance().bus().register(customEventHandler);
+		//FMLCommonHandler.instance().bus().register(customEventHandler);
+		
+		proxy.preInitRegistries();
 	}
 	
 }

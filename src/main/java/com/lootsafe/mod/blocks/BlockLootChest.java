@@ -26,6 +26,7 @@ public class BlockLootChest extends BlockContainer
 	public BlockLootChest(String name) 
 	{
 		super(Material.IRON);
+		
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(Main.LOOTSTORETAB);
@@ -79,21 +80,4 @@ public class BlockLootChest extends BlockContainer
 		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 	
-	@Override
-	public boolean isFullBlock(IBlockState state) 
-	{
-		return false;
-	}
-	
-	@Override
-	public boolean isFullCube(IBlockState state)
-	{
-		return false;
-	}
-	
-	@Override
-	public boolean isOpaqueCube(IBlockState state)
-	{
-		return false;
-	}
 }

@@ -1,14 +1,14 @@
 [
 {
-  "modid": "lsm",
-  "name": "LootSafe Mod",
-  "description": "LootSafe Mod for Launch",
-  "version": "0.2",
-  "mcversion": "1.12.2",
+  "modid": "examplemod",
+  "name": "Example Mod",
+  "description": "Example placeholder mod.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
   "url": "",
-  "updateUrl": "http://lootsafe.io/",
-  "authorList": ["SoftDevAndy"],
-  "credits": "SoftDevAndy",
+  "updateUrl": "",
+  "authorList": ["ExampleDude"],
+  "credits": "The Forge and FML guys, for making this example",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

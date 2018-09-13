@@ -51,8 +51,7 @@ public class ContainerLootChest extends Container
 		/*
 		 * 
 		 * Custom Chest Stuff is here! 
-		 */
-		
+		 */		
 		
 		try{
 			Slot slot = this.inventorySlots.get(slotId);

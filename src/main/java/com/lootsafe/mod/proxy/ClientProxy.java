@@ -31,8 +31,8 @@ public class ClientProxy extends CommonProxy {
 	@SuppressWarnings("deprecation")
 	public void preInitRegistries(){	
 		CustomInit.registerEntities();		
-		FMLCommonHandler.instance().bus().register(new RegistryHandlerClient());
 		
+		FMLCommonHandler.instance().bus().register(new RegistryHandlerClient());		
 		RenderHandler.registerEntityRenders();		
 	}
 	
