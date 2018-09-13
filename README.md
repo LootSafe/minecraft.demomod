@@ -1,6 +1,6 @@
 # minecraft.demomod
 
-## Adminy Commands
+## Admin Commands
 
 To manually register the populated item address (you'll have to grab this from the console)
 These are the commands to do 
@@ -11,17 +11,17 @@ These are the commands to do
 
 ## Demo Commands
 
-* /register 0x00000000 <-- Wallet Address you want items spawned into
-* /unregister <-- You don't need this but it lets you re-register your address in case you
-* /wallet <-- Shows your current Address
+* /register 0x00000000 **<-- Wallet Address you want items spawned into**
+* /unregister **<-- You don't need this but it lets you re-register your address in case you**
+* /wallet **<-- Shows your current Address**
 
 ## Items to Spawn
 
-LootSafe Safe <Looks like an enderchest>
-Spawn LootSafe Boss Skeleton - Drops Gold Once.... 
-Spawn LootSafe Boss Spider - Drops Silver Once....
+* LootSafe Safe <Looks like an enderchest>
+* Spawn LootSafe Boss Skeleton - Drops Gold Once.... 
+* Spawn LootSafe Boss Spider - Drops Silver Once....
 
-!!!!!!!!!WALKTHROUGH!!!!!!!!!!!
+### WALKTHROUGH
 
 1. Place the LootSafe Safe.
 2. Use /register and register a valid account address from gnache.
