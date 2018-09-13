@@ -33,7 +33,7 @@ public class ClientProxy extends CommonProxy {
 		CustomInit.registerEntities();		
 		
 		FMLCommonHandler.instance().bus().register(new RegistryHandlerClient());		
-		RenderHandler.registerEntityRenders();		
+		RenderHandler.registerAllEntityRenders();		
 	}
 	
 	/* Other Stuff */

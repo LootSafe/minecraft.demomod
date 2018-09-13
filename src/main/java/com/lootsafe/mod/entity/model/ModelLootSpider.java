@@ -1,8 +1,11 @@
 package com.lootsafe.mod.entity.model;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.AxisAlignedBB;
 
 /**
  * ModelSpider - Either Mojang or a mod author
@@ -20,8 +23,11 @@ public class ModelLootSpider extends ModelBase {
     public ModelRenderer field_78213_i;
     public ModelRenderer field_78211_k;
     public ModelRenderer field_78203_f;
+    
+    private float sizeMultiplier = 1.0f;
 
-    public ModelLootSpider() {
+    public ModelLootSpider(float sizeMultiplier) {
+    	this.sizeMultiplier = sizeMultiplier;
         this.textureWidth = 64;
         this.textureHeight = 32;
         this.field_78207_b = new ModelRenderer(this, 0, 0);
@@ -64,11 +70,16 @@ public class ModelLootSpider extends ModelBase {
         this.field_78213_i = new ModelRenderer(this, 18, 0);
         this.field_78213_i.setRotationPoint(4.0F, 15.0F, 0.0F);
         this.field_78213_i.addBox(-1.0F, -1.0F, -1.0F, 16, 2, 2, 0.0F);
-        this.setRotateAngle(field_78213_i, 0.0F, 0.39269909262657166F, 0.5811946392059326F);
+        this.setRotateAngle(field_78213_i, 0.0F, 0.39269909262657166F, 0.5811946392059326F);  
     }
 
     @Override
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) { 
+    		
+        GL11.glPushMatrix();
+        GL11.glTranslatef(0F, 1.5F - 1.5F * sizeMultiplier, 0F); 
+        GL11.glScalef(sizeMultiplier, sizeMultiplier, sizeMultiplier);
+                
         this.field_78207_b.render(f5);
         this.field_78209_a.render(f5);
         this.field_78210_j.render(f5);
@@ -79,7 +90,9 @@ public class ModelLootSpider extends ModelBase {
         this.field_78208_c.render(f5);
         this.field_78205_d.render(f5);
         this.field_78212_h.render(f5);
-        this.field_78213_i.render(f5);
+        this.field_78213_i.render(f5);       
+        
+        GL11.glPopMatrix();
     }
 
     /**
@@ -89,5 +102,7 @@ public class ModelLootSpider extends ModelBase {
         modelRenderer.rotateAngleX = x;
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
-    }
+    }   
+    
+    
 }

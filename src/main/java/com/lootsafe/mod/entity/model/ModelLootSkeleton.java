@@ -1,8 +1,11 @@
 package com.lootsafe.mod.entity.model;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.AxisAlignedBB;
 
 /**
  * ModelSkeleton - Either Mojang or a mod author
@@ -17,7 +20,10 @@ public class ModelLootSkeleton extends ModelBase {
     public ModelRenderer field_178722_k;
     public ModelRenderer field_178720_f;
 
+    private float sizeMultiplier = 1.0f;
+    
     public ModelLootSkeleton(float sizeMultiplier) {
+    	this.sizeMultiplier = sizeMultiplier;
         this.textureWidth = 64;
         this.textureHeight = 32;
         this.field_178722_k = new ModelRenderer(this, 0, 16);
@@ -49,22 +55,20 @@ public class ModelLootSkeleton extends ModelBase {
 
     @Override
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) { 
-        /*
-         *     
-    	float sizeMultiplier = 1.0f;
+	
         GL11.glPushMatrix();
-        GL11.glTranslatef(0F, 1.5F-1.5F * sizeMultiplier, 0F); 
+        GL11.glTranslatef(0F, 1.5F - 1.5F * sizeMultiplier, 0F); 
         GL11.glScalef(sizeMultiplier, sizeMultiplier, sizeMultiplier);
-        GL11.glPopMatrix();
-        */
-        
-    	this.field_178722_k.render(f5);
+            	
+        this.field_178722_k.render(f5);
         this.field_78116_c.render(f5);
         this.field_178723_h.render(f5);
         this.field_78115_e.render(f5);
         this.field_178724_i.render(f5);
         this.field_178721_j.render(f5);
-        this.field_178720_f.render(f5);               
+        this.field_178720_f.render(f5);   
+        
+        GL11.glPopMatrix();
     }
     /**
      * This is a helper function from Tabula to set the rotation of model parts
@@ -74,4 +78,5 @@ public class ModelLootSkeleton extends ModelBase {
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
     }
+    
 }
