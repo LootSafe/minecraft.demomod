@@ -18,7 +18,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemBase extends Item implements IHasModel {
 
 	private String itemAddress;
-	private String uniqueItemAddress;
 	private boolean isTokenizable;
 	
 	public ItemBase(String name){
@@ -31,12 +30,11 @@ public class ItemBase extends Item implements IHasModel {
 		ItemInit.ITEMS.add(this);
 	}		
 	
-	public ItemBase(String name, String itemAddress, String uniqueItemAddress){
+	public ItemBase(String name, String itemAddress){
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(CreativeTabs.MATERIALS);	
 		
-		this.uniqueItemAddress = uniqueItemAddress;
 		this.itemAddress = itemAddress;
 		this.isTokenizable = true;
 		
@@ -79,10 +77,6 @@ public class ItemBase extends Item implements IHasModel {
 			super.addInformation(stack, worldIn, tooltip, flagIn);
 		}
 		
-	}
-	
-	public String getUniqueItemAddress(){
-		return this.uniqueItemAddress;
 	}
 	
 	public String getItemAddress(){

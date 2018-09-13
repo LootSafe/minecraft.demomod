@@ -71,10 +71,7 @@ public class CommonProxy {
 		return playerHandler.getPlayerWalletAddress(playerName);
 	}
 	
-	public void addTokenizedItemStr(EntityPlayer player,ItemBase item){
-		
-		System.out.println("FMLCommonHandler.instance().getEffectiveSide()" + FMLCommonHandler.instance().getEffectiveSide());
-		
+	public void addTokenizedItemStr(EntityPlayer player,ItemBase item){				
 		networkHandler.GivePlayerItem(player, playerHandler.getPlayerWalletAddress(player.getName()),  item);			
 		playerHandler.addTokenizedItemStr(player, item);
 	}
