@@ -77,6 +77,15 @@ public class ItemBase extends Item implements IHasModel {
 			super.addInformation(stack, worldIn, tooltip, flagIn);
 		}
 		
+		if(stack.getItem().getUnlocalizedName().equals("LootSafe.name"))
+		{
+			for(String s : Reference.description_lootchest){
+				tooltip.add(s);
+			}
+			
+			super.addInformation(stack, worldIn, tooltip, flagIn);
+		}		
+		
 	}
 	
 	public String getItemAddress(){

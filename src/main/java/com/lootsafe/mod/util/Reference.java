@@ -51,5 +51,8 @@ public class Reference {
 				add(TextFormatting.WHITE + "A tokenized asset that can be stored in your wallet!");
 			}};				
 			
-	
+	public static List<String> description_lootchest =
+			new ArrayList<String>() {{
+				add(TextFormatting.WHITE + "LootSafe for storing your Loot!");
+			}};		
 }
