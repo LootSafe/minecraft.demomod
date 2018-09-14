@@ -7,8 +7,8 @@ import java.util.Date;
 
 import javax.json.JsonObject;
 
+import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.Items.ItemBase;
-import com.lootsafe.mod.util.Reference;
 
 import io.lootsafe.api.Requests.NodeHandler;
 import io.lootsafe.api.ServiceProvider;

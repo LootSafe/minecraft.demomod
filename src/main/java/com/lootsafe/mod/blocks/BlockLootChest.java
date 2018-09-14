@@ -1,10 +1,10 @@
 package com.lootsafe.mod.blocks;
 
 import com.lootsafe.mod.Main;
+import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.blocks.tileenity.TileEntityLootChest;
 import com.lootsafe.mod.init.BlockInit;
 import com.lootsafe.mod.init.ItemInit;
-import com.lootsafe.mod.util.Reference;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;

@@ -2,8 +2,8 @@ package com.lootsafe.mod.blocks.animation;
 
 import org.lwjgl.opengl.GL11;
 
+import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.blocks.tileenity.TileEntityLootChest;
-import com.lootsafe.mod.util.Reference;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;

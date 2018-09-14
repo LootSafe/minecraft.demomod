@@ -1,9 +1,9 @@
 package com.lootsafe.mod.util.handlers;
 
+import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.blocks.container.ContainerLootChest;
 import com.lootsafe.mod.blocks.gui.GuiLootChest;
 import com.lootsafe.mod.blocks.tileenity.TileEntityLootChest;
-import com.lootsafe.mod.util.Reference;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;

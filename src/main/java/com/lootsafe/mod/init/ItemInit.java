@@ -3,8 +3,8 @@ package com.lootsafe.mod.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.Items.ItemBase;
-import com.lootsafe.mod.util.Reference;
 
 import net.minecraft.item.Item;
 

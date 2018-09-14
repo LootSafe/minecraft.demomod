@@ -3,9 +3,9 @@ package com.lootsafe.mod.Items;
 import java.util.List;
 
 import com.lootsafe.mod.Main;
+import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.init.ItemInit;
 import com.lootsafe.mod.util.IHasModel;
-import com.lootsafe.mod.util.Reference;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;

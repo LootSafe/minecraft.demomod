@@ -1,7 +1,7 @@
 package com.lootsafe.mod.blocks.tileenity;
 
+import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.blocks.container.ContainerLootChest;
-import com.lootsafe.mod.util.Reference;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

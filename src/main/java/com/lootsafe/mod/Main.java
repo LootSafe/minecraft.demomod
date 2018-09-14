@@ -1,20 +1,20 @@
 package com.lootsafe.mod;
 
-import com.lootsafe.mod.commands.CommandHost;
-import com.lootsafe.mod.commands.CommandLootCoinCopperAddress;
-import com.lootsafe.mod.commands.CommandLootCoinGoldAddress;
-import com.lootsafe.mod.commands.CommandLootCoinSilverAddress;
-import com.lootsafe.mod.commands.WalletCommandRegisterPlayer;
-import com.lootsafe.mod.commands.WalletCommandShowLoot;
-import com.lootsafe.mod.commands.WalletCommandShowLootCommands;
-import com.lootsafe.mod.commands.WalletCommandUnregisterPlayer;
-import com.lootsafe.mod.commands.WalletCommandWalletAddress;
+import com.lootsafe.mod.commands.AdminHost;
+import com.lootsafe.mod.commands.AdminAddressGold;
+import com.lootsafe.mod.commands.AdminAddressSilver;
+import com.lootsafe.mod.commands.WalletRegisterPlayer;
+import com.lootsafe.mod.commands.WalletShowLoot;
+import com.lootsafe.mod.commands.WalletShowCommands;
+import com.lootsafe.mod.commands.WalletUnregisterPlayer;
+import com.lootsafe.mod.commands.WalletWalletAddress;
 import com.lootsafe.mod.proxy.CommonProxy;
-import com.lootsafe.mod.util.Reference;
+import com.lootsafe.mod.util.LootStoreTab;
 import com.lootsafe.mod.util.handlers.CustomEventHandler;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -39,16 +39,17 @@ public class Main {
 	public static void serverLoad(FMLServerStartingEvent event)
 	{
 		// Custom Commands here
-		event.registerServerCommand(new WalletCommandRegisterPlayer());
-		event.registerServerCommand(new WalletCommandUnregisterPlayer());
-		event.registerServerCommand(new WalletCommandWalletAddress());
-		event.registerServerCommand(new WalletCommandShowLootCommands());		
-		event.registerServerCommand(new WalletCommandShowLoot());
+		event.registerServerCommand(new WalletRegisterPlayer());
+		event.registerServerCommand(new WalletUnregisterPlayer());
+		event.registerServerCommand(new WalletWalletAddress());
+		event.registerServerCommand(new WalletShowCommands());		
+		event.registerServerCommand(new WalletShowLoot());
 		
-		event.registerServerCommand(new CommandLootCoinGoldAddress());
-		event.registerServerCommand(new CommandLootCoinSilverAddress());
-		event.registerServerCommand(new CommandLootCoinCopperAddress());
-		event.registerServerCommand(new CommandHost());
+		event.registerServerCommand(new AdminAddressGold());
+		event.registerServerCommand(new AdminAddressSilver());
+		event.registerServerCommand(new AdminHost());
+
+		//event.registerServerCommand(new CommandLootCoinCopperAddress());
 	}
 	
 	/* Important Stuff */
@@ -62,7 +63,7 @@ public class Main {
 	public static void preInit(FMLPreInitializationEvent event)
 	{	
 		MinecraftForge.EVENT_BUS.register(customEventHandler);
-		//FMLCommonHandler.instance().bus().register(customEventHandler);
+		FMLCommonHandler.instance().bus().register(customEventHandler);
 		
 		proxy.preInitRegistries();
 	}

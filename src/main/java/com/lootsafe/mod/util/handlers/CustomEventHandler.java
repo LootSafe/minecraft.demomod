@@ -1,10 +1,10 @@
 package com.lootsafe.mod.util.handlers;
 
 import com.lootsafe.mod.Main;
+import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.entity.EntityLootSkele;
 import com.lootsafe.mod.entity.EntityLootSpider;
 import com.lootsafe.mod.init.ItemInit;
-import com.lootsafe.mod.util.Reference;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

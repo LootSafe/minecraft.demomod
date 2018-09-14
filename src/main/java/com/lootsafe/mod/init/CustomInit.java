@@ -1,9 +1,9 @@
 package com.lootsafe.mod.init;
 
 import com.lootsafe.mod.Main;
+import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.entity.EntityLootSkele;
 import com.lootsafe.mod.entity.EntityLootSpider;
-import com.lootsafe.mod.util.Reference;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;

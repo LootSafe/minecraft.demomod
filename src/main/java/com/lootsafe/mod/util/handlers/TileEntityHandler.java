@@ -1,7 +1,8 @@
 package com.lootsafe.mod.util.handlers;
 
+import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.blocks.tileenity.TileEntityLootChest;
-import com.lootsafe.mod.util.Reference;
+
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
