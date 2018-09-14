@@ -25,16 +25,24 @@ public class BlockLootChest extends BlockContainer
 {
 	public BlockLootChest(String name) 
 	{
-		super(Material.IRON);
+		super(Material.ROCK);
 		
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(Main.LOOTSTORETAB);
+		setLightLevel(1.0f);
+		setLightOpacity(0);
 		
 		BlockInit.BLOCKS.add(this);
 		ItemInit.ITEMS.add(new ItemBlock(this).setRegistryName(name));
 	}
 	
+	@Override
+	public boolean isOpaqueCube(IBlockState state)
+	{
+		return true;
+	}
+		
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) 
 	{

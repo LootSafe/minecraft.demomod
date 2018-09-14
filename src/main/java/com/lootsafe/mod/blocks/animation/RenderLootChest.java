@@ -1,5 +1,7 @@
 package com.lootsafe.mod.blocks.animation;
 
+import org.lwjgl.opengl.GL11;
+
 import com.lootsafe.mod.blocks.tileenity.TileEntityLootChest;
 import com.lootsafe.mod.util.Reference;
 
@@ -16,7 +18,7 @@ public class RenderLootChest extends TileEntitySpecialRenderer<TileEntityLootChe
 	
 	@Override
 	public void render(TileEntityLootChest te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) 
-	{
+	{		
 		GlStateManager.enableDepth();
         GlStateManager.depthFunc(515);
         GlStateManager.depthMask(true);
@@ -49,7 +51,8 @@ public class RenderLootChest extends TileEntitySpecialRenderer<TileEntityLootChe
         GlStateManager.disableRescaleNormal();
         GlStateManager.popMatrix();
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        
         if (destroyStage >= 0)
         {
             GlStateManager.matrixMode(5890);
