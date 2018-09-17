@@ -12,21 +12,21 @@ public class PlayerHandler {
 	private ArrayList<LootPlayer> lootPlayers;	
 	private ServerRecordHandler serverRecordHandler;
  
-	/* Constructors & Init */
+	/* Constructors & Initialized */
 	
     public PlayerHandler()
     {
     	serverRecordHandler = new ServerRecordHandler();
-    	lootPlayers = loadLootPlayers();
+    	lootPlayers = serverRecordHandler.LoadServerRecords();
     }
 	
     /* Server Load & Save */
     
-	public ArrayList<LootPlayer> loadLootPlayers(){
-		return serverRecordHandler.LoadServerRecords();
-	}
+    public ArrayList<LootPlayer> LoadServerRecords(){
+    	return serverRecordHandler.LoadServerRecords();
+    }
 	
-	public boolean SaveLootPlayers(){
+	public boolean SaveServerRecords(){
 		return serverRecordHandler.UpdateServerRecords(lootPlayers);
 	}
 	
