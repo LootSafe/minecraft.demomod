@@ -7,19 +7,26 @@ public class LootPlayer {
 	
 	private String playerName;
 	private String playerWalletAddress;
-	private List<String> defeatedBosses;
+	private List<String> defeatedBossesList;
 	private List<String> latestLocalTokenizedItemList;
 	
 	public LootPlayer(String playerName, String playerWalletAddress){
 		this.playerName = playerName;
 		this.playerWalletAddress = playerWalletAddress;
-		this.defeatedBosses = new ArrayList<String>();
+		this.defeatedBossesList = new ArrayList<String>();
 		this.latestLocalTokenizedItemList = new ArrayList<String>();
+	}	
+	
+	public LootPlayer(String playerName, String playerWalletAddress, ArrayList<String> defeatedBosses, ArrayList<String> latestLocalTokenizedItemList){
+		this.playerName = playerName;
+		this.playerWalletAddress = playerWalletAddress;
+		this.defeatedBossesList = defeatedBosses;
+		this.latestLocalTokenizedItemList = latestLocalTokenizedItemList;
 	}	
 		
 	public boolean hasKilledBossBefore(String bossName){
 		
-		for(String boss : defeatedBosses){
+		for(String boss : defeatedBossesList){
 			if(boss.equals(bossName)){
 				return true;
 			}
@@ -31,7 +38,7 @@ public class LootPlayer {
 	public boolean registerBossDeath(String bossName, String itemAddress){
 		
 		if(hasKilledBossBefore(bossName) == false){			
-			defeatedBosses.add(bossName);
+			defeatedBossesList.add(bossName);
 			latestLocalTokenizedItemList.add(bossName);
 			return true;
 		}
@@ -43,21 +50,31 @@ public class LootPlayer {
 		this.latestLocalTokenizedItemList.add(itemAddress);	
 	}
 	
+	/* Getters & Setters */
+	
+	public void setPlayerName(String playerName){
+		this.playerName = playerName;
+	}
+	
+	public String getPlayerName(){
+		return this.playerName;
+	}
+		
 	public void setLatestLocalTokenizedItemList(List<String> latestLocalTokenizedItemList)
 	{
 		this.latestLocalTokenizedItemList = latestLocalTokenizedItemList;
 	}
-
-	public String getPlayerName(){
-		return this.playerName;
+	
+	public List<String> getLatestLocalTokenizedItemList(){
+		return this.latestLocalTokenizedItemList;
+	}
+	
+	public List<String> getDefeatedBossesList(){
+		return this.defeatedBossesList;
 	}
 	
 	public String getPlayerWalletAddress(){
 		return this.playerWalletAddress;
-	}
-	
-	public List<String> getLatestLocalTokenizedItemList(){
-		return this.latestLocalTokenizedItemList;
 	}
 	
 }

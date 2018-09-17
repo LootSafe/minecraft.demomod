@@ -19,8 +19,8 @@ public class PlayerHandler {
     }
 	
 	public ArrayList<LootPlayer> loadLootPlayers(){
-		// Or load from file?
-		return new ArrayList<LootPlayer>();
+		ServerRecordHandler serverRecordHandler = new ServerRecordHandler();
+		return serverRecordHandler.LoadServerRecords();
 	}
 	
 	/* Wallet */
