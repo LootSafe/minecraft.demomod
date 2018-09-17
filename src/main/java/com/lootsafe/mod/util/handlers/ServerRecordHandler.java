@@ -1,18 +1,23 @@
 package com.lootsafe.mod.util.handlers;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import com.lootsafe.mod.Reference;
 
+@SuppressWarnings("unchecked")
 public class ServerRecordHandler {
 			
-	public ArrayList<LootPlayer> LoadServerRecords(){
+	public ArrayList<LootPlayer> LoadServerRecords() {
 		
 		ArrayList<LootPlayer> lootplayers = new ArrayList<LootPlayer>();
 		
@@ -21,12 +26,32 @@ public class ServerRecordHandler {
 			return lootplayers;
 		}
 		
-        // TODO		
+		JSONParser jsonParser = new JSONParser();
+		JSONArray jsonArray;
+		try {
+			jsonArray = (JSONArray) jsonParser.parse(new FileReader(Reference.SERVER_FILE_NAME));
+		} 
+		catch (FileNotFoundException e) { e.printStackTrace(); return lootplayers; } 
+		catch (IOException e) { e.printStackTrace(); return lootplayers; } 
+		catch (ParseException e) { e.printStackTrace(); return lootplayers; } 
+	
+		for (Object o : jsonArray)
+		{
+			JSONObject jsonObject = (JSONObject) o;
+
+		    String playerName = (String) jsonObject.get("playerName");
+		    String playerWalletAddress = (String) jsonObject.get("currentWalletAddress");
+		    ArrayList<String> defeatedBosses = (ArrayList<String>) jsonObject.get("defeatedBossesList");
+		    ArrayList<String> latestLocalTokenizedItemList = (ArrayList<String>) jsonObject.get("latestLocalTokenizedItemList");	
+		    
+		    LootPlayer lootPlayer = new LootPlayer(playerName, playerWalletAddress, defeatedBosses, latestLocalTokenizedItemList);
+		    
+		    lootplayers.add(lootPlayer);
+		}
 		
 		return lootplayers;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public boolean UpdateServerRecords(ArrayList<LootPlayer> lootPlayers){
 		
 		if(!doesFileExist()){
