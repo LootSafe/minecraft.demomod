@@ -64,7 +64,7 @@ public class AdminAddressGold implements ICommand {
 	}
 	
 	/*
-	 * Required
+	 * Required and Redundant 
 	 */
 	
 	@Override

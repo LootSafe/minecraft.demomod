@@ -64,7 +64,7 @@ public class AdminAddressSilver implements ICommand {
 	}
 	
 	/*
-	 * Required
+	 * Required and Redundant 
 	 */
 	
 	@Override

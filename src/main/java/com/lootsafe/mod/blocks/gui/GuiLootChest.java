@@ -12,6 +12,10 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiLootChest extends GuiContainer {
 
+	private static final ResourceLocation GUI_CHEST = new ResourceLocation(Reference.MOD_ID + ":textures/gui/loot_chest.png");
+	private final InventoryPlayer playerInventory;
+	private final TileEntityLootChest te;
+	
 	public GuiLootChest(InventoryPlayer playerInventory, TileEntityLootChest chestInventory, EntityPlayer player) {
 		super(new ContainerLootChest(playerInventory, chestInventory, player));
 		this.playerInventory = playerInventory;
@@ -20,11 +24,7 @@ public class GuiLootChest extends GuiContainer {
 		this.xSize = 179;
 		this.ySize = 256;
 	}
-	
-	private static final ResourceLocation GUI_CHEST = new ResourceLocation(Reference.MOD_ID + ":textures/gui/loot_chest.png");
-	private final InventoryPlayer playerInventory;
-	private final TileEntityLootChest te;
-	
+		
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
 		this.fontRenderer.drawString(this.te.getDisplayName().getUnformattedText(), 8, 6, 16086784);
 		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 92, 16086784);

@@ -95,4 +95,5 @@ public class ItemBase extends Item implements IHasModel {
 	public boolean getIsTokenizable(){
 		return this.isTokenizable;
 	}
+	
 }

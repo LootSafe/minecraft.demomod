@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
+@SuppressWarnings("deprecation")
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class Main {
 	
@@ -36,36 +37,31 @@ public class Main {
 	public static CommonProxy proxy;
 	
 	@EventHandler
-	public static void serverLoad(FMLServerStartingEvent event)
-	{
-		// Custom Commands here
+	public static void serverLoad(FMLServerStartingEvent event) {
+
+		event.registerServerCommand(new AdminHost());
+		event.registerServerCommand(new AdminAddressGold());
+		event.registerServerCommand(new AdminAddressSilver());
 		event.registerServerCommand(new WalletRegisterPlayer());
 		event.registerServerCommand(new WalletUnregisterPlayer());
 		event.registerServerCommand(new WalletWalletAddress());
 		event.registerServerCommand(new WalletShowCommands());		
-		event.registerServerCommand(new WalletShowLoot());
-		
-		event.registerServerCommand(new AdminAddressGold());
-		event.registerServerCommand(new AdminAddressSilver());
-		event.registerServerCommand(new AdminHost());
-
-		//event.registerServerCommand(new CommandLootCoinCopperAddress());
+		event.registerServerCommand(new WalletShowLoot());	
 	}
 	
 	/* Important Stuff */
 
 	@EventHandler
-	public static void init(FMLInitializationEvent event) {
-		proxy.initRegistries();
-	}
-	
-	@EventHandler
-	public static void preInit(FMLPreInitializationEvent event)
-	{	
+	public static void preInit(FMLPreInitializationEvent event) {	
 		MinecraftForge.EVENT_BUS.register(customEventHandler);
 		FMLCommonHandler.instance().bus().register(customEventHandler);
 		
 		proxy.preInitRegistries();
+	}
+	
+	@EventHandler
+	public static void init(FMLInitializationEvent event) {
+		proxy.initRegistries();
 	}
 	
 }

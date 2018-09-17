@@ -23,7 +23,7 @@ public class CommonProxy {
 	private PlayerHandler playerHandler;
 	private NetworkHandler networkHandler;
 	
-	/*				*/
+	/* Server Proxy More So */
 	
 	public void registerItemRenderer(Item item, int meta, String id) {
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));

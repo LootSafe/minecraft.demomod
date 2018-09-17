@@ -9,24 +9,31 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class PlayerHandler {
 	
-	private List<LootPlayer> lootplayers;	
+	private ArrayList<LootPlayer> lootPlayers;	
+	private ServerRecordHandler serverRecordHandler;
  
 	/* Constructors & Init */
 	
     public PlayerHandler()
     {
-    	lootplayers = loadLootPlayers();
+    	lootPlayers = loadLootPlayers();
+    	serverRecordHandler = new ServerRecordHandler();
     }
 	
+    /* Server Load & Save */
+    
 	public ArrayList<LootPlayer> loadLootPlayers(){
-		ServerRecordHandler serverRecordHandler = new ServerRecordHandler();
 		return serverRecordHandler.LoadServerRecords();
+	}
+	
+	public boolean SaveLootPlayers(){
+		return serverRecordHandler.UpdateServerRecords(lootPlayers);
 	}
 	
 	/* Wallet */
 	
 	public void registerPlayerWallet(String playerName, String playerWalletAddress){	
-		lootplayers.add(new LootPlayer(playerName, playerWalletAddress));	
+		lootPlayers.add(new LootPlayer(playerName, playerWalletAddress));	
 	}
 	
 	public boolean unregisterPlayerWallet(String playerName){
@@ -36,7 +43,7 @@ public class PlayerHandler {
 			int index = -1;
 			int counter = -1;
 			
-			for(LootPlayer lootplayer : lootplayers){
+			for(LootPlayer lootplayer : lootPlayers){
 				
 				counter++;
 				
@@ -47,7 +54,7 @@ public class PlayerHandler {
 			}
 			
 			if(index != -1){
-				lootplayers.remove(index);
+				lootPlayers.remove(index);
 				return true;
 			}
 		}
@@ -61,7 +68,7 @@ public class PlayerHandler {
 			return null;
 		}
 		
-		for(LootPlayer lootplayer : lootplayers){
+		for(LootPlayer lootplayer : lootPlayers){
 			if(lootplayer.getPlayerName().equals(playerName)){					
 				return lootplayer.getPlayerWalletAddress();
 			}
@@ -72,7 +79,7 @@ public class PlayerHandler {
 	
 	public boolean registerPlayerLoot(String playerName, String lootAddress){
 		
-		for(LootPlayer lootplayer : lootplayers){
+		for(LootPlayer lootplayer : lootPlayers){
 			if(lootplayer.getPlayerName().equals(playerName)){					
 				lootplayer.addTokenizedItemStr(lootAddress);
 				return true;
@@ -85,7 +92,7 @@ public class PlayerHandler {
 	public boolean registerBossLoot(String playerName,String bossName, String itemAddress){
 		
 		if(hasKilledBossBefore(playerName, bossName) == false){			
-			for(LootPlayer lootplayer : lootplayers){				
+			for(LootPlayer lootplayer : lootPlayers){				
 				if(lootplayer.getPlayerName().equals(playerName)){
 					return lootplayer.registerBossDeath(bossName, itemAddress);		
 				}				
@@ -103,8 +110,7 @@ public class PlayerHandler {
 	
 	public void addTokenizedItemStr(EntityPlayer player,ItemBase item){
 		
-		for(LootPlayer lootplayer : lootplayers){
-			
+		for(LootPlayer lootplayer : lootPlayers){			
 			if(lootplayer.getPlayerName().equals(player.getName())){					
 				lootplayer.addTokenizedItemStr(item.getItemAddress());
 			}				 
@@ -113,7 +119,7 @@ public class PlayerHandler {
 
 	public boolean hasKilledBossBefore(String playerName,String bossName){
 			
-		for(LootPlayer lootplayer : lootplayers){				
+		for(LootPlayer lootplayer : lootPlayers){				
 			if(lootplayer.getPlayerName().equals(playerName)){
 				return lootplayer.hasKilledBossBefore(bossName);					
 			}				
@@ -126,7 +132,7 @@ public class PlayerHandler {
 		
 		List<String> tokenizedItemList = new ArrayList<String>();
 		
-		for(LootPlayer lootplayer : lootplayers){
+		for(LootPlayer lootplayer : lootPlayers){
 			if(lootplayer.getPlayerName().equals(playerName)){
 				
 				if(lootplayer.getLatestLocalTokenizedItemList().isEmpty()){
@@ -146,7 +152,7 @@ public class PlayerHandler {
 	
 	public boolean isPlayerRegistered(String playerName){
 		
-		for(LootPlayer lootplayer : lootplayers){
+		for(LootPlayer lootplayer : lootPlayers){
 			if(lootplayer.getPlayerName().equals(playerName)){
 				return true;
 			}

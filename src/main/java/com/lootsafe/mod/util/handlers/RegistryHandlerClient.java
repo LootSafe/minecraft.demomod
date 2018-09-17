@@ -29,10 +29,6 @@ public class RegistryHandlerClient {
 	public static void onBlockRegister(RegistryEvent.Register<Block> event){
 		event.getRegistry().registerAll(BlockInit.BLOCKS.toArray(new Block[0]));		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLootChest.class, new RenderLootChest());
-		
-		/* THIS CAUSES PROBLEMS CLIENT SIDE*/
-		
-		//TileEntityHandler.registerTileEntities();		
 	}
 	
 	@SubscribeEvent

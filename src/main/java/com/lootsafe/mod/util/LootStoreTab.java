@@ -11,7 +11,6 @@ public class LootStoreTab extends CreativeTabs {
 
 	@Override
 	public ItemStack getTabIconItem() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

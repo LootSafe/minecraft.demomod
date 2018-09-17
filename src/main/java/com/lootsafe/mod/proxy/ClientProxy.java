@@ -36,5 +36,4 @@ public class ClientProxy extends CommonProxy {
 		RenderHandler.registerAllEntityRenders();		
 	}
 	
-	/* Other Stuff */
 }

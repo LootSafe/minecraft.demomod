@@ -73,8 +73,7 @@ public class ServerRecordHandler {
             
             for(String bossIdentifier : lootplayer.getDefeatedBossesList()){
             	defeatedBossesList.add(bossIdentifier);
-            }   
-            
+            }              
         }
 
         jsonObject.put("defeatedBossesList", defeatedBossesList);

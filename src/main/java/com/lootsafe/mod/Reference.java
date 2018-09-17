@@ -55,5 +55,6 @@ public class Reference {
 	public static List<String> description_lootchest =
 			new ArrayList<String>() {{
 				add(TextFormatting.WHITE + "LootSafe for storing your Loot!");
-			}};		
+			}};	
+			
 }

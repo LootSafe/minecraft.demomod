@@ -151,4 +151,5 @@ public class TileEntityLootChest extends TileEntityLockableLoot implements ITick
 		this.world.addBlockEvent(pos, this.getBlockType(), 1, numPlayersUsing);
 		this.world.notifyNeighborsOfStateChange(pos, getBlockType(), false);		
 	}
+	
  }
