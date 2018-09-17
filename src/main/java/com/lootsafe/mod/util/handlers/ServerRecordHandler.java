@@ -19,21 +19,22 @@ public class ServerRecordHandler {
 			
 	public ArrayList<LootPlayer> LoadServerRecords() {
 		
-		ArrayList<LootPlayer> lootplayers = new ArrayList<LootPlayer>();
+		ArrayList<LootPlayer> lootPlayers = new ArrayList<LootPlayer>();
 		
 		if(!doesFileExist()){
 			createFile();
-			return lootplayers;
+			return lootPlayers;
 		}
 		
 		JSONParser jsonParser = new JSONParser();
 		JSONArray jsonArray;
+		
 		try {
 			jsonArray = (JSONArray) jsonParser.parse(new FileReader(Reference.SERVER_FILE_NAME));
 		} 
-		catch (FileNotFoundException e) { e.printStackTrace(); return lootplayers; } 
-		catch (IOException e) { e.printStackTrace(); return lootplayers; } 
-		catch (ParseException e) { e.printStackTrace(); return lootplayers; } 
+		catch (FileNotFoundException e) { e.printStackTrace(); return lootPlayers; } 
+		catch (IOException e) { e.printStackTrace(); return lootPlayers; } 
+		catch (ParseException e) { e.printStackTrace(); return lootPlayers; } 
 	
 		for (Object o : jsonArray)
 		{
@@ -46,10 +47,10 @@ public class ServerRecordHandler {
 		    
 		    LootPlayer lootPlayer = new LootPlayer(playerName, playerWalletAddress, defeatedBosses, latestLocalTokenizedItemList);
 		    
-		    lootplayers.add(lootPlayer);
+		    lootPlayers.add(lootPlayer);
 		}
 		
-		return lootplayers;
+		return lootPlayers;
 	}
 	
 	public boolean UpdateServerRecords(ArrayList<LootPlayer> lootPlayers){

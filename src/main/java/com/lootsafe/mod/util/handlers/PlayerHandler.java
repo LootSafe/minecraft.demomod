@@ -16,8 +16,8 @@ public class PlayerHandler {
 	
     public PlayerHandler()
     {
-    	lootPlayers = loadLootPlayers();
     	serverRecordHandler = new ServerRecordHandler();
+    	lootPlayers = loadLootPlayers();
     }
 	
     /* Server Load & Save */
