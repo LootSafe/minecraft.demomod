@@ -10,11 +10,9 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderLootSpider extends RenderLiving<EntityLootSpider> {
 
-	private static float spiderSize = 3.0f;
-	
 	public static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MOD_ID + ":textures/entity/lootspider.png");
 	
-	public RenderLootSpider(RenderManager manager){
+	public RenderLootSpider(RenderManager manager, float spiderSize){
 		super(manager, new ModelLootSpider(spiderSize), spiderSize);
 	}
 	

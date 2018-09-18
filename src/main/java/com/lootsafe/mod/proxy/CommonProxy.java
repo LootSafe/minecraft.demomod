@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.lootsafe.mod.Main;
 import com.lootsafe.mod.Items.ItemBase;
-import com.lootsafe.mod.init.CustomInit;
+import com.lootsafe.mod.init.EntityInit;
 import com.lootsafe.mod.util.handlers.GuiHandler;
 import com.lootsafe.mod.util.handlers.NetworkHandler;
 import com.lootsafe.mod.util.handlers.PlayerHandler;
@@ -35,7 +35,7 @@ public class CommonProxy {
 	
 	public void preInitRegistries() {
 		
-		CustomInit.registerEntities();		
+		EntityInit.registerEntities();		
 		FMLCommonHandler.instance().bus().register(new RegistryHandlerServer());
 		
 		playerHandler = new PlayerHandler();

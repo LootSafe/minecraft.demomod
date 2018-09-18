@@ -3,8 +3,9 @@ package com.lootsafe.mod.proxy;
 import java.util.List;
 
 import com.lootsafe.mod.Main;
+import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.Items.ItemBase;
-import com.lootsafe.mod.init.CustomInit;
+import com.lootsafe.mod.init.EntityInit;
 import com.lootsafe.mod.util.handlers.GuiHandler;
 import com.lootsafe.mod.util.handlers.PlayerHandler;
 import com.lootsafe.mod.util.handlers.RegistryHandlerClient;
@@ -30,10 +31,10 @@ public class ClientProxy extends CommonProxy {
 	
 	@SuppressWarnings("deprecation")
 	public void preInitRegistries(){	
-		CustomInit.registerEntities();		
+		EntityInit.registerEntities();		
 		
 		FMLCommonHandler.instance().bus().register(new RegistryHandlerClient());		
-		RenderHandler.registerAllEntityRenders();		
+		RenderHandler.registerAllEntityRenders(Reference.GLOBAL_BOSSMOB_SIZE);		
 	}
 	
 }

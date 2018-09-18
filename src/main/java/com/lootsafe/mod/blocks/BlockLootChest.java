@@ -35,12 +35,12 @@ public class BlockLootChest extends BlockContainer
 		
 		BlockInit.BLOCKS.add(this);
 		ItemInit.ITEMS.add(new ItemBlock(this).setRegistryName(name));
-	}
+	}	
 	
 	@Override
 	public boolean isOpaqueCube(IBlockState state)
 	{
-		return true;
+		return false;
 	}
 		
 	@Override

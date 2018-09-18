@@ -12,35 +12,35 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class RenderHandler {
 	
-	public static void registerEntityRenderEntityLootSkele(){
+	public static void registerEntityRenderEntityLootSkele(float skeleSize){
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityLootSkele.class, new IRenderFactory<EntityLootSkele>(){
 
 			@Override
 			public Render<? super EntityLootSkele> createRenderFor(RenderManager manager) {
-				return new RenderLootSkeleton(manager);
+				return new RenderLootSkeleton(manager, skeleSize);
 			}
 			
 		});
 		
 	}
 	
-	public static void registerEntityRenderEntityLootSpider(){
+	public static void registerEntityRenderEntityLootSpider(float spiderSize){
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityLootSpider.class, new IRenderFactory<EntityLootSpider>(){
 
 			@Override
 			public Render<? super EntityLootSpider> createRenderFor(RenderManager manager) {
-				return new RenderLootSpider(manager);
+				return new RenderLootSpider(manager, spiderSize);
 			}
 			
 		});
 		
 	}
 	
-	public static void registerAllEntityRenders(){		
-		registerEntityRenderEntityLootSkele();
-		registerEntityRenderEntityLootSpider();
+	public static void registerAllEntityRenders(float size){		
+		registerEntityRenderEntityLootSkele(size);
+		registerEntityRenderEntityLootSpider(size);
 	}
 	
 }

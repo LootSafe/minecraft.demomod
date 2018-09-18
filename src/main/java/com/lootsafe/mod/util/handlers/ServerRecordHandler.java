@@ -14,6 +14,8 @@ import org.json.simple.parser.ParseException;
 
 import com.lootsafe.mod.Reference;
 
+import net.minecraftforge.fml.common.FMLCommonHandler;
+
 @SuppressWarnings("unchecked")
 public class ServerRecordHandler {
 			
@@ -92,9 +94,9 @@ public class ServerRecordHandler {
 	
 	public boolean doesFileExist(){
 		
-		File f = new File(Reference.SERVER_FILE_NAME);
+		File file = FMLCommonHandler.instance().getMinecraftServerInstance().getFile(Reference.SERVER_FILE_NAME);
 		
-		if(f.exists() && !f.isDirectory()) { 
+		if(file.exists() && !file.isDirectory()) { 
 		    return true;
 		}
 		
@@ -102,7 +104,8 @@ public class ServerRecordHandler {
 	}
 	
 	public File createFile(){
-		return new File(Reference.SERVER_FILE_NAME);
+		File playerDataFile = new File(Reference.SERVER_FILE_NAME);
+		return playerDataFile;
 	}
 	
 }
