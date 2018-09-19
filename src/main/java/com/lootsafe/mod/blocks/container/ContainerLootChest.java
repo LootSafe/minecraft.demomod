@@ -44,6 +44,7 @@ public class ContainerLootChest extends Container
 		{
 			this.addSlotToContainer(new Slot(playerInv, x, 8 + x*18, 233));
 		}
+		
 	}
 
 	public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player){
@@ -55,8 +56,7 @@ public class ContainerLootChest extends Container
 		
 		try{
 			Slot slot = this.inventorySlots.get(slotId);
-			ItemStack itemstack1 = slot.getStack();
-			
+			ItemStack itemstack1 = slot.getStack();			
 			ItemBase currentItem = (ItemBase)itemstack1.getItem();
 			
 			if(currentItem != null){
@@ -64,19 +64,20 @@ public class ContainerLootChest extends Container
 				if(currentItem.getIsTokenizable()){
 					
 					Main.proxy.addTokenizedItemStr(player, currentItem);
-					
-					player.closeScreen();									
-			
-					itemstack1 = null;
-					
 					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Sending item to your wallet @ " + Main.proxy.getPlayerWalletAddress(player.getName())));					
+					
+					itemstack1.shrink(1);
+					
+					slot = null;
+					itemstack1 = null;				
+
+					player.closeScreen();
 				}
 			}
 		
 		}catch(Exception e){}
 		
-		return super.slotClick(slotId, dragType, clickTypeIn, player);
-		
+		return super.slotClick(slotId, dragType, clickTypeIn, player);		
 	}
 	
 	@Override
