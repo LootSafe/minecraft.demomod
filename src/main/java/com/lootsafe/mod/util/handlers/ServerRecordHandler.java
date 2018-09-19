@@ -34,9 +34,9 @@ public class ServerRecordHandler {
 		try {
 			jsonArray = (JSONArray) jsonParser.parse(new FileReader(Reference.SERVER_FILE_NAME));
 		} 
-		catch (FileNotFoundException e) { e.printStackTrace(); return lootPlayers; } 
-		catch (IOException e) { e.printStackTrace(); return lootPlayers; } 
-		catch (ParseException e) { e.printStackTrace(); return lootPlayers; } 
+		catch (FileNotFoundException e) { e.printStackTrace(); System.out.println("Error loading records from file."); return lootPlayers; } 
+		catch (IOException e) { e.printStackTrace(); System.out.println("Error loading records from file."); return lootPlayers; } 
+		catch (ParseException e) { e.printStackTrace(); System.out.println("Error loading records from file."); return lootPlayers; } 
 	
 		for (Object o : jsonArray)
 		{
@@ -51,6 +51,8 @@ public class ServerRecordHandler {
 		    
 		    lootPlayers.add(lootPlayer);
 		}
+		
+		System.out.println("Loaded Server Records Successfully.");
 		
 		return lootPlayers;
 	}
@@ -76,7 +78,8 @@ public class ServerRecordHandler {
             
             for(String bossIdentifier : lootplayer.getDefeatedBossesList()){
             	defeatedBossesList.add(bossIdentifier);
-            }              
+            }  
+            
         }
 
         jsonObject.put("defeatedBossesList", defeatedBossesList);
@@ -87,8 +90,10 @@ public class ServerRecordHandler {
             file.write(jsonObject.toJSONString());
             file.flush();
 
-        } catch (IOException e) { e.printStackTrace(); return false; }
+        } catch (IOException e) { e.printStackTrace(); System.out.println("Error updating server records."); return false; }
 
+        System.out.println("Server Records Updated.");
+        
 		return true;
 	}
 	

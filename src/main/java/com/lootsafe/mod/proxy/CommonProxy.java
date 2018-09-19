@@ -50,8 +50,7 @@ public class CommonProxy {
 	
 	public boolean unregisterPlayerWallet(String playerName) {
 		return playerHandler.unregisterPlayerWallet(playerName);
-	}
-	
+	}	
 	
 	public boolean isPlayerRegistered(String playerName){
 		return playerHandler.isPlayerRegistered(playerName);
@@ -70,6 +69,10 @@ public class CommonProxy {
 	}
 	
 	/* Other Stuff */
+	
+	public void UpdateServerRecords(){
+		playerHandler.UpdateServerRecords();
+	}
 	
 	public String getPlayerWalletAddress(String playerName){
 		return playerHandler.getPlayerWalletAddress(playerName);

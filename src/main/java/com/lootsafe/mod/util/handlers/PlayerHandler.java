@@ -26,7 +26,7 @@ public class PlayerHandler {
     	return serverRecordHandler.LoadServerRecords();
     }
 	
-	public boolean SaveServerRecords(){
+	public boolean UpdateServerRecords(){
 		return serverRecordHandler.UpdateServerRecords(lootPlayers);
 	}
 	

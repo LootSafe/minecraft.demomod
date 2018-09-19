@@ -4,6 +4,7 @@ import com.lootsafe.mod.commands.AdminHost;
 import com.lootsafe.mod.commands.AdminWipeProgess;
 import com.lootsafe.mod.commands.AdminAddressGold;
 import com.lootsafe.mod.commands.AdminAddressSilver;
+import com.lootsafe.mod.commands.AdminForceSave;
 import com.lootsafe.mod.commands.WalletRegisterPlayer;
 import com.lootsafe.mod.commands.WalletShowLoot;
 import com.lootsafe.mod.commands.WalletShowCommands;
@@ -41,6 +42,7 @@ public class Main {
 	public static void serverLoad(FMLServerStartingEvent event) {
 
 		event.registerServerCommand(new AdminHost());
+		event.registerServerCommand(new AdminForceSave());
 		event.registerServerCommand(new AdminAddressGold());
 		event.registerServerCommand(new AdminAddressSilver());
 		event.registerServerCommand(new AdminWipeProgess());
