@@ -1,6 +1,7 @@
 package com.lootsafe.mod;
 
 import com.lootsafe.mod.commands.AdminHost;
+import com.lootsafe.mod.commands.AdminWipeProgess;
 import com.lootsafe.mod.commands.AdminAddressGold;
 import com.lootsafe.mod.commands.AdminAddressSilver;
 import com.lootsafe.mod.commands.WalletRegisterPlayer;
@@ -42,6 +43,7 @@ public class Main {
 		event.registerServerCommand(new AdminHost());
 		event.registerServerCommand(new AdminAddressGold());
 		event.registerServerCommand(new AdminAddressSilver());
+		event.registerServerCommand(new AdminWipeProgess());
 		event.registerServerCommand(new WalletRegisterPlayer());
 		event.registerServerCommand(new WalletUnregisterPlayer());
 		event.registerServerCommand(new WalletWalletAddress());

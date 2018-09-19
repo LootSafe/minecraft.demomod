@@ -160,5 +160,20 @@ public class PlayerHandler {
 		
 		return false;
 	}
+
+	public boolean wipePlayerProgress(String playerName) {
+		
+		if(isPlayerRegistered(playerName)){
+			
+			for(LootPlayer lootplayer : lootPlayers){
+				if(lootplayer.getPlayerName().equals(playerName)){
+					lootplayer.wipePlayerProgress();
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
 	
 }

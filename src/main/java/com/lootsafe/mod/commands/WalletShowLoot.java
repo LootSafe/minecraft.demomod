@@ -17,23 +17,6 @@ import net.minecraft.util.text.TextFormatting;
 public class WalletShowLoot implements ICommand {
 
 	@Override
-	public String getName() {
-		return "commandclientshowitems";
-	}
-
-	@Override
-	public String getUsage(ICommandSender sender) {
-		return "Shows a list of players items.";
-	}
-
-	@Override
-	public List<String> getAliases() {
-		List<String> commandAliases = new ArrayList<String>();
-		commandAliases.add("loot");
-		return commandAliases;
-	}
-
-	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		if(sender instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer) sender;
@@ -57,7 +40,24 @@ public class WalletShowLoot implements ICommand {
 			}			
 		}
 	}
+	
+	@Override
+	public String getName() {
+		return "commandclientshowitems";
+	}
 
+	@Override
+	public String getUsage(ICommandSender sender) {
+		return "Shows a list of players items.";
+	}
+
+	@Override
+	public List<String> getAliases() {
+		List<String> commandAliases = new ArrayList<String>();
+		commandAliases.add("loot");
+		return commandAliases;
+	}
+	
 	/*
 	 * Required and Redundant 
 	 */

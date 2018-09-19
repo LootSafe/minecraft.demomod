@@ -76,5 +76,10 @@ public class LootPlayer {
 	public String getPlayerWalletAddress(){
 		return this.playerWalletAddress;
 	}
+
+	public void wipePlayerProgress() {
+		this.defeatedBossesList = new ArrayList<String>();
+		this.latestLocalTokenizedItemList = new ArrayList<String>();
+	}
 	
 }

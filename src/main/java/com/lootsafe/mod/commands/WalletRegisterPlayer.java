@@ -17,23 +17,6 @@ import net.minecraft.util.text.TextFormatting;
 public class WalletRegisterPlayer implements ICommand {
 
 	@Override
-	public String getName() {
-		return "commandregisterplayerwallet";
-	}
-
-	@Override
-	public String getUsage(ICommandSender sender) {
-		return "Registers a players wallet";
-	}
-
-	@Override
-	public List<String> getAliases() {
-		List<String> commandAliases = new ArrayList<String>();
-		commandAliases.add("register");
-		return commandAliases;
-	}
-
-	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		if(sender instanceof EntityPlayer){
 			
@@ -56,6 +39,23 @@ public class WalletRegisterPlayer implements ICommand {
 							
 			}			
 		}
+	}
+	
+	@Override
+	public String getName() {
+		return "commandregisterplayerwallet";
+	}
+
+	@Override
+	public String getUsage(ICommandSender sender) {
+		return "Registers a players wallet";
+	}
+
+	@Override
+	public List<String> getAliases() {
+		List<String> commandAliases = new ArrayList<String>();
+		commandAliases.add("register");
+		return commandAliases;
 	}
 
 	/*

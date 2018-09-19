@@ -17,23 +17,6 @@ import net.minecraft.util.text.TextFormatting;
 public class WalletUnregisterPlayer implements ICommand {
 
 	@Override
-	public String getName() {
-		return "commandunregisterplayerwallet";
-	}
-
-	@Override
-	public String getUsage(ICommandSender sender) {
-		return "Unregisters a players wallet.";
-	}
-
-	@Override
-	public List<String> getAliases() {
-		List<String> commandAliases = new ArrayList<String>();
-		commandAliases.add("unregister");
-		return commandAliases;
-	}
-
-	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		if(sender instanceof EntityPlayer){
 			
@@ -53,6 +36,23 @@ public class WalletUnregisterPlayer implements ICommand {
 				}				
 			}			
 		}
+	}
+	
+	@Override
+	public String getName() {
+		return "commandunregisterplayerwallet";
+	}
+
+	@Override
+	public String getUsage(ICommandSender sender) {
+		return "Unregisters a players wallet.";
+	}
+
+	@Override
+	public List<String> getAliases() {
+		List<String> commandAliases = new ArrayList<String>();
+		commandAliases.add("unregister");
+		return commandAliases;
 	}
 
 	/*

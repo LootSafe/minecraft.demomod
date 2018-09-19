@@ -17,23 +17,6 @@ import net.minecraft.util.text.TextFormatting;
 public class AdminAddressSilver implements ICommand {
 
 	@Override
-	public String getName() {
-		return "commandregisterlootcoinsilveraddress";
-	}
-
-	@Override
-	public String getUsage(ICommandSender sender) {
-		return "Registers the silver coin...";
-	}
-
-	@Override
-	public List<String> getAliases() {
-		List<String> commandAliases = new ArrayList<String>();
-		commandAliases.add("registersilver");
-		return commandAliases;
-	}
-
-	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		if(sender instanceof EntityPlayer){
 			
@@ -48,6 +31,23 @@ public class AdminAddressSilver implements ICommand {
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument"));
 			}			
 		}
+	}
+	
+	@Override
+	public String getName() {
+		return "commandregisterlootcoinsilveraddress";
+	}
+
+	@Override
+	public String getUsage(ICommandSender sender) {
+		return "Registers the silver coin...";
+	}
+
+	@Override
+	public List<String> getAliases() {
+		List<String> commandAliases = new ArrayList<String>();
+		commandAliases.add("registersilver");
+		return commandAliases;
 	}
 
 	public boolean canCommandSenderUse(MinecraftServer server, ICommandSender sender) { 

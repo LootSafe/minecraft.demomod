@@ -25,14 +25,6 @@ public class CommonProxy {
 	
 	/* Server Proxy More So */
 	
-	public void registerItemRenderer(Item item, int meta, String id) {
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
-	}
-
-	public void initRegistries() {
-		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
-	}
-	
 	public void preInitRegistries() {
 		
 		EntityInit.registerEntities();		
@@ -40,6 +32,14 @@ public class CommonProxy {
 		
 		playerHandler = new PlayerHandler();
 		networkHandler = new NetworkHandler();
+	}
+	
+	public void initRegistries() {
+		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
+	}
+	
+	public void registerItemRenderer(Item item, int meta, String id) {
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
 	}
 	
 	/* Registering  */
@@ -63,6 +63,10 @@ public class CommonProxy {
 
 	public boolean hasKilledBossBefore(String playerName, String bossName){
 		return playerHandler.hasKilledBossBefore(playerName, bossName);
+	}
+	
+	public boolean wipePlayerProgress(String playerName){
+		return playerHandler.wipePlayerProgress(playerName);
 	}
 	
 	/* Other Stuff */
