@@ -5,15 +5,15 @@
 To manually register the populated item address (you'll have to grab this from the console)
 These are the commands to do 
 
-* /registergold <coinaddress>
-* /registersilver <coinaddress>
-* /registerhost <hostaddress>
+* /registergold coinaddress
+* /registersilver coinaddress
+* /registerhost hostaddress
   
 ### Debug  
 
 Wipes players progress on what boss they killed and loot they recieved. This is for debugging so you can kill the boss multiple time.  
   
-* /wipeplayer <playername>
+* /wipeplayer playername
 
 ## Demo Commands
 
