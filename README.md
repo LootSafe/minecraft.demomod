@@ -34,4 +34,4 @@ Wipes players progress on what boss they killed and loot they recieved. This is 
 3. Use /registergold and register a valid address for the gold token. 
 3. Spawn LootSafe Boss Skeleton.
 4. Kill LootSafe Boss Skeleton, notice it pops an gold coin into your inventory.
-5. Open the LootSafe Safe, item should disappear, make a call to the API and message you that it was sucessful.
+5. Open the LootSafe Safe, item should disappear, make a call to the API and message you that it was successful.

@@ -2,7 +2,6 @@ package com.lootsafe.mod.entity.renderer;
 
 import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.entity.EntityLootSkele;
-import com.lootsafe.mod.entity.model.ModelLootSkeleton;
 
 import net.minecraft.client.model.ModelSkeleton;
 import net.minecraft.client.renderer.entity.RenderLiving;

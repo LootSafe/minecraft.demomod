@@ -2,7 +2,6 @@ package com.lootsafe.mod.entity.renderer;
 
 import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.entity.EntityLootSpider;
-import com.lootsafe.mod.entity.model.ModelLootSpider;
 
 import net.minecraft.client.model.ModelSpider;
 import net.minecraft.client.renderer.entity.RenderLiving;
