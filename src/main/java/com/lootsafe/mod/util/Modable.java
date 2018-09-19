@@ -1,5 +1,5 @@
 package com.lootsafe.mod.util;
 
-public interface IHasModel {
+public interface Modable {
 	public void registerModels();
 }

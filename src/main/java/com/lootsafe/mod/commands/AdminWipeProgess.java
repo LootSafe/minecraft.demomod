@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lootsafe.mod.Main;
-import com.lootsafe.mod.Reference;
 
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;

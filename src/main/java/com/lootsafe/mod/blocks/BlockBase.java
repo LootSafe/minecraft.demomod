@@ -3,7 +3,7 @@ package com.lootsafe.mod.blocks;
 import com.lootsafe.mod.Main;
 import com.lootsafe.mod.init.BlockInit;
 import com.lootsafe.mod.init.ItemInit;
-import com.lootsafe.mod.util.IHasModel;
+import com.lootsafe.mod.util.Modable;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -11,7 +11,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
-public class BlockBase extends Block implements IHasModel {
+public class BlockBase extends Block implements Modable {
 
 	public BlockBase(String name, Material material){
 		super(material);

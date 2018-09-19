@@ -4,7 +4,7 @@ import com.lootsafe.mod.blocks.animation.RenderLootChest;
 import com.lootsafe.mod.blocks.tileenity.TileEntityLootChest;
 import com.lootsafe.mod.init.BlockInit;
 import com.lootsafe.mod.init.ItemInit;
-import com.lootsafe.mod.util.IHasModel;
+import com.lootsafe.mod.util.Modable;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -37,14 +37,14 @@ public class RegistryHandlerClient {
 		Main.proxy.registerItemRenderer(Item.getItemFromBlock(BlockInit.LOOT_CHEST), 0, "container.loot_chest");
 		
 		for(Item item : ItemInit.ITEMS){
-			if(item instanceof IHasModel){
-				((IHasModel)item).registerModels();
+			if(item instanceof Modable){
+				((Modable)item).registerModels();
 			}
 		}
 		
 		for(Block block : BlockInit.BLOCKS){
-			if(block instanceof IHasModel){
-				((IHasModel)block).registerModels();
+			if(block instanceof Modable){
+				((Modable)block).registerModels();
 			}
 		}
 	}

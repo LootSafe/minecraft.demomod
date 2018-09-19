@@ -11,9 +11,34 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class CustomEventHandler {
+	
+	
+	@SubscribeEvent 
+	public void bossSunscreen(LivingUpdateEvent event){
+		
+		/* EntityLootSkele - Sunscreen for daytime */
+		
+		if (event.getEntity() instanceof EntityLootSkele) {
+			
+			if(event.getEntity().isBurning()){
+				event.getEntity().extinguish();
+			}
+		}	
+		
+		/* EntityLootSpider - Sunscreen for daytime */		
+		
+		if (event.getEntity() instanceof EntityLootSpider) {
+				
+			if(event.getEntity().isBurning()){
+				event.getEntity().extinguish();
+			}
+		}			
+		
+	}
 	
 	@SubscribeEvent
 	public void onKilledBoss(LivingDeathEvent event) {

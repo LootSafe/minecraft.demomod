@@ -5,7 +5,7 @@ import java.util.List;
 import com.lootsafe.mod.Main;
 import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.init.ItemInit;
-import com.lootsafe.mod.util.IHasModel;
+import com.lootsafe.mod.util.Modable;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBase extends Item implements IHasModel {
+public class ItemBase extends Item implements Modable {
 
 	private String itemAddress;
 	private boolean isTokenizable;
