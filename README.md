@@ -5,13 +5,19 @@
 To manually register the populated item address (you'll have to grab this from the console)
 These are the commands to do 
 
-* /registergold 0x000000
-* /registersilver 0x00000
-* /registerhost http:localhost:1337/v1/
+* /registergold <coinaddress>
+* /registersilver <coinaddress>
+* /registerhost <hostaddress>
+  
+### Debug  
+
+Wipes players progress on what boss they killed and loot they recieved. This is for debugging so you can kill the boss multiple time.  
+  
+* /wipeplayer <playername>
 
 ## Demo Commands
 
-* /register 0x00000000 **<-- Wallet Address you want items spawned into**
+* /register <playerwallet> **<-- Wallet Address you want items spawned into**
 * /unregister **<-- You don't need this but it lets you re-register your address in case you**
 * /wallet **<-- Shows your current Address**
 
