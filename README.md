@@ -15,6 +15,10 @@ Wipes players progress on what boss they killed and loot they recieved. This is 
   
 * /wipeplayer playername
 
+Save the current state of the players loot token inventory to file **(in testing)**
+
+* /lootsave 
+
 ## Demo Commands
 
 * /register <playerwallet> **<-- Wallet Address you want items spawned into**
