@@ -17,17 +17,19 @@ public class PlayerHandler {
     public PlayerHandler()
     {
     	serverRecordHandler = new ServerRecordHandler();
-    	lootPlayers = serverRecordHandler.LoadServerRecords();
+    	lootPlayers = LoadServerRecords();
     }
 	
     /* Server Load & Save */
     
-    public ArrayList<LootPlayer> LoadServerRecords(){
-    	return serverRecordHandler.LoadServerRecords();
+    public ArrayList<LootPlayer> LoadServerRecords(){        	
+    	//return serverRecordHandler.LoadServerRecords();
+    	return new ArrayList<LootPlayer>();
     }
 	
 	public boolean UpdateServerRecords(){
-		return serverRecordHandler.UpdateServerRecords(lootPlayers);
+		//return serverRecordHandler.UpdateServerRecords(lootPlayers);
+		return true;
 	}
 	
 	/* Wallet */
