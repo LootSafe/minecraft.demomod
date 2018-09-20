@@ -5,6 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -69,6 +76,8 @@ public class ServerRecordHandler {
 			createFile();
 		}
 		
+        backupRecords();
+		
 		JSONArray parentArray = new JSONArray();    	
     	JSONArray defeatedBossesList = new JSONArray();
     	JSONArray latestLocalTokenizedItemList = new JSONArray();
@@ -99,7 +108,7 @@ public class ServerRecordHandler {
             parentArray.add(tempPlayer);
         }
 
-        try (FileWriter file = new FileWriter(Reference.SERVER_FILE_NAME)) 
+        try (FileWriter file = new FileWriter(Reference.SERVER_FILE_NAME, false))
         {
             file.write(parentArray.toJSONString());
             file.flush();
@@ -107,10 +116,10 @@ public class ServerRecordHandler {
         catch (IOException e) { e.printStackTrace(); System.out.println(Reference.CONSOLE_TAG + "Error updating server records."); return false; }
 
         System.out.println(Reference.CONSOLE_TAG + "Server Records Updated @ " + Reference.SERVER_FILE_NAME);
-        
+                
 		return true;
 	}
-	
+		
 	public boolean doesFileExist(){
 		
 		File file = FMLCommonHandler.instance().getMinecraftServerInstance().getFile(Reference.SERVER_FILE_NAME);
@@ -130,6 +139,33 @@ public class ServerRecordHandler {
 		File playerDataFile = new File(Reference.SERVER_FILE_NAME);
 		System.out.println(Reference.CONSOLE_TAG  + "File created @ " + Reference.SERVER_FILE_NAME);
 		return playerDataFile;
+	}
+	
+	private void backupRecords(){
+		
+	    Path fromFile = Paths.get(Reference.SERVER_FILE_NAME);
+	    Path toBackupFile = Paths.get(Reference.SERVER_BACKUP_FILE_NAME + getCurrentLocalDateTimeStamp());
+	    
+	    CopyOption[] options = new CopyOption[]{
+	      StandardCopyOption.REPLACE_EXISTING,
+	      StandardCopyOption.COPY_ATTRIBUTES
+	    }; 
+	    
+	    try 
+	    {
+			Files.copy(fromFile, toBackupFile, options);
+			System.out.println(Reference.CONSOLE_TAG + " current file backed up.");
+		} 
+	    catch (IOException e) 
+	    {
+	    	System.out.println(Reference.CONSOLE_TAG + " problem making a backup.");
+		}
+	    
+	}	
+	
+	private String getCurrentLocalDateTimeStamp() {
+	    return LocalDateTime.now()
+	       .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
 	}
 	
 }

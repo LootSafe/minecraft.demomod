@@ -18,8 +18,7 @@ public class CustomEventHandler {
 		
 	@SubscribeEvent 
 	public void bossSunscreen(LivingUpdateEvent event)
-	{
-		
+	{		
 		/* EntityLootSkele - Sun Screen for daytime */
 		
 		if (event.getEntity() instanceof EntityLootSkele) 
@@ -65,6 +64,7 @@ public class CustomEventHandler {
 						 
 						 player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Received: " + Reference.description_lootcoin_gold.get(0)));
 					 }
+					 
 				}
 								
 			}
