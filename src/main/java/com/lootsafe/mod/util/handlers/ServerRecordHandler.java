@@ -57,10 +57,7 @@ public class ServerRecordHandler {
 		    ArrayList<String> defeatedBosses = (ArrayList<String>) jsonObject.get("defeatedBossesList");
 		    ArrayList<String> latestLocalTokenizedItemList = (ArrayList<String>) jsonObject.get("latestLocalTokenizedItemList");	
 		    
-		    LootPlayer lootPlayer = new LootPlayer(playerName, playerWalletAddress, defeatedBosses, latestLocalTokenizedItemList);
-		    
-		    //System.out.println(lootPlayer.toString());
-		    
+		    LootPlayer lootPlayer = new LootPlayer(playerName, playerWalletAddress, defeatedBosses, latestLocalTokenizedItemList);		    
 		    lootPlayers.add(lootPlayer);
 		}
 		
@@ -143,22 +140,26 @@ public class ServerRecordHandler {
 	
 	private void backupRecords(){
 		
-	    Path fromFile = Paths.get(Reference.SERVER_FILE_NAME);
-	    Path toBackupFile = Paths.get(Reference.SERVER_BACKUP_FILE_NAME + getCurrentLocalDateTimeStamp());
-	    
-	    CopyOption[] options = new CopyOption[]{
-	      StandardCopyOption.REPLACE_EXISTING,
-	      StandardCopyOption.COPY_ATTRIBUTES
-	    }; 
-	    
-	    try 
-	    {
-			Files.copy(fromFile, toBackupFile, options);
-			System.out.println(Reference.CONSOLE_TAG + " current file backed up.");
-		} 
-	    catch (IOException e) 
-	    {
-	    	System.out.println(Reference.CONSOLE_TAG + " problem making a backup.");
+		if(doesFileExist()){
+		    
+			Path fromFile = Paths.get(Reference.SERVER_FILE_NAME);
+		    Path toBackupFile = Paths.get(Reference.SERVER_BACKUP_FILE_NAME + getCurrentLocalDateTimeStamp());
+		    
+		    CopyOption[] options = new CopyOption[]{
+		      StandardCopyOption.REPLACE_EXISTING,
+		      StandardCopyOption.COPY_ATTRIBUTES
+		    }; 
+		    
+		    try 
+		    {
+				Files.copy(fromFile, toBackupFile, options);
+				System.out.println(Reference.CONSOLE_TAG + " current file backed up.");
+			} 
+		    catch (IOException e) 
+		    {
+		    	System.out.println(Reference.CONSOLE_TAG + " problem making a backup.");
+			}
+		    
 		}
 	    
 	}	
