@@ -23,15 +23,14 @@ public class PlayerHandler {
     /* Server Load & Save */
     
     public ArrayList<LootPlayer> LoadServerRecords()
-    {        	
-    	//return serverRecordHandler.LoadServerRecords();
+    {     
     	return new ArrayList<LootPlayer>();
+    	//return serverRecordHandler.LoadServerRecords();
     }
 	
 	public boolean UpdateServerRecords()
 	{
-		//return serverRecordHandler.UpdateServerRecords(lootPlayers);
-		return true;
+		return serverRecordHandler.UpdateServerRecords(lootPlayers);
 	}
 	
 	/* Wallet */
@@ -154,8 +153,7 @@ public class PlayerHandler {
 		for(LootPlayer lootplayer : lootPlayers)
 		{
 			if(lootplayer.getPlayerName().equals(playerName))
-			{
-				
+			{				
 				if(lootplayer.getLatestLocalTokenizedItemList().isEmpty())
 				{
 					tokenizedItemList.add("No registered tokens to return.");

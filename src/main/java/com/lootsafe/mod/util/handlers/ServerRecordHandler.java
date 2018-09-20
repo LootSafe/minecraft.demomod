@@ -34,11 +34,15 @@ public class ServerRecordHandler {
 		
 		try 
 		{
-			jsonArray = (JSONArray) jsonParser.parse(new FileReader(Reference.SERVER_FILE_NAME));
+			Object parsedObj = jsonParser.parse(new FileReader(Reference.SERVER_FILE_NAME));
+			
+			System.out.println(parsedObj.toString());
+			
+			jsonArray = (JSONArray) parsedObj;
 		} 
-		catch (FileNotFoundException e) { e.printStackTrace(); System.out.println("Error loading records from file."); return lootPlayers; } 
-		catch (IOException e) { e.printStackTrace(); System.out.println("Error loading records from file."); return lootPlayers; } 
-		catch (ParseException e) { e.printStackTrace(); System.out.println("Error loading records from file."); return lootPlayers; } 
+		catch (FileNotFoundException e) { e.printStackTrace(); System.out.println(Reference.CONSOLE_TAG + "Error loading records from file."); return lootPlayers; } 
+		catch (IOException e) { e.printStackTrace(); System.out.println(Reference.CONSOLE_TAG + "Error loading records from file."); return lootPlayers; } 
+		catch (ParseException e) { e.printStackTrace(); System.out.println(Reference.CONSOLE_TAG + "Error loading records from file."); return lootPlayers; } 
 	
 		for (Object o : jsonArray)
 		{
@@ -54,7 +58,7 @@ public class ServerRecordHandler {
 		    lootPlayers.add(lootPlayer);
 		}
 		
-		System.out.println("Loaded Server Records Successfully.");
+		System.out.println(Reference.CONSOLE_TAG + "Loaded Server Records Successfully.");
 		
 		return lootPlayers;
 	}
@@ -66,40 +70,44 @@ public class ServerRecordHandler {
 			createFile();
 		}
 		
-        JSONObject jsonObject = new JSONObject();    	
+        JSONObject parentObject = new JSONObject();    	
     	JSONArray defeatedBossesList = new JSONArray();
     	JSONArray latestLocalTokenizedItemList = new JSONArray();
         
         for(LootPlayer lootplayer : lootPlayers){
         	
-            jsonObject.put("playerName", lootplayer.getPlayerName());
-            jsonObject.put("currentWalletAddress", lootplayer.getPlayerWalletAddress());
+        	JSONObject tempPlayer = new JSONObject();
+            defeatedBossesList = new JSONArray();
+            latestLocalTokenizedItemList = new JSONArray();
+        	
+        	tempPlayer.put("playerName", lootplayer.getPlayerName());
+        	tempPlayer.put("currentWalletAddress", lootplayer.getPlayerWalletAddress());          
             
             for(String tokenizedItemIdentifier : lootplayer.getLatestLocalTokenizedItemList())
             {
-            	defeatedBossesList.add(tokenizedItemIdentifier);
-            }
+            	latestLocalTokenizedItemList.add(tokenizedItemIdentifier);
+            }            
+
+            tempPlayer.put("latestLocalTokenizedItemList", latestLocalTokenizedItemList);
             
             for(String bossIdentifier : lootplayer.getDefeatedBossesList())
             {
             	defeatedBossesList.add(bossIdentifier);
             }  
             
+            tempPlayer.put("defeatedBossesList", defeatedBossesList);
+            
+            parentObject.put("player", tempPlayer);
         }
-
-        jsonObject.put("defeatedBossesList", defeatedBossesList);
-        jsonObject.put("latestLocalTokenizedItemList", latestLocalTokenizedItemList);
 
         try (FileWriter file = new FileWriter(Reference.SERVER_FILE_NAME)) 
         {
-
-            file.write(jsonObject.toJSONString());
+            file.write(parentObject.toJSONString());
             file.flush();
-
         } 
-        catch (IOException e) { e.printStackTrace(); System.out.println("Error updating server records."); return false; }
+        catch (IOException e) { e.printStackTrace(); System.out.println(Reference.CONSOLE_TAG + "Error updating server records."); return false; }
 
-        System.out.println("Server Records Updated.");
+        System.out.println(Reference.CONSOLE_TAG + "Server Records Updated @ " + Reference.SERVER_FILE_NAME);
         
 		return true;
 	}
@@ -110,15 +118,18 @@ public class ServerRecordHandler {
 		
 		if(file.exists() && !file.isDirectory()) 
 		{ 
+			System.out.println(Reference.CONSOLE_TAG + "File EXISTS, trying to from read file.");
 		    return true;
 		}
 		
+		System.out.println(Reference.CONSOLE_TAG + "File does NOT EXIST, creating a new file.");
 		return false;
 	}
 	
 	public File createFile()
 	{
 		File playerDataFile = new File(Reference.SERVER_FILE_NAME);
+		System.out.println(Reference.CONSOLE_TAG  + "File created @ " + Reference.SERVER_FILE_NAME);
 		return playerDataFile;
 	}
 	

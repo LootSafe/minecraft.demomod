@@ -43,8 +43,8 @@ public class LootPlayer {
 	{
 		if(hasKilledBossBefore(bossName) == false)
 		{			
-			defeatedBossesList.add(bossName);
-			latestLocalTokenizedItemList.add(bossName);
+			this.defeatedBossesList.add(bossName);
+			this.latestLocalTokenizedItemList.add(itemAddress);
 			return true;
 		}
 		

@@ -16,6 +16,7 @@ public class Reference {
 	public static final String COMMON_PROXY_CLASS = "com.lootsafe.mod.proxy.CommonProxy";
 	public static final String SERVER_FILE_NAME = "lootplayers.json";
 	public static final float GLOBAL_BOSSMOB_SIZE = 1.0f;
+	public static final String CONSOLE_TAG = "[LOOTSAFE MOD] - ";
 	
 	public static final int ENTITY_LOOTSKELETON = 666;
 	public static final int ENTITY_LOOTSPIDER = 667;
