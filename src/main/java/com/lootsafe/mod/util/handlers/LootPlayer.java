@@ -94,4 +94,16 @@ public class LootPlayer {
 		this.latestLocalTokenizedItemList = new ArrayList<String>();
 	}
 	
+	public String toString()
+	{
+		String s = "";
+		
+		s += "\n-------------------------------------------------------------------\n";
+		s += this.playerName + " : " + this.playerWalletAddress;
+		s += "\n" + this.defeatedBossesList.toString();
+		s += "\n" + this.latestLocalTokenizedItemList.toString();
+		s += "\n-------------------------------------------------------------------";
+		
+		return s;
+	}
 }

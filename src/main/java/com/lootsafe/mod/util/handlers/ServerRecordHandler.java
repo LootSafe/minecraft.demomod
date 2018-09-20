@@ -34,10 +34,7 @@ public class ServerRecordHandler {
 		
 		try 
 		{
-			Object parsedObj = jsonParser.parse(new FileReader(Reference.SERVER_FILE_NAME));
-			
-			System.out.println(parsedObj.toString());
-			
+			Object parsedObj = jsonParser.parse(new FileReader(Reference.SERVER_FILE_NAME));			
 			jsonArray = (JSONArray) parsedObj;
 		} 
 		catch (FileNotFoundException e) { e.printStackTrace(); System.out.println(Reference.CONSOLE_TAG + "Error loading records from file."); return lootPlayers; } 
@@ -55,6 +52,8 @@ public class ServerRecordHandler {
 		    
 		    LootPlayer lootPlayer = new LootPlayer(playerName, playerWalletAddress, defeatedBosses, latestLocalTokenizedItemList);
 		    
+		    //System.out.println(lootPlayer.toString());
+		    
 		    lootPlayers.add(lootPlayer);
 		}
 		
@@ -70,7 +69,7 @@ public class ServerRecordHandler {
 			createFile();
 		}
 		
-        JSONObject parentObject = new JSONObject();    	
+		JSONArray parentArray = new JSONArray();    	
     	JSONArray defeatedBossesList = new JSONArray();
     	JSONArray latestLocalTokenizedItemList = new JSONArray();
         
@@ -97,12 +96,12 @@ public class ServerRecordHandler {
             
             tempPlayer.put("defeatedBossesList", defeatedBossesList);
             
-            parentObject.put("player", tempPlayer);
+            parentArray.add(tempPlayer);
         }
 
         try (FileWriter file = new FileWriter(Reference.SERVER_FILE_NAME)) 
         {
-            file.write(parentObject.toJSONString());
+            file.write(parentArray.toJSONString());
             file.flush();
         } 
         catch (IOException e) { e.printStackTrace(); System.out.println(Reference.CONSOLE_TAG + "Error updating server records."); return false; }

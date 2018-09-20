@@ -24,8 +24,7 @@ public class PlayerHandler {
     
     public ArrayList<LootPlayer> LoadServerRecords()
     {     
-    	return new ArrayList<LootPlayer>();
-    	//return serverRecordHandler.LoadServerRecords();
+    	return serverRecordHandler.LoadServerRecords();
     }
 	
 	public boolean UpdateServerRecords()
