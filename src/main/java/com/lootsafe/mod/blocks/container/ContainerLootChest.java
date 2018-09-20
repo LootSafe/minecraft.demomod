@@ -59,9 +59,11 @@ public class ContainerLootChest extends Container
 			ItemStack itemstack1 = slot.getStack();			
 			ItemBase currentItem = (ItemBase)itemstack1.getItem();
 			
-			if(currentItem != null){
+			if(currentItem != null)
+			{
 				
-				if(currentItem.getIsTokenizable()){
+				if(currentItem.getIsTokenizable())
+				{
 					
 					Main.proxy.addTokenizedItemStr(player, currentItem);
 					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Sending item to your wallet @ " + Main.proxy.getPlayerWalletAddress(player.getName())));					
@@ -85,13 +87,12 @@ public class ContainerLootChest extends Container
 	{
 		boolean flag = Main.proxy.isPlayerRegistered(playerIn.getName());
 		
-		if(flag == false){
+		if(flag == false)
+		{
 			playerIn.sendMessage(new TextComponentString(TextFormatting.RED + "Please Register Your Wallet Address."));	
 		}
 		
 		return flag;
-		
-		//return this.chestInventory.isUsableByPlayer(playerIn);
 	}
 	
 	@Override
@@ -141,4 +142,5 @@ public class ContainerLootChest extends Container
 	{
 		return this.chestInventory;
 	}
+	
 }

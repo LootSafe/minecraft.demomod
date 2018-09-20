@@ -13,8 +13,10 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 public class GuiHandler implements IGuiHandler {
 
 	@Override
-	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		if(ID == Reference.GUI_LOOT_CHEST){
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) 
+	{
+		if(ID == Reference.GUI_LOOT_CHEST)
+		{
 			return new ContainerLootChest(player.inventory, (TileEntityLootChest) world.getTileEntity(new BlockPos(x,y,z)), player);
 		}
 		
@@ -22,8 +24,10 @@ public class GuiHandler implements IGuiHandler {
 	}
 
 	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		if(ID == Reference.GUI_LOOT_CHEST){
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) 
+	{
+		if(ID == Reference.GUI_LOOT_CHEST)
+		{
 			return new GuiLootChest(player.inventory, (TileEntityLootChest) world.getTileEntity(new BlockPos(x,y,z)), player);
 		}
 		

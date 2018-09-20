@@ -23,7 +23,8 @@ public class ServerRecordHandler {
 		
 		ArrayList<LootPlayer> lootPlayers = new ArrayList<LootPlayer>();
 		
-		if(!doesFileExist()){
+		if(!doesFileExist())
+		{
 			createFile();
 			return lootPlayers;
 		}
@@ -31,7 +32,8 @@ public class ServerRecordHandler {
 		JSONParser jsonParser = new JSONParser();
 		JSONArray jsonArray;
 		
-		try {
+		try 
+		{
 			jsonArray = (JSONArray) jsonParser.parse(new FileReader(Reference.SERVER_FILE_NAME));
 		} 
 		catch (FileNotFoundException e) { e.printStackTrace(); System.out.println("Error loading records from file."); return lootPlayers; } 
@@ -59,7 +61,8 @@ public class ServerRecordHandler {
 	
 	public boolean UpdateServerRecords(ArrayList<LootPlayer> lootPlayers){
 		
-		if(!doesFileExist()){
+		if(!doesFileExist())
+		{
 			createFile();
 		}
 		
@@ -72,11 +75,13 @@ public class ServerRecordHandler {
             jsonObject.put("playerName", lootplayer.getPlayerName());
             jsonObject.put("currentWalletAddress", lootplayer.getPlayerWalletAddress());
             
-            for(String tokenizedItemIdentifier : lootplayer.getLatestLocalTokenizedItemList()){
+            for(String tokenizedItemIdentifier : lootplayer.getLatestLocalTokenizedItemList())
+            {
             	defeatedBossesList.add(tokenizedItemIdentifier);
             }
             
-            for(String bossIdentifier : lootplayer.getDefeatedBossesList()){
+            for(String bossIdentifier : lootplayer.getDefeatedBossesList())
+            {
             	defeatedBossesList.add(bossIdentifier);
             }  
             
@@ -85,12 +90,14 @@ public class ServerRecordHandler {
         jsonObject.put("defeatedBossesList", defeatedBossesList);
         jsonObject.put("latestLocalTokenizedItemList", latestLocalTokenizedItemList);
 
-        try (FileWriter file = new FileWriter(Reference.SERVER_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(Reference.SERVER_FILE_NAME)) 
+        {
 
             file.write(jsonObject.toJSONString());
             file.flush();
 
-        } catch (IOException e) { e.printStackTrace(); System.out.println("Error updating server records."); return false; }
+        } 
+        catch (IOException e) { e.printStackTrace(); System.out.println("Error updating server records."); return false; }
 
         System.out.println("Server Records Updated.");
         
@@ -101,14 +108,16 @@ public class ServerRecordHandler {
 		
 		File file = FMLCommonHandler.instance().getMinecraftServerInstance().getFile(Reference.SERVER_FILE_NAME);
 		
-		if(file.exists() && !file.isDirectory()) { 
+		if(file.exists() && !file.isDirectory()) 
+		{ 
 		    return true;
 		}
 		
 		return false;
 	}
 	
-	public File createFile(){
+	public File createFile()
+	{
 		File playerDataFile = new File(Reference.SERVER_FILE_NAME);
 		return playerDataFile;
 	}

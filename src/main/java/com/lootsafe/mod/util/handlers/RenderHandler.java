@@ -17,7 +17,8 @@ public class RenderHandler {
 		RenderingRegistry.registerEntityRenderingHandler(EntityLootSkele.class, new IRenderFactory<EntityLootSkele>(){
 
 			@Override
-			public Render<? super EntityLootSkele> createRenderFor(RenderManager manager) {
+			public Render<? super EntityLootSkele> createRenderFor(RenderManager manager) 
+			{
 				return new RenderLootSkeleton(manager, skeleSize);
 			}
 			
@@ -30,7 +31,8 @@ public class RenderHandler {
 		RenderingRegistry.registerEntityRenderingHandler(EntityLootSpider.class, new IRenderFactory<EntityLootSpider>(){
 
 			@Override
-			public Render<? super EntityLootSpider> createRenderFor(RenderManager manager) {
+			public Render<? super EntityLootSpider> createRenderFor(RenderManager manager) 
+			{
 				return new RenderLootSpider(manager, spiderSize);
 			}
 			
@@ -38,7 +40,8 @@ public class RenderHandler {
 		
 	}
 	
-	public static void registerAllEntityRenders(float size){		
+	public static void registerAllEntityRenders(float size)
+	{		
 		registerEntityRenderEntityLootSkele(size);
 		registerEntityRenderEntityLootSpider(size);
 	}

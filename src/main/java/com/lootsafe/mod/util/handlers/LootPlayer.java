@@ -10,24 +10,28 @@ public class LootPlayer {
 	private List<String> defeatedBossesList;
 	private List<String> latestLocalTokenizedItemList;
 	
-	public LootPlayer(String playerName, String playerWalletAddress){
+	public LootPlayer(String playerName, String playerWalletAddress)
+	{
 		this.playerName = playerName;
 		this.playerWalletAddress = playerWalletAddress;
 		this.defeatedBossesList = new ArrayList<String>();
 		this.latestLocalTokenizedItemList = new ArrayList<String>();
 	}	
 	
-	public LootPlayer(String playerName, String playerWalletAddress, ArrayList<String> defeatedBosses, ArrayList<String> latestLocalTokenizedItemList){
+	public LootPlayer(String playerName, String playerWalletAddress, ArrayList<String> defeatedBosses, ArrayList<String> latestLocalTokenizedItemList)
+	{
 		this.playerName = playerName;
 		this.playerWalletAddress = playerWalletAddress;
 		this.defeatedBossesList = defeatedBosses;
 		this.latestLocalTokenizedItemList = latestLocalTokenizedItemList;
 	}	
 		
-	public boolean hasKilledBossBefore(String bossName){
-		
-		for(String boss : defeatedBossesList){
-			if(boss.equals(bossName)){
+	public boolean hasKilledBossBefore(String bossName)
+	{		
+		for(String boss : defeatedBossesList)
+		{
+			if(boss.equals(bossName))
+			{
 				return true;
 			}
 		}
@@ -35,9 +39,10 @@ public class LootPlayer {
 		return false;
 	}
 	
-	public boolean registerBossDeath(String bossName, String itemAddress){
-		
-		if(hasKilledBossBefore(bossName) == false){			
+	public boolean registerBossDeath(String bossName, String itemAddress)
+	{
+		if(hasKilledBossBefore(bossName) == false)
+		{			
 			defeatedBossesList.add(bossName);
 			latestLocalTokenizedItemList.add(bossName);
 			return true;
@@ -46,17 +51,20 @@ public class LootPlayer {
 		return false;
 	}
 	
-	public void addTokenizedItemStr(String itemAddress){
+	public void addTokenizedItemStr(String itemAddress)
+	{
 		this.latestLocalTokenizedItemList.add(itemAddress);	
 	}
 	
 	/* Getters & Setters */
 	
-	public void setPlayerName(String playerName){
+	public void setPlayerName(String playerName)
+	{
 		this.playerName = playerName;
 	}
 	
-	public String getPlayerName(){
+	public String getPlayerName()
+	{
 		return this.playerName;
 	}
 		
@@ -65,19 +73,23 @@ public class LootPlayer {
 		this.latestLocalTokenizedItemList = latestLocalTokenizedItemList;
 	}
 	
-	public List<String> getLatestLocalTokenizedItemList(){
+	public List<String> getLatestLocalTokenizedItemList()
+	{
 		return this.latestLocalTokenizedItemList;
 	}
 	
-	public List<String> getDefeatedBossesList(){
+	public List<String> getDefeatedBossesList()
+	{
 		return this.defeatedBossesList;
 	}
 	
-	public String getPlayerWalletAddress(){
+	public String getPlayerWalletAddress()
+	{
 		return this.playerWalletAddress;
 	}
 
-	public void wipePlayerProgress() {
+	public void wipePlayerProgress() 
+	{
 		this.defeatedBossesList = new ArrayList<String>();
 		this.latestLocalTokenizedItemList = new ArrayList<String>();
 	}

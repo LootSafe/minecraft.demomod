@@ -17,42 +17,48 @@ import net.minecraft.util.text.TextFormatting;
 public class WalletRegisterPlayer implements ICommand {
 
 	@Override
-	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
-		if(sender instanceof EntityPlayer){
-			
+	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException 
+	{
+		if(sender instanceof EntityPlayer)
+		{			
 			EntityPlayer player = (EntityPlayer) sender;	
 			
 			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Register Wallet Address..."));
 			
-			if(args.length != 1){
+			if(args.length != 1)
+			{
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument"));
 			}
-			else{	
-				
-				if(Main.proxy.isPlayerRegistered(player.getName()) == false){
+			else
+			{					
+				if(Main.proxy.isPlayerRegistered(player.getName()) == false)
+				{
 					Main.proxy.registerPlayerWallet(player.getName(), args[0]);
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Registered!"));
 				}
-				else{
+				else
+				{
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Already Registered Or Error Registering."));
-				}
-							
+				}							
 			}			
 		}
 	}
 	
 	@Override
-	public String getName() {
+	public String getName() 
+	{
 		return "commandregisterplayerwallet";
 	}
 
 	@Override
-	public String getUsage(ICommandSender sender) {
+	public String getUsage(ICommandSender sender) 
+	{
 		return "Registers a players wallet";
 	}
 
 	@Override
-	public List<String> getAliases() {
+	public List<String> getAliases() 
+	{
 		List<String> commandAliases = new ArrayList<String>();
 		commandAliases.add("register");
 		return commandAliases;

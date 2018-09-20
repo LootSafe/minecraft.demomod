@@ -12,12 +12,14 @@ public class RenderLootSpider extends RenderLiving<EntityLootSpider> {
 
 	public static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MOD_ID + ":textures/entity/lootspider.png");
 	
-	public RenderLootSpider(RenderManager manager, float spiderSize){
+	public RenderLootSpider(RenderManager manager, float spiderSize)
+	{
 		//super(manager, new ModelLootSpider(spiderSize), spiderSize);
 		super(manager, new ModelSpider(), spiderSize);
 	}
 	
-	protected ResourceLocation getEntityTexture(EntityLootSpider entity){
+	protected ResourceLocation getEntityTexture(EntityLootSpider entity)
+	{
 		return TEXTURES;
 	}
 

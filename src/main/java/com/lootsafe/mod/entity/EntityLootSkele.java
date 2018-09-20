@@ -6,11 +6,13 @@ import net.minecraft.world.World;
 
 public class EntityLootSkele extends EntitySkeleton {
 
-	public EntityLootSkele(World worldIn) {
+	public EntityLootSkele(World worldIn) 
+	{
 		super(worldIn);
 	}
 	
-	public EntitySkeleton createChild(EntityAgeable ageable){
+	public EntitySkeleton createChild(EntityAgeable ageable)
+	{
 		return new EntityLootSkele(world);
 	}
 	

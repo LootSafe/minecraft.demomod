@@ -17,21 +17,26 @@ import net.minecraft.util.text.TextFormatting;
 public class WalletUnregisterPlayer implements ICommand {
 
 	@Override
-	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
-		if(sender instanceof EntityPlayer){
-			
+	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException 
+	{
+		if(sender instanceof EntityPlayer)
+		{			
 			EntityPlayer player = (EntityPlayer) sender;	
 			
 			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Unregistering Wallet..."));
 			
-			if(args.length != 0){
+			if(args.length != 0)
+			{
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument"));
 			}
-			else{				
-				if(Main.proxy.unregisterPlayerWallet(player.getName())){
+			else
+			{				
+				if(Main.proxy.unregisterPlayerWallet(player.getName()))
+				{
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Unregistered Wallet."));
 				}
-				else{
+				else
+				{
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "You aren't registered."));
 				}				
 			}			
@@ -39,17 +44,20 @@ public class WalletUnregisterPlayer implements ICommand {
 	}
 	
 	@Override
-	public String getName() {
+	public String getName() 
+	{
 		return "commandunregisterplayerwallet";
 	}
 
 	@Override
-	public String getUsage(ICommandSender sender) {
+	public String getUsage(ICommandSender sender) 
+	{
 		return "Unregisters a players wallet.";
 	}
 
 	@Override
-	public List<String> getAliases() {
+	public List<String> getAliases() 
+	{
 		List<String> commandAliases = new ArrayList<String>();
 		commandAliases.add("unregister");
 		return commandAliases;

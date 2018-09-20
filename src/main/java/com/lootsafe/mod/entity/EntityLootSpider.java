@@ -6,11 +6,13 @@ import net.minecraft.world.World;
 
 public class EntityLootSpider extends EntitySpider {
 
-	public EntityLootSpider(World worldIn) {
+	public EntityLootSpider(World worldIn) 
+	{
 		super(worldIn);
 	}
 	
-	public EntitySpider createChild(EntityAgeable ageable){
+	public EntitySpider createChild(EntityAgeable ageable)
+	{
 		return new EntityLootSpider(world);
 	}
 	

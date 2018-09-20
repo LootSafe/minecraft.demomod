@@ -22,40 +22,44 @@ public class PlayerHandler {
 	
     /* Server Load & Save */
     
-    public ArrayList<LootPlayer> LoadServerRecords(){        	
+    public ArrayList<LootPlayer> LoadServerRecords()
+    {        	
     	//return serverRecordHandler.LoadServerRecords();
     	return new ArrayList<LootPlayer>();
     }
 	
-	public boolean UpdateServerRecords(){
+	public boolean UpdateServerRecords()
+	{
 		//return serverRecordHandler.UpdateServerRecords(lootPlayers);
 		return true;
 	}
 	
 	/* Wallet */
 	
-	public void registerPlayerWallet(String playerName, String playerWalletAddress){	
+	public void registerPlayerWallet(String playerName, String playerWalletAddress)
+	{	
 		lootPlayers.add(new LootPlayer(playerName, playerWalletAddress));	
 	}
 	
-	public boolean unregisterPlayerWallet(String playerName){
-		
-		if(isPlayerRegistered(playerName)){
-			
+	public boolean unregisterPlayerWallet(String playerName)
+	{		
+		if(isPlayerRegistered(playerName))
+		{			
 			int index = -1;
 			int counter = -1;
 			
-			for(LootPlayer lootplayer : lootPlayers){
-				
+			for(LootPlayer lootplayer : lootPlayers)
+			{				
 				counter++;
 				
-				if(lootplayer.getPlayerName().equals(playerName)){					
-					
+				if(lootplayer.getPlayerName().equals(playerName))
+				{					
 					index = counter;
 				}				
 			}
 			
-			if(index != -1){
+			if(index != -1)
+			{
 				lootPlayers.remove(index);
 				return true;
 			}
@@ -64,14 +68,17 @@ public class PlayerHandler {
 		return false;
 	}
 
-	public String getPlayerWalletAddress(String playerName){
-		
-		if(isPlayerRegistered(playerName) == false){
+	public String getPlayerWalletAddress(String playerName)
+	{		
+		if(isPlayerRegistered(playerName) == false)
+		{
 			return null;
 		}
 		
-		for(LootPlayer lootplayer : lootPlayers){
-			if(lootplayer.getPlayerName().equals(playerName)){					
+		for(LootPlayer lootplayer : lootPlayers)
+		{
+			if(lootplayer.getPlayerName().equals(playerName))
+			{					
 				return lootplayer.getPlayerWalletAddress();
 			}
 		}
@@ -79,10 +86,12 @@ public class PlayerHandler {
 		return null;
 	}
 	
-	public boolean registerPlayerLoot(String playerName, String lootAddress){
-		
-		for(LootPlayer lootplayer : lootPlayers){
-			if(lootplayer.getPlayerName().equals(playerName)){					
+	public boolean registerPlayerLoot(String playerName, String lootAddress)
+	{		
+		for(LootPlayer lootplayer : lootPlayers)
+		{
+			if(lootplayer.getPlayerName().equals(playerName))
+			{					
 				lootplayer.addTokenizedItemStr(lootAddress);
 				return true;
 			}
@@ -91,18 +100,22 @@ public class PlayerHandler {
 		return false;
 	}
 	
-	public boolean registerBossLoot(String playerName,String bossName, String itemAddress){
-		
-		if(hasKilledBossBefore(playerName, bossName) == false){			
-			for(LootPlayer lootplayer : lootPlayers){				
-				if(lootplayer.getPlayerName().equals(playerName)){
+	public boolean registerBossLoot(String playerName,String bossName, String itemAddress)
+	{		
+		if(hasKilledBossBefore(playerName, bossName) == false)
+		{			
+			for(LootPlayer lootplayer : lootPlayers)
+			{				
+				if(lootplayer.getPlayerName().equals(playerName))
+				{
 					return lootplayer.registerBossDeath(bossName, itemAddress);		
 				}				
 			}
 			
 			return false;
 		}
-		else{
+		else
+		{
 			return false;
 		}
 		
@@ -110,19 +123,23 @@ public class PlayerHandler {
 	
 	/* Helpers */
 	
-	public void addTokenizedItemStr(EntityPlayer player,ItemBase item){
-		
-		for(LootPlayer lootplayer : lootPlayers){			
-			if(lootplayer.getPlayerName().equals(player.getName())){					
+	public void addTokenizedItemStr(EntityPlayer player,ItemBase item)
+	{		
+		for(LootPlayer lootplayer : lootPlayers)
+		{			
+			if(lootplayer.getPlayerName().equals(player.getName()))
+			{					
 				lootplayer.addTokenizedItemStr(item.getItemAddress());
 			}				 
 		}
 	}
 
-	public boolean hasKilledBossBefore(String playerName,String bossName){
-			
-		for(LootPlayer lootplayer : lootPlayers){				
-			if(lootplayer.getPlayerName().equals(playerName)){
+	public boolean hasKilledBossBefore(String playerName,String bossName)
+	{			
+		for(LootPlayer lootplayer : lootPlayers)
+		{				
+			if(lootplayer.getPlayerName().equals(playerName))
+			{
 				return lootplayer.hasKilledBossBefore(bossName);					
 			}				
 		}
@@ -130,19 +147,24 @@ public class PlayerHandler {
 		return false;
 	}
 	
-	public List<String> getPlayerTokenizedItemList(String playerName){
-		
+	public List<String> getPlayerTokenizedItemList(String playerName)
+	{		
 		List<String> tokenizedItemList = new ArrayList<String>();
 		
-		for(LootPlayer lootplayer : lootPlayers){
-			if(lootplayer.getPlayerName().equals(playerName)){
+		for(LootPlayer lootplayer : lootPlayers)
+		{
+			if(lootplayer.getPlayerName().equals(playerName))
+			{
 				
-				if(lootplayer.getLatestLocalTokenizedItemList().isEmpty()){
+				if(lootplayer.getLatestLocalTokenizedItemList().isEmpty())
+				{
 					tokenizedItemList.add("No registered tokens to return.");
 					return tokenizedItemList;
 				}
-				else{
-					for(String item : lootplayer.getLatestLocalTokenizedItemList()){
+				else
+				{
+					for(String item : lootplayer.getLatestLocalTokenizedItemList())
+					{
 						tokenizedItemList.add(item);
 					}
 				}
@@ -152,10 +174,12 @@ public class PlayerHandler {
 		return tokenizedItemList;
 	}
 	
-	public boolean isPlayerRegistered(String playerName){
-		
-		for(LootPlayer lootplayer : lootPlayers){
-			if(lootplayer.getPlayerName().equals(playerName)){
+	public boolean isPlayerRegistered(String playerName)
+	{
+		for(LootPlayer lootplayer : lootPlayers)
+		{
+			if(lootplayer.getPlayerName().equals(playerName))
+			{
 				return true;
 			}
 		}
@@ -163,12 +187,14 @@ public class PlayerHandler {
 		return false;
 	}
 
-	public boolean wipePlayerProgress(String playerName) {
-		
-		if(isPlayerRegistered(playerName)){
-			
-			for(LootPlayer lootplayer : lootPlayers){
-				if(lootplayer.getPlayerName().equals(playerName)){
+	public boolean wipePlayerProgress(String playerName) 
+	{		
+		if(isPlayerRegistered(playerName))
+		{			
+			for(LootPlayer lootplayer : lootPlayers)
+			{
+				if(lootplayer.getPlayerName().equals(playerName))
+				{
 					lootplayer.wipePlayerProgress();
 					return true;
 				}

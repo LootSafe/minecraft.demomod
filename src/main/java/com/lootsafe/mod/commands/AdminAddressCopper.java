@@ -17,46 +17,55 @@ import net.minecraft.util.text.TextFormatting;
 public class AdminAddressCopper implements ICommand {
 
 	@Override
-	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
-		if(sender instanceof EntityPlayer){
+	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException 
+	{
+		if(sender instanceof EntityPlayer)
+		{
 			
 			EntityPlayer player = (EntityPlayer) sender;				
 			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Replacing Copper Coin Address..." + Reference.lootcoin_copper_address));
 			
-			if(args.length == 1){				
+			if(args.length == 1)
+			{				
 				Reference.lootcoin_copper_address = args[0];
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Copper Coin Set to: " + args[0]));			
 			}
-			else{				
+			else
+			{				
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument"));
 			}			
 		}
 	}
 	
 	@Override
-	public String getName() {
+	public String getName()
+	{
 		return "commandregisterlootcoincopperaddress";
 	}
 
 	@Override
-	public String getUsage(ICommandSender sender) {
+	public String getUsage(ICommandSender sender)
+	{
 		return "Registers the copper coin...";
 	}
 
 	@Override
-	public List<String> getAliases() {
+	public List<String> getAliases()
+	{
 		List<String> commandAliases = new ArrayList<String>();
 		commandAliases.add("registercopper");
 		return commandAliases;
 	}
 	
-	public boolean canCommandSenderUse(MinecraftServer server, ICommandSender sender) { 
-		
-		if(sender.getName() == null){
+	public boolean canCommandSenderUse(MinecraftServer server, ICommandSender sender)
+	{ 		
+		if(sender.getName() == null)
+		{
 			return false;
 		}
 		
-		if(sender.canUseCommand(1, getName()) == false){
+		if(sender.canUseCommand(1, getName()) == false)
+		{
 			return false;
 		}
 		
@@ -78,8 +87,6 @@ public class AdminAddressCopper implements ICommand {
 	public boolean isUsernameIndex(String[] args, int index) { return false; }
 
 	@Override
-	public boolean checkPermission(MinecraftServer server, ICommandSender sender) { 
-		return canCommandSenderUse(server,sender);
-	}
+	public boolean checkPermission(MinecraftServer server, ICommandSender sender) { return canCommandSenderUse(server,sender); }
 	
 }

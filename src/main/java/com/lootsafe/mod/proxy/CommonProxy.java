@@ -25,8 +25,8 @@ public class CommonProxy {
 	
 	/* Server Proxy More So */
 	
-	public void preInitRegistries() {
-		
+	public void preInitRegistries() 
+	{
 		EntityInit.registerEntities();		
 		FMLCommonHandler.instance().bus().register(new RegistryHandlerServer());
 		
@@ -34,56 +34,68 @@ public class CommonProxy {
 		networkHandler = new NetworkHandler();
 	}
 	
-	public void initRegistries() {
+	public void initRegistries() 
+	{
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
 	}
 	
-	public void registerItemRenderer(Item item, int meta, String id) {
+	public void registerItemRenderer(Item item, int meta, String id)
+	{
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
 	}
 	
 	/* Registering  */
 	
-	public void registerPlayerWallet(String playerName, String playerWalletAddress) {
+	public void registerPlayerWallet(String playerName, String playerWalletAddress) 
+	{
 		playerHandler.registerPlayerWallet(playerName, playerWalletAddress);
 	}
 	
-	public boolean unregisterPlayerWallet(String playerName) {
+	public boolean unregisterPlayerWallet(String playerName) 
+	{
 		return playerHandler.unregisterPlayerWallet(playerName);
 	}	
 	
-	public boolean isPlayerRegistered(String playerName){
+	public boolean isPlayerRegistered(String playerName)
+	{
 		return playerHandler.isPlayerRegistered(playerName);
 	}
 		
-	public boolean registerBossLoot(String playerName,String bossName, String itemAddress){
+	public boolean registerBossLoot(String playerName,String bossName, String itemAddress)
+	{
 		return playerHandler.registerBossLoot(playerName, bossName, itemAddress);
 	}	
 
-	public boolean hasKilledBossBefore(String playerName, String bossName){
+	public boolean hasKilledBossBefore(String playerName, String bossName)
+	{
 		return playerHandler.hasKilledBossBefore(playerName, bossName);
 	}
 	
-	public boolean wipePlayerProgress(String playerName){
+	public boolean wipePlayerProgress(String playerName)
+	{
 		return playerHandler.wipePlayerProgress(playerName);
 	}
 	
 	/* Other Stuff */
 	
-	public void UpdateServerRecords(){
+	public void UpdateServerRecords()
+	{
 		playerHandler.UpdateServerRecords();
 	}
 	
-	public String getPlayerWalletAddress(String playerName){
+	public String getPlayerWalletAddress(String playerName)
+	{
 		return playerHandler.getPlayerWalletAddress(playerName);
 	}
 	
-	public void addTokenizedItemStr(EntityPlayer player,ItemBase item){				
+	public void addTokenizedItemStr(EntityPlayer player,ItemBase item)
+	{				
 		networkHandler.GivePlayerItem(player, playerHandler.getPlayerWalletAddress(player.getName()),  item);			
 		playerHandler.addTokenizedItemStr(player, item);
 	}
 
-	public List<String> getPlayerTokenizedItemList(String playerName) {
+	public List<String> getPlayerTokenizedItemList(String playerName)
+	{
 		return playerHandler.getPlayerTokenizedItemList(playerName);
 	}
 

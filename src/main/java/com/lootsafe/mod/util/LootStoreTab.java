@@ -5,12 +5,14 @@ import net.minecraft.item.ItemStack;
 
 public class LootStoreTab extends CreativeTabs {
 
-	public LootStoreTab(String label) { 
+	public LootStoreTab(String label) 
+	{ 
 		super("lootstoretab"); 
 	}
 
 	@Override
-	public ItemStack getTabIconItem() {
+	public ItemStack getTabIconItem() 
+	{
 		return null;
 	}
 	

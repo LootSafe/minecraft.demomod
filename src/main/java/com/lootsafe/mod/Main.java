@@ -39,8 +39,8 @@ public class Main {
 	public static CommonProxy proxy;
 	
 	@EventHandler
-	public static void serverLoad(FMLServerStartingEvent event) {
-
+	public static void serverLoad(FMLServerStartingEvent event) 
+	{
 		event.registerServerCommand(new AdminHost());
 		event.registerServerCommand(new AdminForceSave());
 		event.registerServerCommand(new AdminAddressGold());
@@ -56,7 +56,8 @@ public class Main {
 	/* Important Stuff */
 
 	@EventHandler
-	public static void preInit(FMLPreInitializationEvent event) {	
+	public static void preInit(FMLPreInitializationEvent event) 
+	{	
 		MinecraftForge.EVENT_BUS.register(customEventHandler);
 		FMLCommonHandler.instance().bus().register(customEventHandler);
 		
@@ -64,7 +65,8 @@ public class Main {
 	}
 	
 	@EventHandler
-	public static void init(FMLInitializationEvent event) {
+	public static void init(FMLInitializationEvent event) 
+	{
 		proxy.initRegistries();
 	}
 	

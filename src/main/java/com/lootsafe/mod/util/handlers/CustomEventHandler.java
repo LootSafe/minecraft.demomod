@@ -15,25 +15,27 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class CustomEventHandler {
-	
-	
+		
 	@SubscribeEvent 
-	public void bossSunscreen(LivingUpdateEvent event){
+	public void bossSunscreen(LivingUpdateEvent event)
+	{
 		
 		/* EntityLootSkele - Sunscreen for daytime */
 		
-		if (event.getEntity() instanceof EntityLootSkele) {
-			
-			if(event.getEntity().isBurning()){
+		if (event.getEntity() instanceof EntityLootSkele) 
+		{			
+			if(event.getEntity().isBurning())
+			{
 				event.getEntity().extinguish();
 			}
 		}	
 		
 		/* EntityLootSpider - Sunscreen for daytime */		
 		
-		if (event.getEntity() instanceof EntityLootSpider) {
-				
-			if(event.getEntity().isBurning()){
+		if (event.getEntity() instanceof EntityLootSpider)
+		{				
+			if(event.getEntity().isBurning())
+			{
 				event.getEntity().extinguish();
 			}
 		}			
@@ -41,23 +43,23 @@ public class CustomEventHandler {
 	}
 	
 	@SubscribeEvent
-	public void onKilledBoss(LivingDeathEvent event) {
-	
+	public void onKilledBoss(LivingDeathEvent event) 
+	{	
 		/* EntityLootSkele - Death detection and spawning item into players inventory */
 		
-		if (event.getEntity() instanceof EntityLootSkele && event.getSource().getTrueSource() instanceof EntityPlayer) {
-			
+		if (event.getEntity() instanceof EntityLootSkele && event.getSource().getTrueSource() instanceof EntityPlayer)
+		{			
 			final String BOSS_NAME = "EntityLootSkele";
 			EntityPlayer player = (EntityPlayer)event.getSource().getTrueSource();
 			
-			if(Main.proxy.isPlayerRegistered(player.getName())){
-							
-				if(Main.proxy.hasKilledBossBefore(player.getName(), BOSS_NAME) == false){						 
-					 
+			if(Main.proxy.isPlayerRegistered(player.getName()))
+			{							
+				if(Main.proxy.hasKilledBossBefore(player.getName(), BOSS_NAME) == false)
+				{						 
 					 int firstEmpty = player.inventory.getFirstEmptyStack();
 					 
-					 if(firstEmpty != -1){
-						 
+					 if(firstEmpty != -1)
+					 {						 
 						 Main.proxy.registerBossLoot(player.getName(), BOSS_NAME, Reference.lootcoin_gold_address);
 						 
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));					 
@@ -66,7 +68,8 @@ public class CustomEventHandler {
 				}
 								
 			}
-			else{
+			else
+			{
 				player.sendMessage(new TextComponentString(TextFormatting.RED + "Can't give LOOT to unregistered player."));
 			}			
 
@@ -74,19 +77,19 @@ public class CustomEventHandler {
 		
 		/* EntityLootSpider - Death detection and spawning item into players inventory */		
 		
-		if (event.getEntity() instanceof EntityLootSpider && event.getSource().getTrueSource() instanceof EntityPlayer) {
-		
+		if (event.getEntity() instanceof EntityLootSpider && event.getSource().getTrueSource() instanceof EntityPlayer) 
+		{		
 			final String BOSS_NAME = "EntityLootSpider";
 			EntityPlayer player = (EntityPlayer)event.getSource().getTrueSource();
 			
-			if(Main.proxy.isPlayerRegistered(player.getName())){
-							
-				if(Main.proxy.hasKilledBossBefore(player.getName(), BOSS_NAME) == false){						 
-					 
+			if(Main.proxy.isPlayerRegistered(player.getName()))
+			{							
+				if(Main.proxy.hasKilledBossBefore(player.getName(), BOSS_NAME) == false)
+				{		  
 					 int firstEmpty = player.inventory.getFirstEmptyStack();
 					 
-					 if(firstEmpty != -1){
-						 
+					 if(firstEmpty != -1)
+					 {						 
 						 Main.proxy.registerBossLoot(player.getName(), BOSS_NAME, Reference.lootcoin_silver_address);
 						 
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));					 
@@ -95,7 +98,8 @@ public class CustomEventHandler {
 				}
 								
 			}
-			else{
+			else
+			{
 				player.sendMessage(new TextComponentString(TextFormatting.RED + "Can't give LOOT to unregistered player."));
 			}			
 

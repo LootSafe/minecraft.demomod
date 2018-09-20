@@ -13,7 +13,8 @@ import net.minecraft.item.ItemBlock;
 
 public class BlockBase extends Block implements Modable {
 
-	public BlockBase(String name, Material material){
+	public BlockBase(String name, Material material)
+	{
 		super(material);
 		setUnlocalizedName(name);
 		setRegistryName(name);
@@ -24,7 +25,8 @@ public class BlockBase extends Block implements Modable {
 	}
 
 	@Override
-	public void registerModels() {
+	public void registerModels() 
+	{
 		Main.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "Inventory");		
 	}
 	

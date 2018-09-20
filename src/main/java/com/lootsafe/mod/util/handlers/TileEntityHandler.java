@@ -8,7 +8,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class TileEntityHandler {
 	
-	public static void registerTileEntities(){
+	public static void registerTileEntities()
+	{
 		GameRegistry.registerTileEntity(TileEntityLootChest.class, new ResourceLocation(Reference.MOD_ID + ":loot_chest"));
 	}
 	

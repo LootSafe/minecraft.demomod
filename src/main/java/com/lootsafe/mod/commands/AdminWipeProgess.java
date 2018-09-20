@@ -17,57 +17,66 @@ import net.minecraft.util.text.TextFormatting;
 public class AdminWipeProgess implements ICommand {
 
 	@Override
-	public String getName() {
-		return "wipeplayerprogress";
-	}
-
-	@Override
-	public String getUsage(ICommandSender sender) {
-		return "Wipes a players progress...";
-	}
-
-	@Override
-	public List<String> getAliases() {
-		List<String> commandAliases = new ArrayList<String>();
-		commandAliases.add("wipeplayer");
-		return commandAliases;
-	}
-
-	@Override
-	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
-				
-		if(sender instanceof EntityPlayer){
-			
+	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException 
+	{				
+		if(sender instanceof EntityPlayer)
+		{			
 			EntityPlayer player = (EntityPlayer) sender;				
 			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Wiping player progress..."));
 			
-			if(args.length == 1){				
+			if(args.length == 1)
+			{				
 				
 				String playerName = args[0];
 				
 				boolean result = Main.proxy.wipePlayerProgress(playerName);
 				
-				if(result){
+				if(result)
+				{
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Wiped player progress for " + playerName));
 				}
-				else{
+				else
+				{
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Couldn't find player " + playerName));
 				}
 				
 			}
-			else{				
+			else
+			{				
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument"));
 			}			
 		}
 	}
+	
+	@Override
+	public String getName()
+	{
+		return "wipeplayerprogress";
+	}
 
-	public boolean canCommandSenderUse(MinecraftServer server, ICommandSender sender) { 
-		
-		if(sender.getName() == null){
+	@Override
+	public String getUsage(ICommandSender sender) 
+	{
+		return "Wipes a players progress...";
+	}
+
+	@Override
+	public List<String> getAliases() 
+	{
+		List<String> commandAliases = new ArrayList<String>();
+		commandAliases.add("wipeplayer");
+		return commandAliases;
+	}
+
+	public boolean canCommandSenderUse(MinecraftServer server, ICommandSender sender) 
+	{ 		
+		if(sender.getName() == null)
+		{
 			return false;
 		}
 		
-		if(sender.canUseCommand(1, getName()) == false){
+		if(sender.canUseCommand(1, getName()) == false)
+		{
 			return false;
 		}
 		
@@ -89,8 +98,6 @@ public class AdminWipeProgess implements ICommand {
 	public boolean isUsernameIndex(String[] args, int index) { return false; }
 
 	@Override
-	public boolean checkPermission(MinecraftServer server, ICommandSender sender) { 
-		return canCommandSenderUse(server,sender);
-	}
+	public boolean checkPermission(MinecraftServer server, ICommandSender sender) { return canCommandSenderUse(server,sender); }
 	
 }

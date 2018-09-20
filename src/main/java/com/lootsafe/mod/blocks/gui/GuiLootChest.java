@@ -4,7 +4,6 @@ import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.blocks.container.ContainerLootChest;
 import com.lootsafe.mod.blocks.tileenity.TileEntityLootChest;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,28 +12,32 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiLootChest extends GuiContainer {
 
+	// 	private static final ResourceLocation GUI_CHEST_BACK = new ResourceLocation(Reference.MOD_ID + ":textures/gui/loot_chest_back.png");
+	//  private Minecraft minecraft;
+	
 	private static final ResourceLocation GUI_CHEST = new ResourceLocation(Reference.MOD_ID + ":textures/gui/loot_chest.png");
-	private static final ResourceLocation GUI_CHEST_BACK = new ResourceLocation(Reference.MOD_ID + ":textures/gui/loot_chest_back.png");
 	private final InventoryPlayer playerInventory;
 	private final TileEntityLootChest te;
-	Minecraft minecraft;
 	
-	public GuiLootChest(InventoryPlayer playerInventory, TileEntityLootChest chestInventory, EntityPlayer player) {
+	public GuiLootChest(InventoryPlayer playerInventory, TileEntityLootChest chestInventory, EntityPlayer player) 
+	{
 		super(new ContainerLootChest(playerInventory, chestInventory, player));
 		this.playerInventory = playerInventory;
-		this.te = chestInventory;
-		
+		this.te = chestInventory;		
 		this.xSize = 179;
 		this.ySize = 256;
-		minecraft = Minecraft.getMinecraft();
+		
+		// this.minecraft = Minecraft.getMinecraft();
 	}
 		
-	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+	{
 		this.fontRenderer.drawString(this.te.getDisplayName().getUnformattedText(), 8, 6, 16086784);
 		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 92, 16086784);
 	}
 	
-	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
+	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
+	{
 		//GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		//this.mc.getTextureManager().bindTexture(GUI_CHEST_BACK);
 		//this.drawTexturedModalRect(0, 0, 0, 0, minecraft.displayWidth, minecraft.displayHeight);

@@ -29,7 +29,10 @@ public class RenderLootChest extends TileEntitySpecialRenderer<TileEntityLootChe
             GlStateManager.translate(0.0625F, 0.0625F, 0.0625F);
             GlStateManager.matrixMode(5888);
         }
-    	else this.bindTexture(TEXTURE);
+    	else
+    	{
+    		this.bindTexture(TEXTURE);
+    	}
     	
     	GlStateManager.pushMatrix();
         GlStateManager.enableRescaleNormal();

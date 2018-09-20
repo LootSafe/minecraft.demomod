@@ -15,36 +15,43 @@ import net.minecraft.util.text.TextFormatting;
 public class WalletShowCommands implements ICommand {
 
 	@Override
-	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
-		if(sender instanceof EntityPlayer){
+	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException 
+	{
+		if(sender instanceof EntityPlayer)
+		{
 			EntityPlayer player = (EntityPlayer) sender;
 			
 			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Loot Commands!"));
 			
-			if(args.length == 0){				
+			if(args.length == 0)
+			{				
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "/loothelp - Shows these helpful commands list."));
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "/wallet - Shows if your wallet status."));
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "/register 0x00 - Registers a wallet address."));
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "/unregister - Unregisters current wallet address."));
 			}
-			else{
+			else
+			{
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument."));
 			}			
 		}
 	}
 	
 	@Override
-	public String getName() {
+	public String getName() 
+	{
 		return "commandcustomshowlootcommands";
 	}
 
 	@Override
-	public String getUsage(ICommandSender sender) {
+	public String getUsage(ICommandSender sender) 
+	{
 		return "Shows a list of commands.";
 	}
 
 	@Override
-	public List<String> getAliases() {
+	public List<String> getAliases() 
+	{
 		List<String> commandAliases = new ArrayList<String>();
 		commandAliases.add("loothelp");
 		return commandAliases;

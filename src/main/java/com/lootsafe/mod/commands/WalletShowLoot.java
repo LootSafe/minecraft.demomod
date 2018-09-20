@@ -17,42 +17,50 @@ import net.minecraft.util.text.TextFormatting;
 public class WalletShowLoot implements ICommand {
 
 	@Override
-	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
-		if(sender instanceof EntityPlayer){
+	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException 
+	{
+		if(sender instanceof EntityPlayer)
+		{
 			EntityPlayer player = (EntityPlayer) sender;
 			
 			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Checking loot..."));
 			
-			if(args.length == 0){
-				
-				if(Main.proxy.isPlayerRegistered(player.getName())){
-				
-					for(String item : Main.proxy.getPlayerTokenizedItemList(player.getName())){
+			if(args.length == 0)
+			{				
+				if(Main.proxy.isPlayerRegistered(player.getName()))
+				{				
+					for(String item : Main.proxy.getPlayerTokenizedItemList(player.getName()))
+					{
 						player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + item));												
 					}
 				}
-				else{
+				else
+				{
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please register address to account."));
 				}					
 			}
-			else{
+			else
+			{
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument."));
 			}			
 		}
 	}
 	
 	@Override
-	public String getName() {
+	public String getName()
+	{
 		return "commandclientshowitems";
 	}
 
 	@Override
-	public String getUsage(ICommandSender sender) {
+	public String getUsage(ICommandSender sender) 
+	{
 		return "Shows a list of players items.";
 	}
 
 	@Override
-	public List<String> getAliases() {
+	public List<String> getAliases() 
+	{
 		List<String> commandAliases = new ArrayList<String>();
 		commandAliases.add("loot");
 		return commandAliases;

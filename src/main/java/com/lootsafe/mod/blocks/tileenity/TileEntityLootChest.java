@@ -23,23 +23,27 @@ public class TileEntityLootChest extends TileEntityLockableLoot implements ITick
 	public int numPlayersUsing, ticksSinceSync;	
 	public float lidAngle, prevLidAngle;
 	
-	public int getSizeInventory(){
+	public int getSizeInventory()
+	{
 		return 72;
 	}
 	
 	public boolean isEmpty(){
-		for(ItemStack stack : this.chestContents){
+		for(ItemStack stack : this.chestContents)
+		{
 			if(!stack.isEmpty()) return false;
 		}
 		
 		return true;
 	}
 	
-	public String getName(){
+	public String getName(
+			){
 		return this.hasCustomName() ? this.customName : "container.loot_chest";
 	}
 	
-	public void readFromNBT(NBTTagCompound compound){
+	public void readFromNBT(NBTTagCompound compound)
+	{
 		super.readFromNBT(compound);
 		this.chestContents = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
 		
@@ -47,7 +51,8 @@ public class TileEntityLootChest extends TileEntityLockableLoot implements ITick
 		if(compound.hasKey("CustomName", 8)) this.customName = compound.getString("CustomName");
 	}
 	
-	public NBTTagCompound writeToNBT(NBTTagCompound compound){
+	public NBTTagCompound writeToNBT(NBTTagCompound compound)
+	{
 		super.writeToNBT(compound);
 		
 		if(!this.checkLootAndWrite(compound)) ItemStackHelper.saveAllItems(compound, chestContents);
@@ -57,22 +62,26 @@ public class TileEntityLootChest extends TileEntityLockableLoot implements ITick
 	}
 
 	@Override
-	public int getInventoryStackLimit() {
+	public int getInventoryStackLimit() 
+	{
 		return 64;
 	}
 
 	@Override
-	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
+	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) 
+	{
 		return new ContainerLootChest(playerInventory, this, playerIn);
 	}
 
 	@Override
-	public String getGuiID() {
+	public String getGuiID()
+	{
 		return Reference.MOD_ID + ":loot_chest";
 	}
 
 	@Override
-	protected NonNullList<ItemStack> getItems() {
+	protected NonNullList<ItemStack> getItems()
+	{
 		return this.chestContents;
 	}
 	
@@ -140,13 +149,15 @@ public class TileEntityLootChest extends TileEntityLockableLoot implements ITick
         }		
 	}
 	
-	public void openInventory(EntityPlayer player){
+	public void openInventory(EntityPlayer player)
+	{
 		++this.numPlayersUsing;
 		this.world.addBlockEvent(pos, this.getBlockType(), 1, numPlayersUsing);
 		this.world.notifyNeighborsOfStateChange(pos, getBlockType(), false);
 	}
 	
-	public void closeInventory(EntityPlayer player){
+	public void closeInventory(EntityPlayer player)
+	{
 		--this.numPlayersUsing;
 		this.world.addBlockEvent(pos, this.getBlockType(), 1, numPlayersUsing);
 		this.world.notifyNeighborsOfStateChange(pos, getBlockType(), false);		

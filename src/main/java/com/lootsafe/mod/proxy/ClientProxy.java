@@ -21,16 +21,19 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 @SuppressWarnings("unused")
 public class ClientProxy extends CommonProxy {
 	
-	public void registerItemRenderer(Item item, int meta, String id){
+	public void registerItemRenderer(Item item, int meta, String id)
+	{
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
 	}
 	
-	public void initRegistries(){		
+	public void initRegistries()
+	{		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
 	}
 	
 	@SuppressWarnings("deprecation")
-	public void preInitRegistries(){	
+	public void preInitRegistries()
+	{	
 		EntityInit.registerEntities();		
 		
 		FMLCommonHandler.instance().bus().register(new RegistryHandlerClient());		
