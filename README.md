@@ -15,7 +15,7 @@ Wipes players progress on what boss they killed and loot they recieved. This is 
   
 * /wipeplayer playername
 
-Save the current state of the players loot token inventory to file **(in testing)**
+Save the current state of the players loot token inventory to file
 
 * /lootsave 
 
