@@ -64,7 +64,6 @@ public class ContainerLootChest extends Container
 				
 				if(currentItem.getIsTokenizable())
 				{					
-					//Main.proxy.addTokenizedItemStr(player, currentItem);
 					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Sending item to your wallet @ " + Main.proxy.getPlayerWalletAddress(player.getName())));					
 					
 					itemstack1.shrink(1);

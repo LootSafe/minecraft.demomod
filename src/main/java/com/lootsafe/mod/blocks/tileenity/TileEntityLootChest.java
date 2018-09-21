@@ -37,8 +37,7 @@ public class TileEntityLootChest extends TileEntityLockableLoot implements ITick
 		return true;
 	}
 	
-	public String getName(
-			){
+	public String getName(){
 		return this.hasCustomName() ? this.customName : "container.loot_chest";
 	}
 	

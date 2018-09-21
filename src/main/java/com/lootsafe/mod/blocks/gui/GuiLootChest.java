@@ -12,9 +12,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiLootChest extends GuiContainer {
 
-	// 	private static final ResourceLocation GUI_CHEST_BACK = new ResourceLocation(Reference.MOD_ID + ":textures/gui/loot_chest_back.png");
-	//  private Minecraft minecraft;
-	
 	private static final ResourceLocation GUI_CHEST = new ResourceLocation(Reference.MOD_ID + ":textures/gui/loot_chest.png");
 	private final InventoryPlayer playerInventory;
 	private final TileEntityLootChest te;
@@ -26,8 +23,6 @@ public class GuiLootChest extends GuiContainer {
 		this.te = chestInventory;		
 		this.xSize = 179;
 		this.ySize = 256;
-		
-		// this.minecraft = Minecraft.getMinecraft();
 	}
 		
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
@@ -38,9 +33,7 @@ public class GuiLootChest extends GuiContainer {
 	
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
 	{
-		//GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		//this.mc.getTextureManager().bindTexture(GUI_CHEST_BACK);
-		//this.drawTexturedModalRect(0, 0, 0, 0, minecraft.displayWidth, minecraft.displayHeight);
+		this.drawDefaultBackground();
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		this.mc.getTextureManager().bindTexture(GUI_CHEST);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
