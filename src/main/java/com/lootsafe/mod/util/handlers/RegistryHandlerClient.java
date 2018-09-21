@@ -35,8 +35,7 @@ public class RegistryHandlerClient {
 	
 	@SubscribeEvent
 	public static void onModelRegister(ModelRegistryEvent event)
-	{
-		
+	{		
 		Main.proxy.registerItemRenderer(Item.getItemFromBlock(BlockInit.LOOT_CHEST), 0, "container.loot_chest");
 		
 		for(Item item : ItemInit.ITEMS)

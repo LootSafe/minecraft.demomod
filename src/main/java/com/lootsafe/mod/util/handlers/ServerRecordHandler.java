@@ -26,13 +26,21 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 @SuppressWarnings("unchecked")
 public class ServerRecordHandler {
 			
+	/* File Writing & File Updating */
+	
 	public ArrayList<LootPlayer> LoadServerRecords() {
 		
-		ArrayList<LootPlayer> lootPlayers = new ArrayList<LootPlayer>();
+		System.out.println(Reference.CONSOLE_TAG + "Loading player records..");
 		
-		if(!doesFileExist())
+		ArrayList<LootPlayer> lootPlayers = new ArrayList<LootPlayer>();
+				
+		if(!doesFileExist(Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA))
 		{
-			createFile();
+			System.out.println(Reference.CONSOLE_TAG + "Player records file not found, creating one.");
+			
+			createDirectory(Reference.DIR_PLAYERDATA);			
+			createFile(Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA, true);
+			
 			return lootPlayers;
 		}
 		
@@ -41,7 +49,7 @@ public class ServerRecordHandler {
 		
 		try 
 		{
-			Object parsedObj = jsonParser.parse(new FileReader(Reference.SERVER_FILE_NAME));			
+			Object parsedObj = jsonParser.parse(new FileReader(Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA));			
 			jsonArray = (JSONArray) parsedObj;
 		} 
 		catch (FileNotFoundException e) { e.printStackTrace(); System.out.println(Reference.CONSOLE_TAG + "Error loading records from file."); return lootPlayers; } 
@@ -68,12 +76,15 @@ public class ServerRecordHandler {
 	
 	public boolean UpdateServerRecords(ArrayList<LootPlayer> lootPlayers){
 		
-		if(!doesFileExist())
+		if(!doesFileExist(Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA))
 		{
-			createFile();
+			System.out.println(Reference.CONSOLE_TAG + "Player records file not found, creating one.");
+			
+			createDirectory(Reference.DIR_PLAYERDATA);			
+			createFile(Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA, true);
 		}
 		
-        backupRecords();
+        BackupRecords();
 		
 		JSONArray parentArray = new JSONArray();    	
     	JSONArray defeatedBossesList = new JSONArray();
@@ -105,21 +116,75 @@ public class ServerRecordHandler {
             parentArray.add(tempPlayer);
         }
 
-        try (FileWriter file = new FileWriter(Reference.SERVER_FILE_NAME, false))
+        try (FileWriter file = new FileWriter(Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA, false))
         {
             file.write(parentArray.toJSONString());
             file.flush();
         } 
         catch (IOException e) { e.printStackTrace(); System.out.println(Reference.CONSOLE_TAG + "Error updating server records."); return false; }
 
-        System.out.println(Reference.CONSOLE_TAG + "Server Records Updated @ " + Reference.SERVER_FILE_NAME);
+        System.out.println(Reference.CONSOLE_TAG + "Server Records Updated @ " + Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA);
                 
 		return true;
 	}
+
+	private void BackupRecords(){
 		
-	public boolean doesFileExist(){
+		if(!doesFolderExist(Reference.DIR_BACKUP_PLAYERDATA)){
+			createDirectory(Reference.DIR_BACKUP_PLAYERDATA);
+		}		
+		    
+		Path fromFile = Paths.get(Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA);
+	    Path toBackupFile = Paths.get(Reference.DIR_BACKUP_PLAYERDATA + Reference.FILENAME_BACKUPDATA + getCurrentLocalDateTimeStamp() + "BACKUP.json");
+	    
+	    CopyOption[] options = new CopyOption[]{
+	      StandardCopyOption.REPLACE_EXISTING,
+	      StandardCopyOption.COPY_ATTRIBUTES
+	    }; 
+	    
+	    try 
+	    {
+			Files.copy(fromFile, toBackupFile, options);
+			System.out.println(Reference.CONSOLE_TAG + " current file backed up.");
+		} 
+	    catch (IOException e) 
+	    {
+	    	System.out.println(Reference.CONSOLE_TAG + " problem making a backup.");
+		}
+	    
+	}
 		
-		File file = FMLCommonHandler.instance().getMinecraftServerInstance().getFile(Reference.SERVER_FILE_NAME);
+	/* Folder Creation & File Creation */
+	
+	private File createFile(String filename, boolean isDatafile)
+	{
+		File playerDataFile = new File(filename);
+		
+		try {
+			playerDataFile.createNewFile();
+			System.out.println(Reference.CONSOLE_TAG  + "File created @ " + filename);
+			
+			if(isDatafile){
+				UpdateServerRecords(new ArrayList<LootPlayer>());
+				// Writing empty array to file so it reads back properly
+			}
+			
+		} catch (IOException e) {
+			System.out.println(Reference.CONSOLE_TAG  + "ERROR creating new file @ " + filename);
+			e.printStackTrace();
+		}				
+		
+		return playerDataFile;
+	}		
+	
+	private void createDirectory(String directoryLocation) {
+		File file = FMLCommonHandler.instance().getMinecraftServerInstance().getFile(directoryLocation);
+		file.mkdirs();	
+	}
+	
+	private boolean doesFileExist(String filename){
+		
+		File file = FMLCommonHandler.instance().getMinecraftServerInstance().getFile(filename);
 		
 		if(file.exists() && !file.isDirectory()) 
 		{ 
@@ -131,42 +196,24 @@ public class ServerRecordHandler {
 		return false;
 	}
 	
-	public File createFile()
-	{
-		File playerDataFile = new File(Reference.SERVER_FILE_NAME);
-		System.out.println(Reference.CONSOLE_TAG  + "File created @ " + Reference.SERVER_FILE_NAME);
-		return playerDataFile;
+	private boolean doesFolderExist(String directoryLocationStr) {
+		
+		File file = FMLCommonHandler.instance().getMinecraftServerInstance().getFile(directoryLocationStr);
+		
+		if(!file.exists()) 
+		{ 
+			file.mkdirs();
+		    return true;
+		}
+		
+		return false;
 	}
 	
-	private void backupRecords(){
-		
-		if(doesFileExist()){
-		    
-			Path fromFile = Paths.get(Reference.SERVER_FILE_NAME);
-		    Path toBackupFile = Paths.get(Reference.SERVER_BACKUP_FILE_NAME + getCurrentLocalDateTimeStamp());
-		    
-		    CopyOption[] options = new CopyOption[]{
-		      StandardCopyOption.REPLACE_EXISTING,
-		      StandardCopyOption.COPY_ATTRIBUTES
-		    }; 
-		    
-		    try 
-		    {
-				Files.copy(fromFile, toBackupFile, options);
-				System.out.println(Reference.CONSOLE_TAG + " current file backed up.");
-			} 
-		    catch (IOException e) 
-		    {
-		    	System.out.println(Reference.CONSOLE_TAG + " problem making a backup.");
-			}
-		    
-		}
-	    
-	}	
+	/* Helpers */
 	
 	private String getCurrentLocalDateTimeStamp() {
 	    return LocalDateTime.now()
-	       .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+	       .format(DateTimeFormatter.ofPattern("-yyyyMMdd-HHmmssSSS-"));
 	}
 	
 }
