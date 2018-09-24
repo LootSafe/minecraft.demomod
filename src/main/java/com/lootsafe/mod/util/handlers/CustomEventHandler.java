@@ -12,9 +12,20 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class CustomEventHandler {
+	
+	/* Server Events */
+	
+	@SubscribeEvent 
+	public void serverSaving(WorldEvent.Save event)
+	{
+		Main.proxy.UpdateServerRecords();
+	}
+	
+	/* Boss Events */
 	
 	@SubscribeEvent 
 	public void bossSunscreen(LivingUpdateEvent event)

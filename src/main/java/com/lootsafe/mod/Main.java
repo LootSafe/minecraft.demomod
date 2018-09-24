@@ -25,6 +25,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
+import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -81,6 +82,13 @@ public class Main {
 	public void serverStopping(FMLServerStoppingEvent event)
 	{
 	    Main.proxy.UpdateServerRecords();
+	}
+	
+	@EventHandler
+	@SideOnly(Side.SERVER)
+	public void playerDisconnected(FMLNetworkEvent.ServerDisconnectionFromClientEvent event)
+	{
+		Main.proxy.UpdateServerRecords();
 	}
 	
 }
