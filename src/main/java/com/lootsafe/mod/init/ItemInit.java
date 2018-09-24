@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lootsafe.mod.Reference;
-import com.lootsafe.mod.Items.ItemBase;
+import com.lootsafe.mod.items.ItemBase;
 
 import net.minecraft.item.Item;
 

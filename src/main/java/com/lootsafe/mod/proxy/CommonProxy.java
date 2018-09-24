@@ -3,8 +3,8 @@ package com.lootsafe.mod.proxy;
 import java.util.List;
 
 import com.lootsafe.mod.Main;
-import com.lootsafe.mod.Items.ItemBase;
 import com.lootsafe.mod.init.EntityInit;
+import com.lootsafe.mod.items.ItemBase;
 import com.lootsafe.mod.util.handlers.GuiHandler;
 import com.lootsafe.mod.util.handlers.NetworkHandler;
 import com.lootsafe.mod.util.handlers.PlayerHandler;

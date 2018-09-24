@@ -1,8 +1,8 @@
 package com.lootsafe.mod.blocks.container;
 
 import com.lootsafe.mod.Main;
-import com.lootsafe.mod.Items.ItemBase;
 import com.lootsafe.mod.blocks.tileenity.TileEntityLootChest;
+import com.lootsafe.mod.items.ItemBase;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

@@ -3,7 +3,7 @@ package com.lootsafe.mod.util.handlers;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lootsafe.mod.Items.ItemBase;
+import com.lootsafe.mod.items.ItemBase;
 
 import net.minecraft.entity.player.EntityPlayer;
 

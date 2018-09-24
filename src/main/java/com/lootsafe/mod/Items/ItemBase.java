@@ -1,4 +1,4 @@
-package com.lootsafe.mod.Items;
+package com.lootsafe.mod.items;
 
 import java.util.List;
 
