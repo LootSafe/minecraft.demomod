@@ -5,25 +5,25 @@
 To manually register the populated item address (you'll have to grab this from the console)
 These are the commands to do 
 
-* /registergold coinaddress
-* /registersilver coinaddress
-* /registerhost hostaddress
+* **/registergold coinaddress**
+* **/registersilver coinaddress**
+* **/registerhost hostaddress**
   
 ### Debug  
 
 Wipes players progress on what boss they killed and loot they recieved. This is for debugging so you can kill the boss multiple time.  
   
-* /wipeplayer playername
+* **/wipeplayer playername**
 
 Save the current state of the players loot token inventory to file
 
-* /lootsave 
+* **/lootsave**
 
 ## Demo Commands
 
-* /register <playerwallet> **<-- Wallet Address you want items spawned into**
-* /unregister **<-- You don't need this but it lets you re-register your address in case you**
-* /wallet **<-- Shows your current Address**
+* **/register <playerwallet>** <-- Wallet Address you want items spawned into
+* **/unregister** <-- You don't need this but it lets you re-register your address in case you
+* /**wallet** <-- Shows your current Address
 
 ## Items to Spawn
 
