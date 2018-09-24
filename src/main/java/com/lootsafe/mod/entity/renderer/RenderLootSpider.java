@@ -15,7 +15,7 @@ public class RenderLootSpider extends RenderLiving<EntityLootSpider> {
 	public RenderLootSpider(RenderManager manager, float spiderSize)
 	{
 		//super(manager, new ModelLootSpider(spiderSize), spiderSize);
-		super(manager, new ModelSpider(), spiderSize);
+		super(manager, new ModelSpider(), spiderSize);		
 	}
 	
 	protected ResourceLocation getEntityTexture(EntityLootSpider entity)

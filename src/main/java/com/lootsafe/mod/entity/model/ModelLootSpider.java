@@ -26,7 +26,7 @@ public class ModelLootSpider extends ModelBase {
     private float sizeMultiplier = 1.0f;
 
     public ModelLootSpider(float sizeMultiplier) {
-    	this.sizeMultiplier = sizeMultiplier;
+    	this.sizeMultiplier = sizeMultiplier;   	
         this.textureWidth = 64;
         this.textureHeight = 32;
         this.field_78207_b = new ModelRenderer(this, 0, 0);
@@ -77,8 +77,8 @@ public class ModelLootSpider extends ModelBase {
     		
         GL11.glPushMatrix();
         GL11.glTranslatef(0F, 1.5F - 1.5F * sizeMultiplier, 0F); 
-        GL11.glScalef(sizeMultiplier, sizeMultiplier, sizeMultiplier);
-                
+        GL11.glScalef(sizeMultiplier, sizeMultiplier, sizeMultiplier);        
+        
         this.field_78207_b.render(f5);
         this.field_78209_a.render(f5);
         this.field_78210_j.render(f5);
@@ -101,7 +101,6 @@ public class ModelLootSpider extends ModelBase {
         modelRenderer.rotateAngleX = x;
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
-    }   
-    
+    }      
     
 }

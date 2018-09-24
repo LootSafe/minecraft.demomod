@@ -56,6 +56,7 @@ public class RenderLootChest extends TileEntitySpecialRenderer<TileEntityLootChe
             GlStateManager.popMatrix();
             GlStateManager.matrixMode(5888);
         }	
+        
 	}
 	
 }
