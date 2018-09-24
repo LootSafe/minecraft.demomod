@@ -1,6 +1,6 @@
 # minecraft.demomod
 
-## Admin Commands
+## Admin Commands - These only work for the OPS/ADMINS not regular players.
 
 To manually register the populated item address (you'll have to grab this from the console)
 These are the commands to do 
