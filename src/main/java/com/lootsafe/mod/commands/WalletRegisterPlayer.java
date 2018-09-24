@@ -38,7 +38,7 @@ public class WalletRegisterPlayer implements ICommand {
 				}
 				else
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Already Registered Or Error Registering."));
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Already Registered!"));
 				}							
 			}			
 		}

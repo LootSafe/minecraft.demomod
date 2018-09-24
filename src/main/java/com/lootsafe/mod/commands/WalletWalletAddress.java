@@ -35,7 +35,7 @@ public class WalletWalletAddress implements ICommand {
 				
 				if(walletAddress != null)
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + walletAddress));
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | Registered to address @ " + TextFormatting.GREEN + walletAddress));
 				}
 				else
 				{
