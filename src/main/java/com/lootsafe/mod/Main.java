@@ -61,6 +61,7 @@ public class Main {
 	/* Server Booting and Server Shutting Down */
 	
 	@EventHandler
+	@SideOnly(Side.SERVER)
 	public static void serverStarting(FMLServerStartingEvent event) 
 	{
 		event.registerServerCommand(new AdminHost());

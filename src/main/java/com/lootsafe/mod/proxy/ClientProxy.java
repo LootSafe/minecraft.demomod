@@ -40,4 +40,11 @@ public class ClientProxy extends CommonProxy {
 		RenderHandler.registerAllEntityRenders(Reference.GLOBAL_BOSSMOB_SIZE);		
 	}
 	
+	public boolean isPlayerRegistered(String playerName)
+	{
+		// Disabling the chest in singleplayer.
+		// Otherwise things crash when the server isn't there.
+		return false;
+	}
+	
 }
