@@ -6,10 +6,12 @@ import com.lootsafe.mod.entity.EntityLootSkele;
 import com.lootsafe.mod.entity.EntityLootSpider;
 import com.lootsafe.mod.init.ItemInit;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.world.WorldEvent;
@@ -24,6 +26,17 @@ public class CustomEventHandler {
 	{
 		Main.proxy.UpdateServerRecords();
 	}
+	
+
+    @SubscribeEvent
+    public void onEntityJoinWorldEvent(EntityJoinWorldEvent event) {    	
+    	if (event.getEntity().world.isRemote && event.getEntity() == Minecraft.getMinecraft().player) {
+	        EntityPlayer player = (EntityPlayer) event.getEntity();
+	        player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Welcome!"));
+	        player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Make sure to check if your wallet is registerd using /wallet"));	
+	        player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Use /loothelp to see wallet commands!"));	
+        }    	
+    }
 	
 	/* Boss Events */
 	

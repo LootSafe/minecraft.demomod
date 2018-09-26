@@ -21,14 +21,24 @@ public class WalletShowCommands implements ICommand {
 		{
 			EntityPlayer player = (EntityPlayer) sender;
 			
-			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Loot Commands!"));
+			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "-- Loot Commands! --"));
 			
 			if(args.length == 0)
-			{				
-				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "/loothelp - Shows these helpful commands list."));
+			{	
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "/wallet - Shows if your wallet status."));
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "/register 0x00 - Registers a wallet address."));
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "/unregister - Unregisters current wallet address."));
+				
+				if(sender.canUseCommand(1, getName()) == true)
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "--  OPS SECTION   --"));
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/registerhost"));
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/registergold"));
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/registersilver"));
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/wipeplayer playername"));
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/lootsave"));
+				}				
+				
 			}
 			else
 			{
