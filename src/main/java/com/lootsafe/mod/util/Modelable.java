@@ -1,5 +1,5 @@
 package com.lootsafe.mod.util;
 
-public interface Modable {
+public interface Modelable {
 	public void registerModels();
 }

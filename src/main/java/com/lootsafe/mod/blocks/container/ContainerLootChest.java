@@ -1,6 +1,7 @@
 package com.lootsafe.mod.blocks.container;
 
 import com.lootsafe.mod.Main;
+import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.blocks.tileenity.TileEntityLootChest;
 import com.lootsafe.mod.items.ItemBase;
 
@@ -63,7 +64,7 @@ public class ContainerLootChest extends Container
 			{				
 				if(currentItem.getIsTokenizable())
 				{					
-					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Sending item to your wallet @ " + Main.proxy.getPlayerWalletAddress(player.getName())));					
+					player.sendMessage(new TextComponentString(Reference.SendingItemText + Main.proxy.getPlayerWalletAddress(player.getName())));					
 					
 					itemstack1.shrink(1);
 					

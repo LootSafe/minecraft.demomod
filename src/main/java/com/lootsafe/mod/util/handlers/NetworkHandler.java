@@ -92,7 +92,7 @@ public class NetworkHandler {
     {    	
     	MessageDigest md;
         StringBuffer sb = new StringBuffer();    	
-    	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
     	Date date = new Date();
     	
     	String itemAddressMD5 = dateFormat.format(date) + " " + itemAddress;

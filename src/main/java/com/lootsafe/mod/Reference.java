@@ -10,7 +10,7 @@ public class Reference {
 
 	public static final String MOD_ID = "lsm";
 	public static final String NAME = "LootSafe Mod";
-	public static final String VERSION = "2.0 alpha";
+	public static final String VERSION = "1.0 BETA";
 	public static final String ACCEPTED_VERSIONS = "[1.12.2]";
 	public static final String CLIENT_PROXY_CLASS = "com.lootsafe.mod.proxy.ClientProxy";
 	public static final String COMMON_PROXY_CLASS = "com.lootsafe.mod.proxy.CommonProxy";
@@ -34,34 +34,37 @@ public class Reference {
 	public static String host = "http://localhost:1337/v1/";
 	public static String version = "";
 	public static boolean debug = false;
-
-	public static String lootcoin_gold_address = "0x00";
-	public static String lootcoin_silver_address = "0x00";
-	public static String lootcoin_copper_address = "0x00";
+	
+	public static final String RecievedItemText = (TextFormatting.BLUE + "* Received ");	
+	public static final String SendingItemText = (TextFormatting.BLUE + "Sending item to your wallet @ " + TextFormatting.YELLOW);
+		
+	public static String lootcoin_gold_address = "0x00000000000000000000000";
+	public static String lootcoin_silver_address = "0x00000000000000000000000";
+	public static String lootcoin_copper_address = "0x00000000000000000000000";
 	
 	/* Server Stuff */
-	
+		
 	public static List<String> description_lootcoin_gold =
 			new ArrayList<String>() {{
-				add(TextFormatting.YELLOW + "LootCoin Gold");
-				add(TextFormatting.WHITE + "A tokenized asset that can be stored in your wallet!");
+				add(TextFormatting.YELLOW + "LootSafe Gold Demo Token");
+				add(TextFormatting.WHITE + "LootSafe Gold Demo Token, Can be stored in your wallet!");
 			}};
 			
 	public static List<String> description_lootcoin_silver =
 			new ArrayList<String>() {{
-				add(TextFormatting.AQUA + "LootCoin Silver");
-				add(TextFormatting.WHITE + "A tokenized asset that can be stored in your wallet!");
+				add(TextFormatting.YELLOW + "LootSafe Silver Demo Token");
+				add(TextFormatting.WHITE + "LootSafe Silver Demo Token, Can be stored in your wallet!");
 			}};
 					
 	public static List<String> description_lootcoin_copper =
 			new ArrayList<String>() {{
-				add(TextFormatting.DARK_RED + "LootCoin Copper");
-				add(TextFormatting.WHITE + "A tokenized asset that can be stored in your wallet!");
+				add(TextFormatting.YELLOW + "LootSafe Copper Demo Token");
+				add(TextFormatting.WHITE + "LootSafe Copper Demo Token, Can be stored in your wallet!");
 			}};				
 			
 	public static List<String> description_lootchest =
 			new ArrayList<String>() {{
-				add(TextFormatting.WHITE + "LootSafe for storing your Loot!");
+				add(TextFormatting.WHITE + "A LootSafe for storing your Loot!");
 			}};	
 			
 }

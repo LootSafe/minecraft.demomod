@@ -38,4 +38,5 @@ public class GuiLootChest extends GuiContainer {
 		this.mc.getTextureManager().bindTexture(GUI_CHEST);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 	}
+	
 }
