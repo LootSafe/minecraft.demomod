@@ -3,8 +3,6 @@ package com.lootsafe.mod.util.handlers;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lootsafe.mod.items.ItemBase;
-
 import net.minecraft.entity.player.EntityPlayer;
 
 public class PlayerHandler {
@@ -120,13 +118,13 @@ public class PlayerHandler {
 	
 	/* Helpers */
 	
-	public void addTokenizedItemStr(EntityPlayer player,ItemBase item)
+	public void addTokenizedItemStr(EntityPlayer player,String itemAddress)
 	{		
 		for(LootPlayer lootplayer : lootPlayers)
 		{			
 			if(lootplayer.getPlayerName().equals(player.getName()))
 			{					
-				lootplayer.addTokenizedItemStr(item.getItemAddress());
+				lootplayer.addTokenizedItemStr(itemAddress);
 			}				 
 		}
 	}

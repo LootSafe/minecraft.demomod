@@ -4,10 +4,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.json.JsonObject;
+
 import com.lootsafe.mod.Main;
 import com.lootsafe.mod.Reference;
-import com.lootsafe.mod.items.ItemBase;
+
 import io.lootsafe.api.ServiceProvider;
 import io.lootsafe.api.Requests.NodeHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,23 +41,21 @@ public class NetworkHandler {
 		}	    			
     }
     
-    public boolean GivePlayerItem(EntityPlayer player, String playerAddress, ItemBase item) 
+    public boolean GivePlayerItem(EntityPlayer player, String playerAddress, String uniqueItemAddress) 
     {    
-    	System.out.println("THIS IS GETTING CALLED!...");
-    	
 		/*
 		 * Unique Item Addresses should be based off the base addresses and created fresh from the API
 		 * For now a mock object is used in place of it. 
 		 */
 		
-		String uniqueItemAddress = getUniqueAddress(item.getItemAddress());		
+		//String uniqueItemAddress = getUniqueAddress(item.getItemAddress());		
 		
 		/* See Above */		
 		
         try 
         {            
-        	//JsonObject response = nh.postSpawnItem(playerAddress, item.getItemAddress());
         	JsonObject response = nh.postSpawnItem(playerAddress, uniqueItemAddress);
+        	//JsonObject response = nh.postSpawnItem(playerAddress, uniqueItemAddress);
         	
         	if (response.getInt("status") == 200) 
         	{

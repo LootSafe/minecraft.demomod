@@ -66,7 +66,7 @@ public class ContainerLootChest extends Container
 				{					
 					player.sendMessage(new TextComponentString(Reference.SendingItemText + Main.proxy.getPlayerWalletAddress(player.getName())));
 					
-					if(Main.proxy.addTokenizedItemStr(player, currentItem))
+					if(Main.proxy.addTokenizedItemStr(player, currentItem.getItemAddress()))
 					{
 						itemstack1.shrink(1);					
 						slot = null;
