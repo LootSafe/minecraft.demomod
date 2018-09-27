@@ -88,15 +88,25 @@ public class CommonProxy {
 		return playerHandler.getPlayerWalletAddress(playerName);
 	}
 	
-	public void addTokenizedItemStr(EntityPlayer player,ItemBase item)
-	{				
-		networkHandler.GivePlayerItem(player, playerHandler.getPlayerWalletAddress(player.getName()),  item);			
-		playerHandler.addTokenizedItemStr(player, item);
+	public boolean addTokenizedItemStr(EntityPlayer player,ItemBase item)
+	{	
+		if(networkHandler.GivePlayerItem(player, playerHandler.getPlayerWalletAddress(player.getName()),  item))
+		{
+			playerHandler.addTokenizedItemStr(player, item);
+			return true;
+		}
+		
+		return false;
 	}
 
 	public List<String> getPlayerTokenizedItemList(String playerName)
 	{
 		return playerHandler.getPlayerTokenizedItemList(playerName);
+	}
+
+	public void PlayerItemWalletSuccess(String playerName, String uniqueItemAddress)
+	{
+		playerHandler.removePlayerTokenizedItem(playerName, uniqueItemAddress);	
 	}
 
 }

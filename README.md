@@ -21,9 +21,10 @@ Save the current state of the players loot token inventory to file
 
 ## Demo Commands
 
-* **/register <playerwallet>** <-- Wallet Address you want items spawned into
-* **/unregister** <-- You don't need this but it lets you re-register your address in case you
-* /**wallet** <-- Shows your current Address
+* **/register <playerwallet>** <-- Wallet address that you want items spawned into.
+* **/unregister** <-- You don't need this but it lets you re-register your address in case you.
+* **/wallet** <-- Shows your current address.
+* **/loot** <-- Shows id's received.
 
 ## Items to Spawn
 
@@ -34,8 +35,8 @@ Save the current state of the players loot token inventory to file
 ### WALKTHROUGH
 
 1. Place the LootSafe Safe.
-2. Use /register and register a valid account address from gnache.
-3. Use /registergold and register a valid address for the gold token. 
+2. Use **/register** and register a valid account address from gnache.
+3. Use **/registergold** and register a valid address for the gold token. 
 3. Spawn LootSafe Boss Skeleton.
 4. Kill LootSafe Boss Skeleton, notice it pops an gold coin into your inventory.
 5. Open the LootSafe Safe, item should disappear, make a call to the API and message you that it was successful.

@@ -115,8 +115,7 @@ public class PlayerHandler {
 		else
 		{
 			return false;
-		}
-		
+		}		
 	}	
 	
 	/* Helpers */
@@ -160,10 +159,7 @@ public class PlayerHandler {
 				}
 				else
 				{
-					for(String item : lootplayer.getLatestLocalTokenizedItemList())
-					{
-						tokenizedItemList.add(item);
-					}
+					return lootplayer.getLatestLocalTokenizedItemList();
 				}
 			}
 		}			
@@ -199,6 +195,17 @@ public class PlayerHandler {
 		}
 		
 		return false;
+	}
+
+	public void removePlayerTokenizedItem(String playerName, String uniqueItemAddress)
+	{		
+		for(LootPlayer lootplayer : lootPlayers)
+		{
+			if(lootplayer.getPlayerName().equals(playerName))
+			{
+				lootplayer.removeTokenizedItemAddress(uniqueItemAddress);
+			}
+		}		
 	}
 	
 }

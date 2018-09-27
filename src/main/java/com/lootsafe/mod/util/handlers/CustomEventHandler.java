@@ -85,10 +85,8 @@ public class CustomEventHandler {
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));			
 						 
 						 player.sendMessage(new TextComponentString(Reference.RecievedItemText + Reference.description_lootcoin_gold.get(0)));
-					 }
-					 
-				}
-								
+					 }					 
+				}								
 			}
 			else
 			{

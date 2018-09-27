@@ -4,17 +4,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.json.JsonObject;
-
+import com.lootsafe.mod.Main;
 import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.items.ItemBase;
-
-import io.lootsafe.api.Requests.NodeHandler;
 import io.lootsafe.api.ServiceProvider;
+import io.lootsafe.api.Requests.NodeHandler;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
 
 public class NetworkHandler {
 		
@@ -40,13 +36,12 @@ public class NetworkHandler {
 		else 
 		{
 		    throw new RuntimeException("Could not start up the LootSafe Service! Is your config in order?");
-		}	    	
-		
+		}	    			
     }
     
     public boolean GivePlayerItem(EntityPlayer player, String playerAddress, ItemBase item) 
-    {    	
-		player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Sending Player Item"));
+    {    
+    	System.out.println("THIS IS GETTING CALLED!...");
     	
 		/*
 		 * Unique Item Addresses should be based off the base addresses and created fresh from the API
@@ -64,13 +59,11 @@ public class NetworkHandler {
         	
         	if (response.getInt("status") == 200) 
         	{
-        		player.sendMessage(new TextComponentString("Check your online wallet to see your item!"));
+        		Main.proxy.PlayerItemWalletSuccess(player.getName(), uniqueItemAddress);
         		return true;
         	}
         	else
         	{
-        		player.sendMessage(new TextComponentString("Error sending item to the online wallet"));
-        		player.sendMessage(new TextComponentString(response.toString()));
         		return false;        		
         	}
 

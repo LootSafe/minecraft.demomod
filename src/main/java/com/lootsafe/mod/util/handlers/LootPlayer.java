@@ -25,6 +25,30 @@ public class LootPlayer {
 		this.defeatedBossesList = defeatedBosses;
 		this.latestLocalTokenizedItemList = latestLocalTokenizedItemList;
 	}	
+	
+	public boolean removeTokenizedItemAddress(String itemAddress)
+	{
+		int position = -1;
+		int count = 0;
+		
+		for(String itemAdd : latestLocalTokenizedItemList)
+		{
+			if(itemAddress == itemAdd) 
+			{
+				position = count;
+			}
+			
+			count++;
+		}
+		
+		if(position != -1)
+		{
+			latestLocalTokenizedItemList.remove(position);
+			return true;
+		}
+		
+		return false;
+	}
 		
 	public boolean hasKilledBossBefore(String bossName)
 	{		

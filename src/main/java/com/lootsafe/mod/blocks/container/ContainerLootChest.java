@@ -64,14 +64,20 @@ public class ContainerLootChest extends Container
 			{				
 				if(currentItem.getIsTokenizable())
 				{					
-					player.sendMessage(new TextComponentString(Reference.SendingItemText + Main.proxy.getPlayerWalletAddress(player.getName())));					
+					player.sendMessage(new TextComponentString(Reference.SendingItemText + Main.proxy.getPlayerWalletAddress(player.getName())));
 					
-					itemstack1.shrink(1);
-					
-					slot = null;
-					itemstack1 = null;				
-
-					player.closeScreen();
+					if(Main.proxy.addTokenizedItemStr(player, currentItem))
+					{
+						itemstack1.shrink(1);					
+						slot = null;
+						itemstack1 = null;	
+						player.closeScreen();
+					}
+					else
+					{
+						player.sendMessage(new TextComponentString(TextFormatting.RED + "Error sending item, try later."));
+						player.closeScreen();
+					}
 				}
 			}
 		

@@ -23,7 +23,7 @@ public class WalletShowLoot implements ICommand {
 		{
 			EntityPlayer player = (EntityPlayer) sender;
 			
-			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Checking loot..."));
+			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Checking Loot..."));
 			
 			if(args.length == 0)
 			{				
@@ -31,7 +31,7 @@ public class WalletShowLoot implements ICommand {
 				{				
 					for(String item : Main.proxy.getPlayerTokenizedItemList(player.getName()))
 					{
-						player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + item));												
+						player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.WHITE + item));												
 					}
 				}
 				else
