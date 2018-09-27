@@ -32,10 +32,9 @@ public class CustomEventHandler {
     public void onEntityJoinWorldEvent(EntityJoinWorldEvent event) {    	
     	if (event.getEntity().world.isRemote && event.getEntity() == Minecraft.getMinecraft().player) {
 	        EntityPlayer player = (EntityPlayer) event.getEntity();
-	        player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Welcome!"));
-	        player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Make sure to check if your wallet is registerd using /wallet"));	
-	        player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Use /loothelp to see wallet commands!"));	
-        }    	
+	        player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Welcome!"));	
+	        player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Use /loothelp to see wallet commands!"));			
+    	}    	
     }
 	
 	/* Boss Events */

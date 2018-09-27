@@ -47,7 +47,7 @@ public class WalletRegisterPlayer implements ICommand {
 	@Override
 	public String getName() 
 	{
-		return "commandregisterplayerwallet";
+		return "registerplayerwallet";
 	}
 
 	@Override

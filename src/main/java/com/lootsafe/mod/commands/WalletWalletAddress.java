@@ -48,13 +48,13 @@ public class WalletWalletAddress implements ICommand {
 	@Override
 	public String getName() 
 	{
-		return "commandregisterplayerwallet";
+		return "walletstatus";
 	}
 
 	@Override
 	public String getUsage(ICommandSender sender) 
 	{
-		return "Shows a wallet address if registered";
+		return "Shows wallet status.";
 	}
 
 	@Override

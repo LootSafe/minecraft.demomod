@@ -49,7 +49,7 @@ public class WalletShowLoot implements ICommand {
 	@Override
 	public String getName()
 	{
-		return "commandclientshowitems";
+		return "showwalletitems";
 	}
 
 	@Override

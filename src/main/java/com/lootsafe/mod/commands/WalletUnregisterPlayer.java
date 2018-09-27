@@ -46,7 +46,7 @@ public class WalletUnregisterPlayer implements ICommand {
 	@Override
 	public String getName() 
 	{
-		return "commandunregisterplayerwallet";
+		return "unregisterwalletaddress";
 	}
 
 	@Override

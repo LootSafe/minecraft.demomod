@@ -31,14 +31,12 @@ public class WalletShowCommands implements ICommand {
 				
 				if(sender.canUseCommand(1, getName()) == true)
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "--  OPS SECTION   --"));
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/registerhost"));
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/registergold"));
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/registersilver"));
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/wipeplayer playername"));
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/lootsave"));
-				}				
-				
+				}			
 			}
 			else
 			{
@@ -50,7 +48,7 @@ public class WalletShowCommands implements ICommand {
 	@Override
 	public String getName() 
 	{
-		return "commandcustomshowlootcommands";
+		return "showlootcommands";
 	}
 
 	@Override
