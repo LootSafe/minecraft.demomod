@@ -39,7 +39,7 @@ public class AdminHost implements ICommand {
 	@Override
 	public String getName() 
 	{
-		return "commandregisterhost";
+		return "sethost";
 	}
 
 	@Override

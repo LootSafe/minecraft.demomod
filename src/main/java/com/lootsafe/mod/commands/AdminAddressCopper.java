@@ -40,7 +40,7 @@ public class AdminAddressCopper implements ICommand {
 	@Override
 	public String getName()
 	{
-		return "commandregisterlootcoincopperaddress";
+		return "setcopperaddress";
 	}
 
 	@Override

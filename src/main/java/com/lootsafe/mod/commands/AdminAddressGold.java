@@ -39,7 +39,7 @@ public class AdminAddressGold implements ICommand {
 	@Override
 	public String getName() 
 	{
-		return "commandregisterlootcoingoldaddress";
+		return "setgoldaddress";
 	}
 
 	@Override

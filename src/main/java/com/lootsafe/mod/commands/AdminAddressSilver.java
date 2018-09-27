@@ -39,7 +39,7 @@ public class AdminAddressSilver implements ICommand {
 	@Override
 	public String getName() 
 	{
-		return "commandregisterlootcoinsilveraddress";
+		return "setsilveraddress";
 	}
 
 	@Override
