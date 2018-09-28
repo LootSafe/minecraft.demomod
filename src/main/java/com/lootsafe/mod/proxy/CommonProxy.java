@@ -28,14 +28,13 @@ public class CommonProxy {
 	{
 		EntityInit.registerEntities();		
 		FMLCommonHandler.instance().bus().register(new RegistryHandlerServer());
-		
-		playerHandler = new PlayerHandler();
-		networkHandler = new NetworkHandler();
 	}
 	
 	public void initRegistries() 
 	{
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
+		playerHandler = new PlayerHandler();
+		networkHandler = new NetworkHandler();
 	}
 	
 	public void registerItemRenderer(Item item, int meta, String id)
@@ -45,14 +44,14 @@ public class CommonProxy {
 	
 	/* Registering  */
 	
-	public void registerPlayerWallet(String playerName, String playerWalletAddress) 
+	public void RegisterPlayerWallet(String playerName, String playerWalletAddress) 
 	{
-		playerHandler.registerPlayerWallet(playerName, playerWalletAddress);
+		playerHandler.RegisterPlayerWallet(playerName, playerWalletAddress);
 	}
 	
 	public boolean unregisterPlayerWallet(String playerName) 
 	{
-		return playerHandler.unregisterPlayerWallet(playerName);
+		return playerHandler.UnregisterPlayerWallet(playerName);
 	}	
 	
 	public boolean isPlayerRegistered(String playerName)
@@ -60,9 +59,9 @@ public class CommonProxy {
 		return playerHandler.isPlayerRegistered(playerName);
 	}
 		
-	public boolean registerBossLoot(String playerName,String bossName, String itemAddress)
+	public boolean RegisterBossLoot(String playerName,String bossName, String itemAddress)
 	{
-		return playerHandler.registerBossLoot(playerName, bossName, itemAddress);
+		return playerHandler.RegisterBossLoot(playerName, bossName, itemAddress);
 	}	
 
 	public boolean hasKilledBossBefore(String playerName, String bossName)
@@ -72,7 +71,7 @@ public class CommonProxy {
 	
 	public boolean wipePlayerProgress(String playerName)
 	{
-		return playerHandler.wipePlayerProgress(playerName);
+		return playerHandler.WipePlayerProgress(playerName);
 	}
 	
 	/* Other Stuff */

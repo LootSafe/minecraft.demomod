@@ -25,8 +25,7 @@ public class AdminWipeProgess implements ICommand {
 			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Wiping player progress..."));
 			
 			if(args.length == 1)
-			{				
-				
+			{			
 				String playerName = args[0];
 				
 				boolean result = Main.proxy.wipePlayerProgress(playerName);

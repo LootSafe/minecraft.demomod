@@ -30,13 +30,13 @@ public class ServerRecordHandler {
 	
 	public ArrayList<LootPlayer> LoadServerRecords() {
 		
-		System.out.println(Reference.CONSOLE_TAG + "Loading player records..");
+		//System.out.println(Reference.CONSOLE_TAG + "Loading player records..");
 		
 		ArrayList<LootPlayer> lootPlayers = new ArrayList<LootPlayer>();
 				
 		if(!doesFileExist(Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA))
 		{
-			System.out.println(Reference.CONSOLE_TAG + "Player records file not found, creating one.");
+			//System.out.println(Reference.CONSOLE_TAG + "Player records file not found, creating one.");
 			
 			createDirectory(Reference.DIR_PLAYERDATA);			
 			createFile(Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA, true);
@@ -69,7 +69,7 @@ public class ServerRecordHandler {
 		    lootPlayers.add(lootPlayer);
 		}
 		
-		System.out.println(Reference.CONSOLE_TAG + "Loaded Server Records Successfully.");
+		//System.out.println(Reference.CONSOLE_TAG + "Loaded Server Records Successfully.");
 		
 		return lootPlayers;
 	}
@@ -78,7 +78,7 @@ public class ServerRecordHandler {
 		
 		if(!doesFileExist(Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA))
 		{
-			System.out.println(Reference.CONSOLE_TAG + "Player records file not found, creating one.");
+			//System.out.println(Reference.CONSOLE_TAG + "Player records file not found, creating one.");
 			
 			createDirectory(Reference.DIR_PLAYERDATA);			
 			createFile(Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA, true);
@@ -123,7 +123,7 @@ public class ServerRecordHandler {
         } 
         catch (IOException e) { e.printStackTrace(); System.out.println(Reference.CONSOLE_TAG + "Error updating server records."); return false; }
 
-        System.out.println(Reference.CONSOLE_TAG + "Server Records Updated @ " + Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA);
+        //System.out.println(Reference.CONSOLE_TAG + "Server Records Updated @ " + Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA);
                 
 		return true;
 	}
@@ -145,11 +145,11 @@ public class ServerRecordHandler {
 	    try 
 	    {
 			Files.copy(fromFile, toBackupFile, options);
-			System.out.println(Reference.CONSOLE_TAG + " current file backed up.");
+			//System.out.println(Reference.CONSOLE_TAG + " current file backed up.");
 		} 
 	    catch (IOException e) 
 	    {
-	    	System.out.println(Reference.CONSOLE_TAG + " problem making a backup.");
+	    	//System.out.println(Reference.CONSOLE_TAG + " problem making a backup.");
 		}
 	    
 	}
@@ -162,7 +162,7 @@ public class ServerRecordHandler {
 		
 		try {
 			playerDataFile.createNewFile();
-			System.out.println(Reference.CONSOLE_TAG  + "File created @ " + filename);
+			//System.out.println(Reference.CONSOLE_TAG  + "File created @ " + filename);
 			
 			if(isDatafile){
 				UpdateServerRecords(new ArrayList<LootPlayer>());
@@ -170,7 +170,7 @@ public class ServerRecordHandler {
 			}
 			
 		} catch (IOException e) {
-			System.out.println(Reference.CONSOLE_TAG  + "ERROR creating new file @ " + filename);
+			//System.out.println(Reference.CONSOLE_TAG  + "ERROR creating new file @ " + filename);
 			e.printStackTrace();
 		}				
 		
@@ -188,11 +188,11 @@ public class ServerRecordHandler {
 		
 		if(file.exists() && !file.isDirectory()) 
 		{ 
-			System.out.println(Reference.CONSOLE_TAG + "File EXISTS, trying to from read file.");
+			//System.out.println(Reference.CONSOLE_TAG + "File EXISTS, trying to from read file.");
 		    return true;
 		}
 		
-		System.out.println(Reference.CONSOLE_TAG + "File does NOT EXIST, creating a new file.");
+		//System.out.println(Reference.CONSOLE_TAG + "File does NOT EXIST, creating a new file.");
 		return false;
 	}
 	

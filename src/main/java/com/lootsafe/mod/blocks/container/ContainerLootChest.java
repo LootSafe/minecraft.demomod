@@ -19,6 +19,81 @@ public class ContainerLootChest extends Container
 	private final int numRows;
 	private final TileEntityLootChest chestInventory;
 	
+	/* Chest logic that matters */
+	
+	private ItemBase selectedItem;
+	
+	public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player){
+
+		// See if what the user has clicked on is a tokenizable item
+		
+		try{
+			
+			Slot slot = this.inventorySlots.get(slotId);
+			ItemStack itemstack = slot.getStack();
+			ItemBase tokenizableItem = null;
+			
+			if(itemstack.getItem() instanceof ItemBase) {
+				
+				tokenizableItem = (ItemBase)itemstack.getItem();
+				
+				if(tokenizableItem != null)
+				{		
+					if(tokenizableItem.getIsTokenizable())
+					{
+						// The item is in hand ready to be transferred to the chest slot
+						// Only a valid tokenizable item
+						// ie When the tooltip showing the item to transfer is selected
+						selectedItem = tokenizableItem;
+					}				
+				}
+			}
+			else {
+				
+				// It its not castable to a tokenizable object
+				
+				if(selectedItem != null && validSlot(slotId))
+				{					
+					// If a tokenizable item is selected and is being placed into an empty slot inside of the chest part of the UI 
+					
+					String walletAddress = Main.proxy.getPlayerWalletAddress(player.getName());
+					
+					player.sendMessage(new TextComponentString(Reference.SendingItemText + walletAddress));
+					
+					if(Main.proxy.addTokenizedItemStr(player, selectedItem.getItemAddress()))
+					{
+						itemstack.shrink(1);					
+						slot = null;
+						itemstack = null;	
+						player.closeScreen();
+					}
+					else
+					{
+						player.sendMessage(new TextComponentString(TextFormatting.RED + "Error sending item, try later."));
+						player.closeScreen();
+					}
+					
+				}
+			}					
+			
+		}
+		catch(Exception e) { System.out.println(e.toString()); }
+		
+		return super.slotClick(slotId, dragType, clickTypeIn, player);		
+	}
+	
+	private boolean validSlot(int slotId){
+		
+		if(slotId >= 0 && slotId <= 71){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}	
+	
+	/* Chest Logic */
+	
 	public ContainerLootChest(InventoryPlayer playerInv, TileEntityLootChest tileEntityLootChest, EntityPlayer player) 
 	{
 		this.chestInventory = tileEntityLootChest;
@@ -46,44 +121,6 @@ public class ContainerLootChest extends Container
 			this.addSlotToContainer(new Slot(playerInv, x, 8 + x*18, 233));
 		}
 		
-	}
-
-	public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player){
-		
-		/*
-		 * 
-		 * Custom Chest Stuff is here! 
-		 */		
-		
-		try{
-			Slot slot = this.inventorySlots.get(slotId);
-			ItemStack itemstack1 = slot.getStack();			
-			ItemBase currentItem = (ItemBase)itemstack1.getItem();
-			
-			if(currentItem != null)
-			{				
-				if(currentItem.getIsTokenizable())
-				{					
-					player.sendMessage(new TextComponentString(Reference.SendingItemText + Main.proxy.getPlayerWalletAddress(player.getName())));
-					
-					if(Main.proxy.addTokenizedItemStr(player, currentItem.getItemAddress()))
-					{
-						itemstack1.shrink(1);					
-						slot = null;
-						itemstack1 = null;	
-						player.closeScreen();
-					}
-					else
-					{
-						player.sendMessage(new TextComponentString(TextFormatting.RED + "Error sending item, try later."));
-						player.closeScreen();
-					}
-				}
-			}
-		
-		}catch(Exception e){}
-		
-		return super.slotClick(slotId, dragType, clickTypeIn, player);		
 	}
 	
 	@Override

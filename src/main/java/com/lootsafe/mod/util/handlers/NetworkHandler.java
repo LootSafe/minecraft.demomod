@@ -55,7 +55,6 @@ public class NetworkHandler {
         try 
         {            
         	JsonObject response = nh.postSpawnItem(playerAddress, uniqueItemAddress);
-        	//JsonObject response = nh.postSpawnItem(playerAddress, uniqueItemAddress);
         	
         	if (response.getInt("status") == 200) 
         	{

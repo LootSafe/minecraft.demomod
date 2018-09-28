@@ -111,12 +111,6 @@ public class LootPlayer {
 	{
 		return this.playerWalletAddress;
 	}
-
-	public void wipePlayerProgress() 
-	{
-		this.defeatedBossesList = new ArrayList<String>();
-		this.latestLocalTokenizedItemList = new ArrayList<String>();
-	}
 	
 	public String toString()
 	{

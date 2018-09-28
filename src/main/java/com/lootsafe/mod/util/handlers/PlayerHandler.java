@@ -32,12 +32,12 @@ public class PlayerHandler {
 	
 	/* Wallet */
 	
-	public void registerPlayerWallet(String playerName, String playerWalletAddress)
+	public void RegisterPlayerWallet(String playerName, String playerWalletAddress)
 	{	
 		lootPlayers.add(new LootPlayer(playerName, playerWalletAddress));	
 	}
 	
-	public boolean unregisterPlayerWallet(String playerName)
+	public boolean UnregisterPlayerWallet(String playerName)
 	{		
 		if(isPlayerRegistered(playerName))
 		{			
@@ -66,23 +66,18 @@ public class PlayerHandler {
 
 	public String getPlayerWalletAddress(String playerName)
 	{		
-		if(isPlayerRegistered(playerName) == false)
-		{
-			return null;
-		}
-		
 		for(LootPlayer lootplayer : lootPlayers)
 		{
 			if(lootplayer.getPlayerName().equals(playerName))
-			{					
+			{		
 				return lootplayer.getPlayerWalletAddress();
 			}
 		}
 		
-		return null;
+		return "null";
 	}
 	
-	public boolean registerPlayerLoot(String playerName, String lootAddress)
+	public boolean RegisterPlayerLoot(String playerName, String lootAddress)
 	{		
 		for(LootPlayer lootplayer : lootPlayers)
 		{
@@ -96,7 +91,7 @@ public class PlayerHandler {
 		return false;
 	}
 	
-	public boolean registerBossLoot(String playerName,String bossName, String itemAddress)
+	public boolean RegisterBossLoot(String playerName, String bossName, String itemAddress)
 	{		
 		if(hasKilledBossBefore(playerName, bossName) == false)
 		{			
@@ -178,17 +173,27 @@ public class PlayerHandler {
 		return false;
 	}
 
-	public boolean wipePlayerProgress(String playerName) 
+	public boolean WipePlayerProgress(String playerName) 
 	{		
 		if(isPlayerRegistered(playerName))
 		{			
+			int pos = -1;
+			int cnt = 0;
+			
 			for(LootPlayer lootplayer : lootPlayers)
 			{
 				if(lootplayer.getPlayerName().equals(playerName))
 				{
-					lootplayer.wipePlayerProgress();
-					return true;
+					pos = cnt;
 				}
+				
+				++cnt;
+			}
+			
+			if(pos != -1)
+			{
+				lootPlayers.remove(pos);
+				return true;				
 			}
 		}
 		

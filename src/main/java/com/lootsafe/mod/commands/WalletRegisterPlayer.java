@@ -33,7 +33,7 @@ public class WalletRegisterPlayer implements ICommand {
 			{					
 				if(Main.proxy.isPlayerRegistered(player.getName()) == false)
 				{
-					Main.proxy.registerPlayerWallet(player.getName(), args[0]);
+					Main.proxy.RegisterPlayerWallet(player.getName(), args[0]);
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Registered!"));
 				}
 				else

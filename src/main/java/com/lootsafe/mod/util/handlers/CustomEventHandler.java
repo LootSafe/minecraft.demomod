@@ -81,7 +81,7 @@ public class CustomEventHandler {
 					 
 					 if(firstEmpty != -1)
 					 {						 
-						 Main.proxy.registerBossLoot(player.getName(), BOSS_NAME, Reference.lootcoin_gold_address);						 
+						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, Reference.lootcoin_gold_address);						 
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));			
 						 
 						 player.sendMessage(new TextComponentString(Reference.RecievedItemText + Reference.description_lootcoin_gold.get(0)));
@@ -110,7 +110,7 @@ public class CustomEventHandler {
 					 
 					 if(firstEmpty != -1)
 					 {						 
-						 Main.proxy.registerBossLoot(player.getName(), BOSS_NAME, Reference.lootcoin_silver_address);						 
+						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, Reference.lootcoin_silver_address);						 
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));			
 						 
 						 player.sendMessage(new TextComponentString(Reference.RecievedItemText + Reference.description_lootcoin_silver.get(0)));

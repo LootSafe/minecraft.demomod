@@ -47,19 +47,19 @@ public class Reference {
 	public static List<String> description_lootcoin_gold =
 			new ArrayList<String>() {{
 				add(TextFormatting.YELLOW + "LootSafe Gold Demo Token");
-				add(TextFormatting.WHITE + "LootSafe Gold Demo Token, Can be stored in your wallet!");
+				add(TextFormatting.WHITE + "Can be stored in your wallet!");
 			}};
 			
 	public static List<String> description_lootcoin_silver =
 			new ArrayList<String>() {{
 				add(TextFormatting.YELLOW + "LootSafe Silver Demo Token");
-				add(TextFormatting.WHITE + "LootSafe Silver Demo Token, Can be stored in your wallet!");
+				add(TextFormatting.WHITE + "Can be stored in your wallet!");
 			}};
 					
 	public static List<String> description_lootcoin_copper =
 			new ArrayList<String>() {{
 				add(TextFormatting.YELLOW + "LootSafe Copper Demo Token");
-				add(TextFormatting.WHITE + "LootSafe Copper Demo Token, Can be stored in your wallet!");
+				add(TextFormatting.WHITE + "Can be stored in your wallet!");
 			}};				
 			
 	public static List<String> description_lootchest =
