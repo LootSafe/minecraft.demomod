@@ -5,9 +5,6 @@ import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.json.JsonObject;
-
-import com.lootsafe.mod.Main;
 import com.lootsafe.mod.Reference;
 
 import io.lootsafe.api.ServiceProvider;
@@ -50,8 +47,13 @@ public class NetworkHandler {
 		
 		//String uniqueItemAddress = getUniqueAddress(item.getItemAddress());		
 		
-		/* See Above */		
-		
+		/* See Above */		    	
+    	
+    	return true;
+    	
+		/*
+		 * Uncomment this.... 
+		 * 
         try 
         {            
         	JsonObject response = nh.postSpawnItem(playerAddress, uniqueItemAddress);
@@ -72,6 +74,7 @@ public class NetworkHandler {
             e.printStackTrace();
             return false;
         }
+        */
         
     }
     

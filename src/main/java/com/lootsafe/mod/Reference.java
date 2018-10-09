@@ -33,7 +33,7 @@ public class Reference {
 	public static String privateKey = "pWpzWuxoKUKAmlHc0wPi7lFS38FTth";
 	public static String host = "http://localhost:1337";
 	public static String version = "1";
-	public static boolean debug = false;
+	public static boolean debug = true;
 	
 	public static final String RecievedItemText = (TextFormatting.BLUE + "* Received ");	
 	public static final String SendingItemText = (TextFormatting.BLUE + "Sending item to your wallet @ " + TextFormatting.YELLOW);
