@@ -32,7 +32,7 @@ public class Reference {
 	public static String otp = "";
 	public static String privateKey = "";
 	public static String host = "http://localhost:1337";
-	public static String version = "";
+	public static String version = "1";
 	public static boolean debug = false;
 	
 	public static final String RecievedItemText = (TextFormatting.BLUE + "* Received ");	
