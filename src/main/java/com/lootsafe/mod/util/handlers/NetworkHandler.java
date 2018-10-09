@@ -22,12 +22,20 @@ public class NetworkHandler {
     public NetworkHandler(){
     	
         sv = new ServiceProvider.ServiceBuilder()
+		        .withHost(Reference.host)
+		        .withPrivateKey(Reference.privateKey)
+		        .withDebug(Reference.debug)
+		        .build();
+
+        /*
+        sv = new ServiceProvider.ServiceBuilder()
 		        .withVersion(Reference.version)
 		        .withHost(Reference.host)
 		        .withPrivateKey(Reference.privateKey)
 		        .withDebug(Reference.debug)
 		        .build();
-		
+        */
+        
 		sv.startService();
 		
 		if (sv.isWorking()) 
