@@ -30,7 +30,7 @@ public class Reference {
 	/* Server Stuff */
 	
 	public static String otp = "";
-	public static String privateKey = "";
+	public static String privateKey = "pWpzWuxoKUKAmlHc0wPi7lFS38FTth";
 	public static String host = "http://localhost:1337";
 	public static String version = "1";
 	public static boolean debug = false;
