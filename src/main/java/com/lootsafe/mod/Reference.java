@@ -31,7 +31,7 @@ public class Reference {
 	
 	public static String otp = "";
 	public static String privateKey = "";
-	public static String host = "http://localhost:1337/v1/";
+	public static String host = "http://localhost:1337";
 	public static String version = "";
 	public static boolean debug = false;
 	
