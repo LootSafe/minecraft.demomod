@@ -13,6 +13,8 @@ import com.lootsafe.mod.commands.WalletWalletAddress;
 import com.lootsafe.mod.proxy.CommonProxy;
 import com.lootsafe.mod.util.LootStoreTab;
 import com.lootsafe.mod.util.handlers.CustomEventHandler;
+import com.lootsafe.mod.util.network.CustomNetworkMessage;
+import com.lootsafe.mod.util.network.CustomNetworkMessageHandler;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,6 +27,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -33,7 +37,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class Main {
 	
 	private static CustomEventHandler customEventHandler = new CustomEventHandler();
-	public static final CreativeTabs LOOTSTORETAB = new LootStoreTab("lootstoretab");
+	public static final CreativeTabs LOOTSTORETAB = new LootStoreTab("lootstoretab");	
+	public static SimpleNetworkWrapper network;
 	
 	@Instance
 	public static Main instance;
@@ -49,6 +54,9 @@ public class Main {
 		MinecraftForge.EVENT_BUS.register(customEventHandler);
 		FMLCommonHandler.instance().bus().register(customEventHandler);
 		
+		network = NetworkRegistry.INSTANCE.newSimpleChannel("CustomChannel");
+		network.registerMessage(CustomNetworkMessageHandler.class, CustomNetworkMessage.class, 0, Side.SERVER);
+	
 		proxy.preInitRegistries();
 	}
 	

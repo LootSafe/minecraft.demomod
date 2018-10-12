@@ -36,7 +36,7 @@ public class Reference {
 	public static boolean debug = true;
 	
 	public static final String RecievedItemText = (TextFormatting.BLUE + "* Received ");	
-	public static final String SendingItemText = (TextFormatting.BLUE + "Sending item to your wallet @ " + TextFormatting.YELLOW);
+	public static final String SendingItemText = (TextFormatting.BLUE + "Sending item to your wallet");
 		
 	public static String lootcoin_gold_address = "0xabcdef0123456789012345";
 	public static String lootcoin_silver_address = "0xbcdefa0123456789012345";

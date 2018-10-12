@@ -5,12 +5,11 @@ import java.util.List;
 import com.lootsafe.mod.Main;
 import com.lootsafe.mod.init.EntityInit;
 import com.lootsafe.mod.util.handlers.GuiHandler;
-import com.lootsafe.mod.util.handlers.NetworkHandler;
 import com.lootsafe.mod.util.handlers.PlayerHandler;
 import com.lootsafe.mod.util.handlers.RegistryHandlerServer;
+import com.lootsafe.mod.util.network.NetworkHandler;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -28,13 +27,13 @@ public class CommonProxy {
 	{
 		EntityInit.registerEntities();		
 		FMLCommonHandler.instance().bus().register(new RegistryHandlerServer());
+		playerHandler = new PlayerHandler();
+		networkHandler = new NetworkHandler();
 	}
 	
 	public void initRegistries() 
 	{
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
-		playerHandler = new PlayerHandler();
-		networkHandler = new NetworkHandler();
 	}
 	
 	public void registerItemRenderer(Item item, int meta, String id)
@@ -86,11 +85,11 @@ public class CommonProxy {
 		return playerHandler.getPlayerWalletAddress(playerName);
 	}
 	
-	public boolean addTokenizedItemStr(EntityPlayer player,String itemAddress)
+	public boolean addTokenizedItemStr(String playerName,String itemAddress)
 	{	
-		if(networkHandler.GivePlayerItem(player, playerHandler.getPlayerWalletAddress(player.getName()),  itemAddress))
+		if(networkHandler.GivePlayerItem(playerName, playerHandler.getPlayerWalletAddress(playerName),  itemAddress))
 		{
-			playerHandler.addTokenizedItemStr(player, itemAddress);
+			playerHandler.addTokenizedItemStr(playerName, itemAddress);
 			return true;
 		}
 		

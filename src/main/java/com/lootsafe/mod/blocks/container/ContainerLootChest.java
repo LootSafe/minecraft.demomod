@@ -4,6 +4,7 @@ import com.lootsafe.mod.Main;
 import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.blocks.tileenity.TileEntityLootChest;
 import com.lootsafe.mod.items.ItemBase;
+import com.lootsafe.mod.util.network.CustomNetworkMessage;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -13,71 +14,104 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class ContainerLootChest extends Container
 {
 	private final int numRows;
-	private final TileEntityLootChest chestInventory;
-	
-	/* Chest logic that matters */
-	
+	private final TileEntityLootChest chestInventory;	
 	private ItemBase selectedItem;
+	private int selectedItemId;
+
+	/* ------------------------------------------------------------------------------------------------------ */ 
+	
+	private void HandleWebStuff(EntityPlayer player, int slotId, int selectedItemId)
+	{
+		boolean success = false;
+		
+		// Server Logic
+		
+		if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
+		{		
+			Main.network.sendToServer(new CustomNetworkMessage(player.getName(), selectedItem.getItemAddress()));
+		}
+		else
+		{
+			System.out.println("RESPONSE NOPE");
+		}
+		
+		cleanUp(success, player, slotId, selectedItemId);	
+	}
+	
+	/* ------------------------------------------------------------------------------------------------------ */
+	
+	public void cleanUp(boolean success, EntityPlayer player, int slotId, int selectedItemId)
+	{
+		ItemStack itemstack;
+		
+		if(success) 
+		{
+			player.sendMessage(new TextComponentString(Reference.SendingItemText));	
+
+			itemstack = this.inventorySlots.get(slotId).getStack();
+			itemstack.shrink(1);
+			itemstack = this.inventorySlots.get(selectedItemId).getStack();
+			itemstack.shrink(1);
+			itemstack = null; 
+		}
+		else
+		{
+			player.sendMessage(new TextComponentString(TextFormatting.RED + "Error sending item, try later."));
+		}
+		
+		player.closeScreen();	
+	}
 	
 	public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player){
 
 		// See if what the user has clicked on is a tokenizable item
+			
+		Slot slot;
 		
 		try{
-			
-			Slot slot = this.inventorySlots.get(slotId);
-			ItemStack itemstack = slot.getStack();
-			ItemBase tokenizableItem = null;
-			
-			if(itemstack.getItem() instanceof ItemBase) {
-				
-				tokenizableItem = (ItemBase)itemstack.getItem();
-				
-				if(tokenizableItem != null)
-				{		
-					if(tokenizableItem.getIsTokenizable())
-					{
-						// The item is in hand ready to be transferred to the chest slot
-						// Only a valid tokenizable item
-						// ie When the tooltip showing the item to transfer is selected
-						selectedItem = tokenizableItem;
-					}				
-				}
-			}
-			else {
-				
-				// It its not castable to a tokenizable object
-				
-				if(selectedItem != null && validSlot(slotId))
-				{					
-					// If a tokenizable item is selected and is being placed into an empty slot inside of the chest part of the UI 
-					
-					String walletAddress = Main.proxy.getPlayerWalletAddress(player.getName());
-					
-					player.sendMessage(new TextComponentString(Reference.SendingItemText + walletAddress));
-					
-					if(Main.proxy.addTokenizedItemStr(player, selectedItem.getItemAddress()))
-					{
-						itemstack.shrink(1);					
-						slot = null;
-						itemstack = null;	
-						player.closeScreen();
-					}
-					else
-					{
-						player.sendMessage(new TextComponentString(TextFormatting.RED + "Error sending item, try later."));
-						player.closeScreen();
-					}
-					
-				}
-			}					
-			
+			slot = this.inventorySlots.get(slotId);
+		} catch(Exception e) {
+			// For some reason an array out of bounds error gets triggered
+			// This is to solve these weird clicks
+			return super.slotClick(slotId, dragType, clickTypeIn, player);	
 		}
-		catch(Exception e) { System.out.println(e.toString()); }
+		
+		ItemStack itemstack = slot.getStack();
+		ItemBase tokenizableItem = null;
+		
+		if(itemstack.getItem() instanceof ItemBase) {
+			
+			tokenizableItem = (ItemBase)itemstack.getItem();
+			
+			if(tokenizableItem != null)
+			{		
+				if(tokenizableItem.getIsTokenizable())
+				{
+					// The item is in hand ready to be transferred to the chest slot
+					// Only a valid tokenizable item
+					// ie When the tooltip showing the item to transfer is selected
+					selectedItem = tokenizableItem;
+					selectedItemId = slotId;
+				}				
+			}
+		}
+		else {
+			
+			// It its not castable to a tokenizable object
+			
+			if(selectedItem != null && validSlot(slotId))
+			{					
+				// If a tokenizable item is selected and is being placed into an empty slot inside of the chest part of the UI 
+				
+				HandleWebStuff(player, slotId, selectedItemId);							
+			}
+		}	
 		
 		return super.slotClick(slotId, dragType, clickTypeIn, player);		
 	}
@@ -91,8 +125,6 @@ public class ContainerLootChest extends Container
 			return false;
 		}
 	}	
-	
-	/* Chest Logic */
 	
 	public ContainerLootChest(InventoryPlayer playerInv, TileEntityLootChest tileEntityLootChest, EntityPlayer player) 
 	{
