@@ -15,6 +15,8 @@ import com.lootsafe.mod.util.LootStoreTab;
 import com.lootsafe.mod.util.handlers.CustomEventHandler;
 import com.lootsafe.mod.util.network.CustomNetworkMessage;
 import com.lootsafe.mod.util.network.CustomNetworkMessageHandler;
+import com.lootsafe.mod.util.network.CustomNetworkResponse;
+import com.lootsafe.mod.util.network.CustomNetworkResponseHandler;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -56,6 +58,7 @@ public class Main {
 		
 		network = NetworkRegistry.INSTANCE.newSimpleChannel("CustomChannel");
 		network.registerMessage(CustomNetworkMessageHandler.class, CustomNetworkMessage.class, 0, Side.SERVER);
+		network.registerMessage(CustomNetworkResponseHandler.class, CustomNetworkResponse.class, 1, Side.CLIENT);
 	
 		proxy.preInitRegistries();
 	}

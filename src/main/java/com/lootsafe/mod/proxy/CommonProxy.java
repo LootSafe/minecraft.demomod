@@ -7,6 +7,7 @@ import com.lootsafe.mod.init.EntityInit;
 import com.lootsafe.mod.util.handlers.GuiHandler;
 import com.lootsafe.mod.util.handlers.PlayerHandler;
 import com.lootsafe.mod.util.handlers.RegistryHandlerServer;
+import com.lootsafe.mod.util.network.CustomNetworkResponse;
 import com.lootsafe.mod.util.network.NetworkHandler;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -14,6 +15,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 @SuppressWarnings("deprecation")
 public class CommonProxy {
@@ -105,5 +107,9 @@ public class CommonProxy {
 	{
 		playerHandler.removePlayerTokenizedItem(playerName, uniqueItemAddress);	
 	}
-
+	
+	public void handleNetworkResponse(CustomNetworkResponse message, MessageContext ctx)
+	{
+		//Override, doesn't do anything
+	}
 }

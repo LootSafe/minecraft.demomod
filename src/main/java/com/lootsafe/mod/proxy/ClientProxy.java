@@ -10,15 +10,21 @@ import com.lootsafe.mod.util.handlers.GuiHandler;
 import com.lootsafe.mod.util.handlers.PlayerHandler;
 import com.lootsafe.mod.util.handlers.RegistryHandlerClient;
 import com.lootsafe.mod.util.handlers.RenderHandler;
+import com.lootsafe.mod.util.network.CustomNetworkResponse;
 import com.lootsafe.mod.util.network.NetworkHandler;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
 
 @SuppressWarnings("unused")
 public class ClientProxy extends CommonProxy {
@@ -49,4 +55,10 @@ public class ClientProxy extends CommonProxy {
 		return false;
 	}
 	
+	public void handleNetworkResponse(CustomNetworkResponse message, MessageContext ctx)
+	{
+		int statusCode = message.getStatusCode();		
+		EntityPlayer player = Minecraft.getMinecraft().player;			
+		player.sendMessage(new TextComponentString(TextFormatting.GREEN + "RESPONSE: " + statusCode));	
+	}
 }
