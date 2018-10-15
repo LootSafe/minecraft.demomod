@@ -23,8 +23,6 @@ public class ContainerLootChest extends Container
 	private final TileEntityLootChest chestInventory;	
 	private ItemBase selectedItem;
 	private int selectedItemId;
-
-	/* ------------------------------------------------------------------------------------------------------ */ 
 	
 	private void HandleWebStuff(EntityPlayer player, int slotId, int selectedItemId)
 	{
@@ -34,17 +32,11 @@ public class ContainerLootChest extends Container
 		
 		if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
 		{		
-			Main.network.sendToServer(new CustomNetworkMessage(player.getName(), selectedItem.getItemAddress()));
-		}
-		else
-		{
-			System.out.println("RESPONSE NOPE");
+			Main.network.sendToServer(new CustomNetworkMessage(player.getName(), selectedItem.getItemAddress(), selectedItemId, slotId));
 		}
 		
 		cleanUp(success, player, slotId, selectedItemId);	
 	}
-	
-	/* ------------------------------------------------------------------------------------------------------ */
 	
 	public void cleanUp(boolean success, EntityPlayer player, int slotId, int selectedItemId)
 	{

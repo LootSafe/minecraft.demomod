@@ -9,6 +9,8 @@ public class CustomNetworkMessage implements IMessage {
 	
 	private String playerName;
 	private String itemAddress;
+	private int selectedSlotId = -1;
+	private int slotId = -1;
 	private CerealizerHelper cerealizerHelper;
 	
 	public CustomNetworkMessage()
@@ -16,16 +18,18 @@ public class CustomNetworkMessage implements IMessage {
 		cerealizerHelper = new CerealizerHelper();
 	}
 	
-	public CustomNetworkMessage(String playerName, String itemAddress) 
+	public CustomNetworkMessage(String playerName, String itemAddress, int selectedSlotId, int slotId) 
 	{
 		cerealizerHelper = new CerealizerHelper();
 		this.playerName = playerName;
 		this.itemAddress = itemAddress;
+		this.selectedSlotId = selectedSlotId;
+		this.slotId = slotId;
 	}
 	
 	@Override public void toBytes(ByteBuf buf) 
 	{		
-		NetworkItemObj networkItemObj = new NetworkItemObj(playerName, itemAddress);		
+		NetworkItemObj networkItemObj = new NetworkItemObj(playerName, itemAddress, selectedSlotId, slotId);		
 		
 		try 
 		{
@@ -46,6 +50,8 @@ public class CustomNetworkMessage implements IMessage {
 			networkItemObj = cerealizerHelper.decerealizeNetworkItemObj(buf);
 			this.playerName = networkItemObj.getPlayerName();
 			this.itemAddress = networkItemObj.getItemAddress();
+			this.selectedSlotId = networkItemObj.getSelectedSlotId();
+			this.slotId = networkItemObj.getSelectedSlotId();
 		} 
 		catch (Exception e) 
 		{
@@ -61,6 +67,16 @@ public class CustomNetworkMessage implements IMessage {
 	public String getItemAddress()
 	{
 		return this.itemAddress;
+	}
+
+	public int getSelectedSlotId()
+	{
+		return this.selectedSlotId;
+	}
+
+	public int getSlotId() 
+	{
+		return this.slotId;
 	}
 	
 }

@@ -6,6 +6,8 @@ public class NetworkResponseObj implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private int statusCode = 500;
+	private int slotId = -1;
+	private int selectedSlotId = -1;
 	
 	public NetworkResponseObj(int statusCode)
 	{
@@ -15,6 +17,16 @@ public class NetworkResponseObj implements Serializable {
 	public int getStatusCode()
 	{
 		return this.statusCode;
+	}
+	
+	public int getSlotId()
+	{
+		return this.slotId;
+	}
+	
+	public int getSelectedSlotId()
+	{
+		return this.selectedSlotId;
 	}
 	
 }

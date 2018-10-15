@@ -8,6 +8,8 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 public class CustomNetworkResponse implements IMessage {
 	
 	private int statusCode;
+	private int selectedSlotId;
+	private int slotId;
 	private CerealizerHelper cerealizerHelper;
 	
 	public CustomNetworkResponse()
@@ -15,10 +17,12 @@ public class CustomNetworkResponse implements IMessage {
 		cerealizerHelper = new CerealizerHelper();
 	}
 	
-	public CustomNetworkResponse(int statusCode) 
+	public CustomNetworkResponse(int statusCode, int selectedSlotId, int slotId) 
 	{
 		cerealizerHelper = new CerealizerHelper();
 		this.statusCode = statusCode;
+		this.selectedSlotId = selectedSlotId;
+		this.slotId = slotId;
 	}
 	
 	@Override public void toBytes(ByteBuf buf) 
@@ -43,6 +47,8 @@ public class CustomNetworkResponse implements IMessage {
 		{
 			networkResponseObj = cerealizerHelper.decerealizeNetworkResponseObj(buf);
 			this.statusCode = networkResponseObj.getStatusCode();
+			this.selectedSlotId = networkResponseObj.getSelectedSlotId();
+			this.slotId = networkResponseObj.getSlotId();
 		} 
 		catch (Exception e) 
 		{
@@ -53,6 +59,16 @@ public class CustomNetworkResponse implements IMessage {
 	public int getStatusCode()
 	{
 		return this.statusCode;
+	}
+	
+	public int getSlotId()
+	{
+		return this.slotId;
+	}
+	
+	public int getSelectedSlotId()
+	{
+		return this.selectedSlotId;
 	}
 	
 }

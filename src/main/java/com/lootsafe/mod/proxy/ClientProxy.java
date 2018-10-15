@@ -58,7 +58,14 @@ public class ClientProxy extends CommonProxy {
 	public void handleNetworkResponse(CustomNetworkResponse message, MessageContext ctx)
 	{
 		int statusCode = message.getStatusCode();		
-		EntityPlayer player = Minecraft.getMinecraft().player;			
-		player.sendMessage(new TextComponentString(TextFormatting.GREEN + "RESPONSE: " + statusCode));	
+		int slotId = message.getSlotId();
+		int selectedSlotId = message.getSelectedSlotId();
+		
+		EntityPlayer player = Minecraft.getMinecraft().player;		
+		
+		String result = "Status Code: " + statusCode + " slotId: " + slotId + " selectedSlotId" + selectedSlotId;
+		
+		player.sendMessage(new TextComponentString(TextFormatting.GREEN + result));	
+		player.closeScreen();
 	}
 }
