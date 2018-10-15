@@ -23,42 +23,8 @@ public class ContainerLootChest extends Container
 	private final TileEntityLootChest chestInventory;	
 	private ItemBase selectedItem;
 	private int selectedItemId;
-	
-	private void HandleWebStuff(EntityPlayer player, int slotId, int selectedItemId)
-	{
-		boolean success = false;
-		
-		// Server Logic
-		
-		if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
-		{		
-			Main.network.sendToServer(new CustomNetworkMessage(player.getName(), selectedItem.getItemAddress(), selectedItemId, slotId));
-		}
-		
-		//cleanUp(success, player, slotId, selectedItemId);	
-	}
-	
-	public void cleanUp(boolean success, EntityPlayer player, int slotId, int selectedItemId)
-	{
-		ItemStack itemstack;
-		
-		if(success) 
-		{
-			player.sendMessage(new TextComponentString(Reference.SendingItemText));	
 
-			itemstack = this.inventorySlots.get(slotId).getStack();
-			itemstack.shrink(1);
-			itemstack = this.inventorySlots.get(selectedItemId).getStack();
-			itemstack.shrink(1);
-			itemstack = null; 
-		}
-		else
-		{
-			player.sendMessage(new TextComponentString(TextFormatting.RED + "Error sending item, try later."));
-		}
-		
-		player.closeScreen();	
-	}
+	/* Chest Logic */
 	
 	public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player){
 
@@ -144,7 +110,7 @@ public class ContainerLootChest extends Container
 		{
 			this.addSlotToContainer(new Slot(playerInv, x, 8 + x*18, 233));
 		}
-		
+				
 	}
 	
 	@Override
@@ -206,6 +172,27 @@ public class ContainerLootChest extends Container
 	public TileEntityLootChest getChestInventory()
 	{
 		return this.chestInventory;
+	}
+	
+	/* Server/Client Logic */
+	
+	public void cleanUp(boolean success, EntityPlayer player, int slotId, int selectedItemId)
+	{
+		ItemStack itemstack;
+
+		itemstack = this.inventorySlots.get(slotId).getStack();
+		itemstack.shrink(1);
+		itemstack = this.inventorySlots.get(selectedItemId).getStack();
+		itemstack.shrink(1);
+		itemstack = null; 
+	}
+	
+	private void HandleWebStuff(EntityPlayer player, int slotId, int selectedItemId)
+	{
+		if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
+		{		
+			Main.network.sendToServer(new CustomNetworkMessage(player.getName(), selectedItem.getItemAddress(), selectedItemId, slotId));
+		}		
 	}
 	
 }
