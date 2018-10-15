@@ -35,7 +35,7 @@ public class ContainerLootChest extends Container
 			Main.network.sendToServer(new CustomNetworkMessage(player.getName(), selectedItem.getItemAddress(), selectedItemId, slotId));
 		}
 		
-		cleanUp(success, player, slotId, selectedItemId);	
+		//cleanUp(success, player, slotId, selectedItemId);	
 	}
 	
 	public void cleanUp(boolean success, EntityPlayer player, int slotId, int selectedItemId)

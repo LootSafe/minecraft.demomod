@@ -7,10 +7,11 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 public class CustomNetworkResponse implements IMessage {
 	
+	private CerealizerHelper cerealizerHelper;
+	
 	private int statusCode;
 	private int selectedSlotId;
 	private int slotId;
-	private CerealizerHelper cerealizerHelper;
 	
 	public CustomNetworkResponse()
 	{
@@ -27,7 +28,7 @@ public class CustomNetworkResponse implements IMessage {
 	
 	@Override public void toBytes(ByteBuf buf) 
 	{		
-		NetworkResponseObj networkResponseObj = new NetworkResponseObj(statusCode);		
+		NetworkResponseObj networkResponseObj = new NetworkResponseObj(statusCode, selectedSlotId, slotId);		
 		
 		try 
 		{

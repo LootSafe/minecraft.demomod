@@ -9,9 +9,11 @@ public class NetworkResponseObj implements Serializable {
 	private int slotId = -1;
 	private int selectedSlotId = -1;
 	
-	public NetworkResponseObj(int statusCode)
+	public NetworkResponseObj(int statusCode, int selectedSlotId, int slotId)
 	{
 		this.statusCode = statusCode;
+		this.selectedSlotId = selectedSlotId;
+		this.slotId = slotId;
 	}
 	
 	public int getStatusCode()

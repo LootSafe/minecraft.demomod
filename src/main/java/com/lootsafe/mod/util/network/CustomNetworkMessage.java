@@ -7,11 +7,12 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 public class CustomNetworkMessage implements IMessage {
 	
+	private CerealizerHelper cerealizerHelper;
+	
 	private String playerName;
 	private String itemAddress;
 	private int selectedSlotId = -1;
 	private int slotId = -1;
-	private CerealizerHelper cerealizerHelper;
 	
 	public CustomNetworkMessage()
 	{
@@ -51,7 +52,7 @@ public class CustomNetworkMessage implements IMessage {
 			this.playerName = networkItemObj.getPlayerName();
 			this.itemAddress = networkItemObj.getItemAddress();
 			this.selectedSlotId = networkItemObj.getSelectedSlotId();
-			this.slotId = networkItemObj.getSelectedSlotId();
+			this.slotId = networkItemObj.getSlotId();
 		} 
 		catch (Exception e) 
 		{
