@@ -25,6 +25,7 @@ Save the current state of the players loot token inventory to file
 * **/unregister** <-- You don't need this but it lets you re-register your address in case you.
 * **/wallet** <-- Shows your current address.
 * **/loot** <-- Shows id's received.
+* **/blank** <-- Clears chat.
 
 ## Items to Spawn
 

@@ -40,7 +40,7 @@ public class CleanChat implements ICommand {
 	public List<String> getAliases()
 	{
 		List<String> commandAliases = new ArrayList<String>();
-		commandAliases.add("clean");
+		commandAliases.add("blank");
 		return commandAliases;
 	}
 	
