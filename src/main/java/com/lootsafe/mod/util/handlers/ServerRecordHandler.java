@@ -28,6 +28,28 @@ public class ServerRecordHandler {
 			
 	/* File Writing & File Updating */
 	
+	public String getPrivateKey()
+	{
+		String privateKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+		
+		if(doesFileExist(Reference.DIR_PLAYERDATA + Reference.FILENAME_CONFIG))
+		{			
+			JSONParser jsonParser = new JSONParser();
+			
+			try 
+			{				
+				Object parsedObj = jsonParser.parse(new FileReader(Reference.DIR_PLAYERDATA + Reference.FILENAME_CONFIG));				
+				JSONObject jsonObject = (JSONObject) parsedObj;
+				privateKey = (String) jsonObject.get("privatekey");
+			} 
+			catch (Exception e) { e.printStackTrace(); return privateKey; }  
+		
+			return privateKey;	
+		}
+		
+		return privateKey;
+	}
+	
 	public ArrayList<LootPlayer> LoadServerRecords() {
 		
 		//System.out.println(Reference.CONSOLE_TAG + "Loading player records..");

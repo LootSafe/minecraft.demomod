@@ -22,6 +22,8 @@ public class Reference {
 	public static final String DIR_BACKUP_PLAYERDATA = "lootsafedata/lootbackup/";
 	public static final String FILENAME_BACKUPDATA = "lootplayers";
 	
+	public static final String FILENAME_CONFIG = "config.json";
+	
 	public static final int ENTITY_LOOTSKELETON = 666;
 	public static final int ENTITY_LOOTSPIDER = 667;
 	public static final int GUI_LOOT_CHEST = 2;
@@ -30,7 +32,7 @@ public class Reference {
 	/* Server Stuff */
 	
 	public static String otp = "";
-	public static String privateKey = "pWpzWuxoKUKAmlHc0wPi7lFS38FTth";
+	public static String privateKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 	public static String host = "http://localhost:1337";
 	public static String version = "1";
 	public static boolean debug = true;
@@ -63,4 +65,11 @@ public class Reference {
 				add(TextFormatting.WHITE + "A LootSafe for storing your Loot!");
 			}};	
 			
+	/* Set Key */
+			
+	public static void setPrivateKey(String key)
+	{
+		privateKey = key;
+	}
+	
 }

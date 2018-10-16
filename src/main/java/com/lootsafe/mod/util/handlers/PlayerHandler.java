@@ -3,6 +3,8 @@ package com.lootsafe.mod.util.handlers;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lootsafe.mod.Reference;
+
 public class PlayerHandler {
 	
 	private ArrayList<LootPlayer> lootPlayers;	
@@ -14,6 +16,7 @@ public class PlayerHandler {
     {
     	serverRecordHandler = new ServerRecordHandler();
     	lootPlayers = LoadServerRecords();
+    	Reference.setPrivateKey(serverRecordHandler.getPrivateKey());
     }
 	
     /* Server Load & Save */
