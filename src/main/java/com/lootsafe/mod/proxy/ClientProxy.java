@@ -63,8 +63,6 @@ public class ClientProxy extends CommonProxy {
 		
 		EntityPlayer player = Minecraft.getMinecraft().player;		
 		
-		//String result = "Status Code: " + statusCode + " slotId: " + slotId + " selectedSlotId " + selectedSlotId;
-		
 		if(statusCode == 200)
 		{
 			player.sendMessage(new TextComponentString(Reference.SendingItemText));	

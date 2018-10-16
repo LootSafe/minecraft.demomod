@@ -3,7 +3,7 @@ package com.lootsafe.mod.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lootsafe.mod.Reference;
+import com.lootsafe.mod.util.handlers.LootHandler;
 
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -22,11 +22,11 @@ public class AdminAddressSilver implements ICommand {
 		if(sender instanceof EntityPlayer)
 		{			
 			EntityPlayer player = (EntityPlayer) sender;				
-			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Replacing Silver Coin Address..." + Reference.lootcoin_silver_address));
+			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Replacing Silver Coin Address..."));
 			
 			if(args.length == 1)
 			{				
-				Reference.lootcoin_silver_address = args[0];
+				LootHandler.getInstance().setSilverAddress(args[0]);
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Silver Coin Set to: " + args[0]));			
 			}
 			else

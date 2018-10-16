@@ -52,8 +52,7 @@ public class ItemBase extends Item implements Modelable {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) 
-	{	
-		
+	{			
 		if(stack.getItem().getUnlocalizedName().equals("item.lootcoin-gold"))
 		{
 			for(String s : Reference.description_lootcoin_gold)

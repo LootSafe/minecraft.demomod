@@ -5,6 +5,7 @@ import java.util.List;
 import com.lootsafe.mod.Main;
 import com.lootsafe.mod.init.EntityInit;
 import com.lootsafe.mod.util.handlers.GuiHandler;
+import com.lootsafe.mod.util.handlers.LootHandler;
 import com.lootsafe.mod.util.handlers.PlayerHandler;
 import com.lootsafe.mod.util.handlers.RegistryHandlerServer;
 import com.lootsafe.mod.util.network.CustomNetworkResponse;
@@ -87,11 +88,14 @@ public class CommonProxy {
 		return playerHandler.getPlayerWalletAddress(playerName);
 	}
 	
-	public boolean addTokenizedItemStr(String playerName,String itemAddress)
-	{	
-		if(networkHandler.GivePlayerItem(playerName, playerHandler.getPlayerWalletAddress(playerName),  itemAddress))
+	public boolean addTokenizedItemStr(String playerName,String itemUnlocalisedName)
+	{			
+		String playerWalletAddress = playerHandler.getPlayerWalletAddress(playerName);
+		String itemAddress = LootHandler.getInstance().getLootAddressByName(itemUnlocalisedName);
+		
+		if(networkHandler.GivePlayerItem(playerName, playerWalletAddress, itemAddress))
 		{
-			playerHandler.addTokenizedItemStr(playerName, itemAddress);
+			playerHandler.addTokenizedItemStr(playerName, itemUnlocalisedName);
 			return true;
 		}
 		

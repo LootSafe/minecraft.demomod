@@ -42,9 +42,6 @@ public class NetworkHandler {
     
     public boolean GivePlayerItem(String playerName, String playerAddress, String uniqueItemAddress) 
     {	
-    	return true;
-    	
-    	/*
         try 
         {            
         	JsonObject response = nh.postSpawnItem(uniqueItemAddress, playerAddress);
@@ -56,16 +53,18 @@ public class NetworkHandler {
         	}
         	else
         	{
+        		System.out.println("ERROR CALLING THE API: " + response.getInt("status")); 
         		return false;        		
         	}
         	
         } 
         catch (Exception e) 
         {
-            e.printStackTrace();
+            System.out.println("ERROR CALLING THE API, Response wasn't 200"); 
+            //e.printStackTrace();
             return false;
         } 
-        */      
+        
     }
     
     public String getUniqueAddress(String itemAddress)
