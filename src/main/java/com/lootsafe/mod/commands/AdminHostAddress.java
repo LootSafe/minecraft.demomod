@@ -27,7 +27,7 @@ public class AdminHostAddress implements ICommand {
 			if(args.length == 1)
 			{				
 				Reference.hostAddress = args[0];
-				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Registered Host Address to: " + args[0]));			
+				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Registered Host Address to: " + Reference.hostAddress));			
 			}
 			else
 			{				

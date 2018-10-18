@@ -31,7 +31,6 @@ public class ServerRecordHandler {
 	
 	public ServerConfig getServerConfig()
 	{
-		ServerConfig serverConfig;
 		String privateKey,hostAddress,hostPort, version, otp;
 		boolean debug;
 		
@@ -51,7 +50,7 @@ public class ServerRecordHandler {
 				otp = (String) jsonObject.get("otp");
 				debug = (boolean) jsonObject.get("debug");
 				
-				return serverConfig = new ServerConfig(privateKey, hostAddress, hostPort, version, otp, debug);
+				return new ServerConfig(privateKey, hostAddress, hostPort, version, otp, debug);
 			} 
 			catch (Exception e) { e.printStackTrace(); return new ServerConfig(); } 
 		}

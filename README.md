@@ -8,6 +8,7 @@ These are the commands to do
 * **/registergold coinaddress**
 * **/registersilver coinaddress**
 * **/registerhost hostaddress**
+* **/registerport hostport**
   
 ### Debug  
 

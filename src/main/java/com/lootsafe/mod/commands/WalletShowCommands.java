@@ -32,8 +32,8 @@ public class WalletShowCommands implements ICommand {
 				if(sender.canUseCommand(1, getName()) == true)
 				{
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/registerhost"));
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/registerport"));
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/registergold"));
-					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/registersilver"));
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/wipeplayer playername"));
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/lootsave"));
 				}			

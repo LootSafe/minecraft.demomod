@@ -5,7 +5,7 @@ import com.lootsafe.mod.commands.AdminAddressSilver;
 import com.lootsafe.mod.commands.AdminForceSave;
 import com.lootsafe.mod.commands.AdminHostAddress;
 import com.lootsafe.mod.commands.AdminWipeProgess;
-import com.lootsafe.mod.commands.CleanChat;
+import com.lootsafe.mod.commands.BlankChat;
 import com.lootsafe.mod.commands.WalletRegisterPlayer;
 import com.lootsafe.mod.commands.WalletShowCommands;
 import com.lootsafe.mod.commands.WalletShowLoot;
@@ -81,7 +81,7 @@ public class Main {
 		event.registerServerCommand(new AdminAddressGold());
 		event.registerServerCommand(new AdminAddressSilver());
 		event.registerServerCommand(new AdminWipeProgess());
-		event.registerServerCommand(new CleanChat());
+		event.registerServerCommand(new BlankChat());
 		event.registerServerCommand(new WalletRegisterPlayer());
 		event.registerServerCommand(new WalletUnregisterPlayer());
 		event.registerServerCommand(new WalletWalletAddress());
