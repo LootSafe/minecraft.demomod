@@ -4,6 +4,7 @@ import com.lootsafe.mod.Main;
 import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.entity.EntityLootSkele;
 import com.lootsafe.mod.entity.EntityLootSpider;
+import com.lootsafe.mod.entity.EntityLootZombie;
 import com.lootsafe.mod.init.ItemInit;
 
 import net.minecraft.client.Minecraft;
@@ -61,6 +62,15 @@ public class CustomEventHandler {
 			}
 		}			
 		
+		/* EntityLootZombie - Sun Screen for daytime */		
+		
+		if (event.getEntity() instanceof EntityLootZombie)
+		{				
+			if(event.getEntity().isBurning())
+			{
+				event.getEntity().extinguish();
+			}
+		}		
 	}
 	
 	@SubscribeEvent
@@ -127,7 +137,35 @@ public class CustomEventHandler {
 
 		}	
 
-		/* EntityLoot....... - Death detection and spawning item into players inventory */
+		/* EntityLootZombie - Death detection and spawning item into players inventory */
+		
+		if (event.getEntity() instanceof EntityLootZombie && event.getSource().getTrueSource() instanceof EntityPlayer)
+		{			
+			final String BOSS_NAME = "EntityLootZombie";
+			EntityPlayer player = (EntityPlayer)event.getSource().getTrueSource();
+			
+			if(Main.proxy.isPlayerRegistered(player.getName()))
+			{							
+				if(Main.proxy.hasKilledBossBefore(player.getName(), BOSS_NAME) == false)
+				{						 
+					 int firstEmpty = player.inventory.getFirstEmptyStack();
+					 
+					 if(firstEmpty != -1)
+					 {				
+						 String lootcoin_gold_address = LootHandler.getInstance().getLootAddressByName("");
+						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_gold_address);						 
+						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));			
+						 
+						 player.sendMessage(new TextComponentString(Reference.RecievedItemText + Reference.description_lootcoin_gold.get(0)));
+					 }					 
+				}								
+			}
+			else
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.RED + "Can't give LOOT to unregistered player."));
+			}			
+
+		}	
 		
 	}	
 

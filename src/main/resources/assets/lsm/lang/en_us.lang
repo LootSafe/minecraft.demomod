@@ -4,6 +4,7 @@ item.lootcoin-copper.name=A Tokenizable Asset!
 
 entity.lootskele.name=LootSafe Boss Skeleton
 entity.lootspider.name=LootSafe Boss Spider
+entity.lootzombie.name=LootSafe Boss Zombie
 
 tile.loot_chest.name=LootSafe Storage
 container.loot_chest=LootSafe Storage

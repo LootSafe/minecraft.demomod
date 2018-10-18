@@ -21,6 +21,7 @@ public class Reference {
 	
 	public static final int ENTITY_LOOTSKELETON = 666;
 	public static final int ENTITY_LOOTSPIDER = 667;
+	public static final int ENTITY_LOOTZOMBIE = 668;
 	public static final int GUI_LOOT_CHEST = 2;
 	public static final float GLOBAL_BOSSMOB_SIZE = 1.0f;
 	
@@ -40,8 +41,8 @@ public class Reference {
 	/* Description Text */
 
 	public static final String CONSOLE_TAG = "[LOOTSAFE MOD] - ";	
-	public static final String RecievedItemText = (TextFormatting.BLUE + "* Received ");	
-	public static final String SendingItemText = (TextFormatting.BLUE + "Sending item to your wallet is a success!");
+	public static final String RecievedItemText = TextFormatting.DARK_PURPLE + "* Received ";	
+	public static final String SendingItemText = TextFormatting.DARK_PURPLE + "Your Loot is now safe!";
 	
 	public static List<String> description_lootcoin_gold =
 			new ArrayList<String>() {{

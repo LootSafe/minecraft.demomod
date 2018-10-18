@@ -7,7 +7,7 @@ import com.lootsafe.mod.commands.AdminHostAddress;
 import com.lootsafe.mod.commands.AdminWipeProgess;
 import com.lootsafe.mod.commands.BlankChat;
 import com.lootsafe.mod.commands.WalletRegisterPlayer;
-import com.lootsafe.mod.commands.WalletShowCommands;
+import com.lootsafe.mod.commands.HelpCommands;
 import com.lootsafe.mod.commands.WalletShowLoot;
 import com.lootsafe.mod.commands.WalletUnregisterPlayer;
 import com.lootsafe.mod.commands.WalletWalletAddress;
@@ -85,7 +85,7 @@ public class Main {
 		event.registerServerCommand(new WalletRegisterPlayer());
 		event.registerServerCommand(new WalletUnregisterPlayer());
 		event.registerServerCommand(new WalletWalletAddress());
-		event.registerServerCommand(new WalletShowCommands());		
+		event.registerServerCommand(new HelpCommands());		
 		event.registerServerCommand(new WalletShowLoot());	
 	}
 	

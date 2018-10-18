@@ -69,7 +69,7 @@ public class ClientProxy extends CommonProxy {
 		}
 		else
 		{
-			player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Error sending item."));
+			player.sendMessage(new TextComponentString(Reference.SendingItemText + TextFormatting.RED + " Error sending item!"));	
 		}
 		
 		player.closeScreen();

@@ -2,8 +2,10 @@ package com.lootsafe.mod.util.handlers;
 
 import com.lootsafe.mod.entity.EntityLootSkele;
 import com.lootsafe.mod.entity.EntityLootSpider;
+import com.lootsafe.mod.entity.EntityLootZombie;
 import com.lootsafe.mod.entity.renderer.RenderLootSkeleton;
 import com.lootsafe.mod.entity.renderer.RenderLootSpider;
+import com.lootsafe.mod.entity.renderer.RenderLootZombie;
 
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -40,10 +42,25 @@ public class RenderHandler {
 		
 	}
 	
+	public static void registerEntityRenderEntityLootZombie(float zombieSize){
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityLootZombie.class, new IRenderFactory<EntityLootZombie>(){
+
+			@Override
+			public Render<? super EntityLootZombie> createRenderFor(RenderManager manager) 
+			{
+				return new RenderLootZombie(manager, zombieSize);
+			}
+			
+		});
+		
+	}
+	
 	public static void registerAllEntityRenders(float size)
 	{		
 		registerEntityRenderEntityLootSkele(size);
 		registerEntityRenderEntityLootSpider(size);
+		registerEntityRenderEntityLootZombie(size);
 	}
 	
 }

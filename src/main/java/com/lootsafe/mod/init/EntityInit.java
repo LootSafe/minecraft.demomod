@@ -16,11 +16,13 @@ public class EntityInit {
 	 */
 	
 	public static void registerEntities(){
-		registerEntity("lootskele", EntityLootSkele.class, Reference.ENTITY_LOOTSKELETON, 50, 9830655, 65280);
-		registerEntity("lootspider", EntityLootSpider.class, Reference.ENTITY_LOOTSPIDER, 60, 000000, 255255255);
+		registerEntity("lootskele", EntityLootSkele.class, Reference.ENTITY_LOOTSKELETON, 50, 000000, 255000000);
+		registerEntity("lootspider", EntityLootSpider.class, Reference.ENTITY_LOOTSPIDER, 60, 000000, 000255000);
+		registerEntity("lootzombie", EntityLootSpider.class, Reference.ENTITY_LOOTZOMBIE, 60, 000000, 000000255);
 	}
 	
 	private static void registerEntity(String name, Class<? extends Entity> entity, int id, int range, int color1, int color2){
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + name), entity, name, id, Main.instance, range, 1, true, color1, color2);
 	}
+	
 }
