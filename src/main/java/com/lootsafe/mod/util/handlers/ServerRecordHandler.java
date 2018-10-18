@@ -20,6 +20,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.lootsafe.mod.Reference;
+import com.lootsafe.mod.ServerConfig;
 
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
@@ -28,9 +29,11 @@ public class ServerRecordHandler {
 			
 	/* File Writing & File Updating */
 	
-	public String getPrivateKey()
+	public ServerConfig getServerConfig()
 	{
-		String privateKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+		ServerConfig serverConfig;
+		String privateKey,hostAddress,hostPort, version, otp;
+		boolean debug;
 		
 		if(doesFileExist(Reference.DIR_PLAYERDATA + Reference.FILENAME_CONFIG))
 		{			
@@ -40,14 +43,20 @@ public class ServerRecordHandler {
 			{				
 				Object parsedObj = jsonParser.parse(new FileReader(Reference.DIR_PLAYERDATA + Reference.FILENAME_CONFIG));				
 				JSONObject jsonObject = (JSONObject) parsedObj;
+				
+				hostAddress = (String) jsonObject.get("hostAddress");
+				hostPort = (String) jsonObject.get("hostPort");
 				privateKey = (String) jsonObject.get("privatekey");
+				version =  (String) jsonObject.get("version");
+				otp = (String) jsonObject.get("otp");
+				debug = (boolean) jsonObject.get("debug");
+				
+				return serverConfig = new ServerConfig(privateKey, hostAddress, hostPort, version, otp, debug);
 			} 
-			catch (Exception e) { e.printStackTrace(); return privateKey; }  
-		
-			return privateKey;	
+			catch (Exception e) { e.printStackTrace(); return new ServerConfig(); } 
 		}
 		
-		return privateKey;
+		return new ServerConfig();
 	}
 	
 	public ArrayList<LootPlayer> LoadServerRecords() {

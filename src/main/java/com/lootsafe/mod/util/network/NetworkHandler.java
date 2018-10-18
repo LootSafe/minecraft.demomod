@@ -22,7 +22,7 @@ public class NetworkHandler {
     	
         sv = new ServiceProvider.ServiceBuilder()
         		.withVersion(Reference.version)
-		        .withHost(Reference.host)
+		        .withHost(Reference.hostAddress + Reference.hostPort)
 		        .withPrivateKey(Reference.privateKey)
 		        .withDebug(Reference.debug)
 		        .build();

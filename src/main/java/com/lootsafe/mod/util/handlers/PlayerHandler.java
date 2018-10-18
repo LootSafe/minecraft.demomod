@@ -13,10 +13,12 @@ public class PlayerHandler {
 	/* Constructors & Initialized */
 	
     public PlayerHandler()
-    {
+    {    	
     	serverRecordHandler = new ServerRecordHandler();
-    	lootPlayers = LoadServerRecords();
-    	Reference.setPrivateKey(serverRecordHandler.getPrivateKey());
+       	
+    	Reference.LoadConfig(serverRecordHandler.getServerConfig());
+       	
+    	lootPlayers = LoadServerRecords();  	 
     }
 	
     /* Server Load & Save */
