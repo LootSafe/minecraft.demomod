@@ -14,7 +14,7 @@ public class CerealizerHelper {
 	
 	/* MessageObj */
 	
-	public ByteBuf cerealizeNetworkItemObj(NetworkItemObj networkItemObj, ByteBuf buf) throws IOException {
+	public ByteBuf cerealizeNetworkItemObj(NetworkMessageObj networkItemObj, ByteBuf buf) throws IOException {
 		
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		ObjectOutput out = null;
@@ -39,7 +39,7 @@ public class CerealizerHelper {
 		return buf;
 	}
 	
-	public NetworkItemObj decerealizeNetworkItemObj(ByteBuf buf) throws IOException, ClassNotFoundException
+	public NetworkMessageObj decerealizeNetworkItemObj(ByteBuf buf) throws IOException, ClassNotFoundException
 	{		
 		byte[] bytes = new byte[buf.readableBytes()];
 		buf.readBytes(bytes);
@@ -50,7 +50,7 @@ public class CerealizerHelper {
 		try {			
 			in = new ObjectInputStream(bis);
 			Object o = in.readObject();		  
-			return (NetworkItemObj) o;
+			return (NetworkMessageObj) o;
 		} 
 		finally 
 		{

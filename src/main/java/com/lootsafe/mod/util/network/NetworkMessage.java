@@ -26,7 +26,7 @@ public class NetworkMessage implements IMessage {
 	
 	@Override public void toBytes(ByteBuf buf) 
 	{		
-		NetworkItemObj networkItemObj = new NetworkItemObj(playerName, itemName);		
+		NetworkMessageObj networkItemObj = new NetworkMessageObj(playerName, itemName);		
 		
 		try 
 		{
@@ -40,7 +40,7 @@ public class NetworkMessage implements IMessage {
 	
 	@Override public void fromBytes(ByteBuf buf) 
 	{
-		NetworkItemObj networkItemObj = null;
+		NetworkMessageObj networkItemObj = null;
 		
 		try 
 		{
