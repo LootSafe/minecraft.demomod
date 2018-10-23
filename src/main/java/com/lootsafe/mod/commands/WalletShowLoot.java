@@ -28,11 +28,15 @@ public class WalletShowLoot implements ICommand {
 			if(args.length == 0)
 			{				
 				if(Main.proxy.isPlayerRegistered(player.getName()))
-				{				
+				{							
+					// Return Wallet Items Here.
+					
+					/*
 					for(String item : Main.proxy.getPlayerTokenizedItemList(player.getName()))
 					{
 						player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.WHITE + item));												
 					}
+					*/
 				}
 				else
 				{

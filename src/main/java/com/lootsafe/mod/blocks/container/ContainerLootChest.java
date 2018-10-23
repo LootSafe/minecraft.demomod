@@ -53,7 +53,6 @@ public class ContainerLootChest extends Container
 					if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
 					{		
 						Main.network.sendToServer(new CustomNetworkMessage(player.getName(), selectedItem.getUnlocalizedName(), selectedItemId, slotId));
-						player.closeScreen();	
 					}	
 										
 					selectedItem = null;													
