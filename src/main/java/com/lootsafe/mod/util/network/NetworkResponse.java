@@ -5,19 +5,19 @@ import java.io.IOException;
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
-public class CustomNetworkResponse implements IMessage {
+public class NetworkResponse implements IMessage {
 	
 	private CerealizerHelper cerealizerHelper;
 	
 	private int statusCode;
 	private String itemName;
 	
-	public CustomNetworkResponse()
+	public NetworkResponse()
 	{
 		cerealizerHelper = new CerealizerHelper();
 	}
 	
-	public CustomNetworkResponse(int statusCode, String itemName) 
+	public NetworkResponse(int statusCode, String itemName) 
 	{
 		cerealizerHelper = new CerealizerHelper();
 		this.statusCode = statusCode;

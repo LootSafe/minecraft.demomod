@@ -14,10 +14,10 @@ import com.lootsafe.mod.commands.WalletWalletAddress;
 import com.lootsafe.mod.proxy.CommonProxy;
 import com.lootsafe.mod.util.LootStoreTab;
 import com.lootsafe.mod.util.handlers.CustomEventHandler;
-import com.lootsafe.mod.util.network.CustomNetworkMessage;
-import com.lootsafe.mod.util.network.CustomNetworkMessageHandler;
-import com.lootsafe.mod.util.network.CustomNetworkResponse;
-import com.lootsafe.mod.util.network.CustomNetworkResponseHandler;
+import com.lootsafe.mod.util.network.NetworkMessage;
+import com.lootsafe.mod.util.network.HandlerNetworkMessage;
+import com.lootsafe.mod.util.network.NetworkResponse;
+import com.lootsafe.mod.util.network.HandlerNetworkResponse;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -58,8 +58,8 @@ public class Main {
 		FMLCommonHandler.instance().bus().register(customEventHandler);
 		
 		network = NetworkRegistry.INSTANCE.newSimpleChannel("CustomChannel");
-		network.registerMessage(CustomNetworkMessageHandler.class, CustomNetworkMessage.class, 0, Side.SERVER);
-		network.registerMessage(CustomNetworkResponseHandler.class, CustomNetworkResponse.class, 1, Side.CLIENT);
+		network.registerMessage(HandlerNetworkMessage.class, NetworkMessage.class, 0, Side.SERVER);
+		network.registerMessage(HandlerNetworkResponse.class, NetworkResponse.class, 1, Side.CLIENT);
 	
 		proxy.preInitRegistries();
 	}

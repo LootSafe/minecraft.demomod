@@ -10,8 +10,8 @@ import com.lootsafe.mod.util.handlers.GuiHandler;
 import com.lootsafe.mod.util.handlers.PlayerHandler;
 import com.lootsafe.mod.util.handlers.RegistryHandlerClient;
 import com.lootsafe.mod.util.handlers.RenderHandler;
-import com.lootsafe.mod.util.network.CustomNetworkResponse;
-import com.lootsafe.mod.util.network.NetworkHandler;
+import com.lootsafe.mod.util.network.NetworkResponse;
+import com.lootsafe.mod.util.network.HandlerNetwork;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -55,7 +55,7 @@ public class ClientProxy extends CommonProxy {
 		return false;
 	}
 	
-	public void handleNetworkResponse(CustomNetworkResponse message, MessageContext ctx)
+	public void handleNetworkResponse(NetworkResponse message, MessageContext ctx)
 	{
 		int statusCode = message.getStatusCode();		
 		String itemName = message.getItemName();

@@ -3,7 +3,7 @@ package com.lootsafe.mod.blocks.container;
 import com.lootsafe.mod.Main;
 import com.lootsafe.mod.blocks.tileenity.TileEntityLootChest;
 import com.lootsafe.mod.items.ItemBase;
-import com.lootsafe.mod.util.network.CustomNetworkMessage;
+import com.lootsafe.mod.util.network.NetworkMessage;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -48,7 +48,7 @@ public class ContainerLootChest extends Container
 					
 					if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
 					{		
-						Main.network.sendToServer(new CustomNetworkMessage(player.getName(), selectedItem.getUnlocalizedName()));
+						Main.network.sendToServer(new NetworkMessage(player.getName(), selectedItem.getUnlocalizedName()));
 					}	
 										
 					selectedItem = null;													

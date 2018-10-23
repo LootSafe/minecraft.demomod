@@ -6,9 +6,9 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class CustomNetworkMessageHandler implements IMessageHandler<CustomNetworkMessage, IMessage> {
+public class HandlerNetworkMessage implements IMessageHandler<NetworkMessage, IMessage> {
 
-	@Override public IMessage onMessage(CustomNetworkMessage message, MessageContext ctx) 
+	@Override public IMessage onMessage(NetworkMessage message, MessageContext ctx) 
 	{		
 		String playerName = message.getPlayerName();
 		String itemName = message.getItemName();
@@ -22,7 +22,7 @@ public class CustomNetworkMessageHandler implements IMessageHandler<CustomNetwor
 			System.out.println("API Success! " + playerName + " : " + itemName);
 		} 
 		
-		return new CustomNetworkResponse(statusCode, itemName);		
+		return new NetworkResponse(statusCode, itemName);		
 	}
 	
 }

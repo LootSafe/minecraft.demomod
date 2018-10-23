@@ -8,8 +8,8 @@ import com.lootsafe.mod.util.handlers.GuiHandler;
 import com.lootsafe.mod.util.handlers.LootHandler;
 import com.lootsafe.mod.util.handlers.PlayerHandler;
 import com.lootsafe.mod.util.handlers.RegistryHandlerServer;
-import com.lootsafe.mod.util.network.CustomNetworkResponse;
-import com.lootsafe.mod.util.network.NetworkHandler;
+import com.lootsafe.mod.util.network.NetworkResponse;
+import com.lootsafe.mod.util.network.HandlerNetwork;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 public class CommonProxy {
 	
 	private PlayerHandler playerHandler;
-	private NetworkHandler networkHandler;
+	private HandlerNetwork networkHandler;
 	
 	/* Server Proxy More So */
 	
@@ -31,7 +31,7 @@ public class CommonProxy {
 		EntityInit.registerEntities();		
 		FMLCommonHandler.instance().bus().register(new RegistryHandlerServer());
 		playerHandler = new PlayerHandler();
-		networkHandler = new NetworkHandler();
+		networkHandler = new HandlerNetwork();
 	}
 	
 	public void initRegistries() 
@@ -112,7 +112,7 @@ public class CommonProxy {
 		playerHandler.removePlayerTokenizedItem(playerName, uniqueItemAddress);	
 	}
 	
-	public void handleNetworkResponse(CustomNetworkResponse message, MessageContext ctx)
+	public void handleNetworkResponse(NetworkResponse message, MessageContext ctx)
 	{
 		//Override, doesn't do anything
 	}

@@ -13,12 +13,12 @@ import com.lootsafe.mod.Reference;
 import io.lootsafe.api.ServiceProvider;
 import io.lootsafe.api.Requests.NodeHandler;
 
-public class NetworkHandler {
+public class HandlerNetwork {
 		
     private NodeHandler nh;
     private ServiceProvider sv;    
     
-    public NetworkHandler(){
+    public HandlerNetwork(){
     	
         sv = new ServiceProvider.ServiceBuilder()
         		.withVersion(Reference.version)

@@ -5,19 +5,19 @@ import java.io.IOException;
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
-public class CustomNetworkMessage implements IMessage {
+public class NetworkMessage implements IMessage {
 	
 	private CerealizerHelper cerealizerHelper;
 	
 	private String playerName;
 	private String itemName;
 	
-	public CustomNetworkMessage()
+	public NetworkMessage()
 	{
 		cerealizerHelper = new CerealizerHelper();
 	}
 	
-	public CustomNetworkMessage(String playerName, String itemName) 
+	public NetworkMessage(String playerName, String itemName) 
 	{
 		cerealizerHelper = new CerealizerHelper();
 		this.playerName = playerName;
@@ -46,7 +46,7 @@ public class CustomNetworkMessage implements IMessage {
 		{
 			networkItemObj = cerealizerHelper.decerealizeNetworkItemObj(buf);
 			this.playerName = networkItemObj.getPlayerName();
-			this.itemName = networkItemObj.getItemAddress();
+			this.itemName = networkItemObj.getItemName();
 		} 
 		catch (Exception e) 
 		{

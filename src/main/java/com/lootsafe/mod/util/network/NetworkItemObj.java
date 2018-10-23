@@ -19,7 +19,7 @@ public class NetworkItemObj implements Serializable {
 		return this.playerName;
 	}
 	
-	public String getItemAddress()
+	public String getItemName()
 	{
 		return this.itemName;
 	}
