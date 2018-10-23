@@ -10,6 +10,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
@@ -20,39 +21,72 @@ public class ContainerLootChest extends Container
 {
 	private final int numRows;
 	private final TileEntityLootChest chestInventory;	
-	private ItemBase selectedItem;
-	
-	//private int selectedItemId;
+	private ItemBase selectedItem = null;
+	private int selectedItemId = -1;
 
 	/* Chest Logic */
 	
 	public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player)
-	{
-		Slot slot = this.inventorySlots.get(slotId);
-		ItemStack itemstack = slot.getStack();
-		ItemBase tokenizableItem = null;
+	{	
+		boolean isValidSlot = validSlot(slotId);
+		boolean dragging = dragType == 1 ? true : false;
 		
-		if(itemstack.getItem() instanceof ItemBase) {
+		Slot slot;
+		ItemStack itemStack;
+		
+		if(slotId < 0) { return super.slotClick(slotId, dragType, clickTypeIn, player); }
 			
-			tokenizableItem = (ItemBase)itemstack.getItem();
-			
-			if(tokenizableItem != null)
-			{		
-				if(tokenizableItem.getIsTokenizable())
-				{
-					// The item is in hand ready to be transferred to the chest slot
-					// Only a valid tokenizable item
-					// ie When the tooltip showing the item to transfer is selected
+		slot = this.inventorySlots.get(slotId);
+		itemStack = slot.getStack();
+				
+		if(!(itemStack.getItem() instanceof ItemBase))
+		{
+			if(!dragging)
+			{							
+				if(selectedItem != null && isValidSlot)
+				{					
+					player.sendMessage(new TextComponentString("placed"));
 					
-					selectedItem = tokenizableItem;					
-					HandleWebStuff(player, slotId, slotId);
+					player.inventory.setItemStack(ItemStack.EMPTY);
 					player.inventory.setInventorySlotContents(slotId, ItemStack.EMPTY);
-				}				
-			}
+					
+					if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
+					{		
+						Main.network.sendToServer(new CustomNetworkMessage(player.getName(), selectedItem.getUnlocalizedName(), selectedItemId, slotId));
+						player.closeScreen();	
+					}	
+										
+					selectedItem = null;													
+					return ItemStack.EMPTY;
+				}
+			}		
 		}
+		else
+		{
+			if(dragging)
+			{
+				selectedItem = (ItemBase) itemStack.getItem();
+				selectedItemId = slotId;
+				return super.slotClick(slotId, dragType, clickTypeIn, player);
+			}		
+		}		
 		
-		return super.slotClick(slotId, dragType, clickTypeIn, player);		
+		return super.slotClick(slotId, dragType, clickTypeIn, player);
 	}
+	
+	private boolean validSlot(int slotId)
+	{		
+		if(slotId >= 0 && slotId <= 71)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+
+	/* Other Chest Logic */
 	
 	public ContainerLootChest(InventoryPlayer playerInv, TileEntityLootChest tileEntityLootChest, EntityPlayer player) 
 	{
@@ -102,90 +136,12 @@ public class ContainerLootChest extends Container
 		super.onContainerClosed(playerIn);
 		chestInventory.closeInventory(playerIn);
 	}
-		
-	/* Server/Client Logic */
-	
-	private void HandleWebStuff(EntityPlayer player, int slotId, int selectedItemId)
-	{
-		if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
-		{		
-			Main.network.sendToServer(new CustomNetworkMessage(player.getName(), selectedItem.getUnlocalizedName(), selectedItemId, slotId));
-			player.closeScreen();
-		}		
-	}
 	
 	/* Other */
 	
 	public TileEntityLootChest getChestInventory()
 	{
 		return this.chestInventory;
-	}
+	}	
 	
 }
-
-
-/* ISSUES Removing the item currently, above is the old way
-
-// See if what the user has clicked on is a tokenizable item
-	
-Slot slot;
-
-try
-{
-	slot = this.inventorySlots.get(slotId);
-} 
-catch(Exception e) 
-{
-	// For some reason an array out of bounds error gets triggered
-	// This is to solve these weird clicks
-	return super.slotClick(slotId, dragType, clickTypeIn, player);	
-}
-
-ItemStack itemstack = slot.getStack();
-ItemBase tokenizableItem = null;
-
-if(itemstack.getItem() instanceof ItemBase) {
-	
-	tokenizableItem = (ItemBase)itemstack.getItem();
-	
-	if(tokenizableItem != null)
-	{		
-		if(tokenizableItem.getIsTokenizable())
-		{
-			// The item is in hand ready to be transferred to the chest slot
-			// Only a valid tokenizable item
-			// ie When the tooltip showing the item to transfer is selected
-			selectedItem = tokenizableItem;
-			selectedItemId = slotId;
-		}				
-	}
-}
-else {
-	
-	// It its not castable to a tokenizable object
-	
-	if(selectedItem != null && validSlot(slotId))
-	{					
-		// If a tokenizable item is selected and is being placed into an empty slot inside of the chest part of the UI 
-		
-		HandleWebStuff(player, slotId, selectedItemId);	
-		
-		//player.inventory.setInventorySlotContents(slotId, ItemStack.EMPTY);						
-		this.chestInventory.setInventorySlotContents(selectedItemId, ItemStack.EMPTY);						
-	}
-	
-}
-
-this.detectAndSendChanges();		
-
-private boolean validSlot(int slotId){
-	
-	if(slotId >= 0 && slotId <= 71){
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-
-*/

@@ -84,6 +84,11 @@ public class TileEntityLootChest extends TileEntityLockableLoot implements ITick
 		return this.chestContents;
 	}
 	
+	public void clearChest()
+	{
+		this.chestContents = NonNullList.<ItemStack>withSize(72, ItemStack.EMPTY);
+	}
+	
 	public void update()
 	{     		
 		if (!this.world.isRemote && this.numPlayersUsing != 0 && (this.ticksSinceSync + pos.getX() + pos.getY() + pos.getZ()) % 200 == 0)
