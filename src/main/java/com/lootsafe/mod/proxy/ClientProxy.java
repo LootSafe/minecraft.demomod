@@ -61,7 +61,9 @@ public class ClientProxy extends CommonProxy {
 		int slotId = message.getSlotId();
 		int selectedSlotId = message.getSelectedSlotId();
 		
-		EntityPlayer player = Minecraft.getMinecraft().player;		
+		EntityPlayer player = Minecraft.getMinecraft().player;	
+		
+		player.sendMessage(new TextComponentString(Reference.TryingSendingItemText));
 		
 		if(statusCode == 200)
 		{

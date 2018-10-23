@@ -43,6 +43,7 @@ public class Reference {
 	public static final String CONSOLE_TAG = "[LOOTSAFE MOD] - ";	
 	public static final String RecievedItemText = TextFormatting.DARK_PURPLE + "* Received ";	
 	public static final String SendingItemText = TextFormatting.DARK_PURPLE + "Your loot is now safe with LootSafe!";
+	public static final String TryingSendingItemText = TextFormatting.DARK_PURPLE + "Trying to sending item.";
 	
 	public static List<String> description_lootcoin_gold =
 			new ArrayList<String>() {{

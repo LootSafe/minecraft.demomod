@@ -10,7 +10,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
@@ -45,8 +44,6 @@ public class ContainerLootChest extends Container
 			{							
 				if(selectedItem != null && isValidSlot)
 				{					
-					player.sendMessage(new TextComponentString("placed"));
-					
 					player.inventory.setItemStack(ItemStack.EMPTY);
 					player.inventory.setInventorySlotContents(slotId, ItemStack.EMPTY);
 					
