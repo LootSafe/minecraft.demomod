@@ -6,16 +6,12 @@ public class NetworkItemObj implements Serializable {
 		
 	private static final long serialVersionUID = 1L;
 	private String playerName;
-	private String itemAddress;
-	private int selectedSlotId = -1;
-	private int slotId = -1;
+	private String itemName;
 	
-	public NetworkItemObj(String playerName, String itemAddress, int selectedSlotId, int slotId)
+	public NetworkItemObj(String playerName, String itemName)
 	{
 		this.playerName = playerName;
-		this.itemAddress = itemAddress;
-		this.selectedSlotId = selectedSlotId;
-		this.slotId = slotId;
+		this.itemName = itemName;
 	}
 	
 	public String getPlayerName()
@@ -25,17 +21,7 @@ public class NetworkItemObj implements Serializable {
 	
 	public String getItemAddress()
 	{
-		return this.itemAddress;
-	}
-	
-	public int getSelectedSlotId()
-	{
-		return this.selectedSlotId;
-	}
-	
-	public int getSlotId()
-	{
-		return this.slotId;
+		return this.itemName;
 	}
 	
 }

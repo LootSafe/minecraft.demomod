@@ -21,7 +21,6 @@ public class ContainerLootChest extends Container
 	private final int numRows;
 	private final TileEntityLootChest chestInventory;	
 	private ItemBase selectedItem = null;
-	private int selectedItemId = -1;
 
 	/* Chest Logic */
 	
@@ -49,7 +48,7 @@ public class ContainerLootChest extends Container
 					
 					if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
 					{		
-						Main.network.sendToServer(new CustomNetworkMessage(player.getName(), selectedItem.getUnlocalizedName(), selectedItemId, slotId));
+						Main.network.sendToServer(new CustomNetworkMessage(player.getName(), selectedItem.getUnlocalizedName()));
 					}	
 										
 					selectedItem = null;													
@@ -62,7 +61,6 @@ public class ContainerLootChest extends Container
 			if(dragging)
 			{
 				selectedItem = (ItemBase) itemStack.getItem();
-				selectedItemId = slotId;
 				return super.slotClick(slotId, dragType, clickTypeIn, player);
 			}		
 		}		

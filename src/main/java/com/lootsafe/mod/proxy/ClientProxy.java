@@ -58,8 +58,7 @@ public class ClientProxy extends CommonProxy {
 	public void handleNetworkResponse(CustomNetworkResponse message, MessageContext ctx)
 	{
 		int statusCode = message.getStatusCode();		
-		int slotId = message.getSlotId();
-		int selectedSlotId = message.getSelectedSlotId();
+		String itemName = message.getItemName();
 		
 		EntityPlayer player = Minecraft.getMinecraft().player;	
 		
@@ -72,6 +71,8 @@ public class ClientProxy extends CommonProxy {
 		else
 		{
 			player.sendMessage(new TextComponentString(Reference.SendingItemText + TextFormatting.RED + " Error sending item!"));	
+			
+			// Put item back in the inventory, bad stuff happened.
 		}
 		
 		player.closeScreen();

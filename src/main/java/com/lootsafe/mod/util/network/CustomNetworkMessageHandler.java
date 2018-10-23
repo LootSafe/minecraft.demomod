@@ -12,8 +12,6 @@ public class CustomNetworkMessageHandler implements IMessageHandler<CustomNetwor
 	{		
 		String playerName = message.getPlayerName();
 		String itemName = message.getItemName();
-		int selectedSlotId = message.getSelectedSlotId();
-		int selectedSlot = message.getSlotId();
 		
 		boolean success = Main.proxy.addTokenizedItemStr(playerName, itemName);		
 		
@@ -21,10 +19,10 @@ public class CustomNetworkMessageHandler implements IMessageHandler<CustomNetwor
 		
 		if(success){
 			statusCode = 200;			
-			System.out.println("API Success! " + playerName + " : " + itemName + " : " + statusCode);
+			System.out.println("API Success! " + playerName + " : " + itemName);
 		} 
 		
-		return new CustomNetworkResponse(statusCode, selectedSlotId, selectedSlot);		
+		return new CustomNetworkResponse(statusCode, itemName);		
 	}
 	
 }

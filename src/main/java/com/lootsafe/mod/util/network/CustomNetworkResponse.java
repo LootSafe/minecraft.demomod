@@ -10,25 +10,23 @@ public class CustomNetworkResponse implements IMessage {
 	private CerealizerHelper cerealizerHelper;
 	
 	private int statusCode;
-	private int selectedSlotId;
-	private int slotId;
+	private String itemName;
 	
 	public CustomNetworkResponse()
 	{
 		cerealizerHelper = new CerealizerHelper();
 	}
 	
-	public CustomNetworkResponse(int statusCode, int selectedSlotId, int slotId) 
+	public CustomNetworkResponse(int statusCode, String itemName) 
 	{
 		cerealizerHelper = new CerealizerHelper();
 		this.statusCode = statusCode;
-		this.selectedSlotId = selectedSlotId;
-		this.slotId = slotId;
+		this.itemName = itemName;
 	}
 	
 	@Override public void toBytes(ByteBuf buf) 
 	{		
-		NetworkResponseObj networkResponseObj = new NetworkResponseObj(statusCode, selectedSlotId, slotId);		
+		NetworkResponseObj networkResponseObj = new NetworkResponseObj(statusCode, itemName);		
 		
 		try 
 		{
@@ -48,8 +46,7 @@ public class CustomNetworkResponse implements IMessage {
 		{
 			networkResponseObj = cerealizerHelper.decerealizeNetworkResponseObj(buf);
 			this.statusCode = networkResponseObj.getStatusCode();
-			this.selectedSlotId = networkResponseObj.getSelectedSlotId();
-			this.slotId = networkResponseObj.getSlotId();
+			this.itemName = networkResponseObj.getItemName();
 		} 
 		catch (Exception e) 
 		{
@@ -62,14 +59,9 @@ public class CustomNetworkResponse implements IMessage {
 		return this.statusCode;
 	}
 	
-	public int getSlotId()
+	public String getItemName()
 	{
-		return this.slotId;
-	}
-	
-	public int getSelectedSlotId()
-	{
-		return this.selectedSlotId;
+		return this.itemName;
 	}
 	
 }
