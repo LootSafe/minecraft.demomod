@@ -13,7 +13,7 @@ import com.lootsafe.mod.commands.WalletUnregisterPlayer;
 import com.lootsafe.mod.commands.WalletWalletAddress;
 import com.lootsafe.mod.proxy.CommonProxy;
 import com.lootsafe.mod.util.LootStoreTab;
-import com.lootsafe.mod.util.handlers.CustomEventHandler;
+import com.lootsafe.mod.util.handlers.HandlerCustomEvent;
 import com.lootsafe.mod.util.network.NetworkMessage;
 import com.lootsafe.mod.util.network.HandlerNetworkMessage;
 import com.lootsafe.mod.util.network.NetworkResponse;
@@ -39,7 +39,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class Main {
 	
-	private static CustomEventHandler customEventHandler = new CustomEventHandler();
+	private static HandlerCustomEvent customEventHandler = new HandlerCustomEvent();
 	public static final CreativeTabs LOOTSTORETAB = new LootStoreTab("lootstoretab");	
 	public static SimpleNetworkWrapper network;
 	

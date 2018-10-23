@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 @EventBusSubscriber(value = Side.CLIENT)
-public class RegistryHandlerClient {
+public class HandlerClientRegistry {
 	
 	/* Important Stuff Here */
 	

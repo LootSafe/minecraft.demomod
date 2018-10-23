@@ -3,7 +3,7 @@ package com.lootsafe.mod.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lootsafe.mod.util.handlers.LootHandler;
+import com.lootsafe.mod.util.handlers.HandlerLoot;
 
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -27,7 +27,7 @@ public class AdminAddressCopper implements ICommand {
 			
 			if(args.length == 1)
 			{				
-				LootHandler.getInstance().setCopperAddress(args[0]);
+				HandlerLoot.getInstance().setCopperAddress(args[0]);
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Copper Coin Set to: " + args[0]));			
 			}
 			else

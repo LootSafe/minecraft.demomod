@@ -4,10 +4,10 @@ import java.util.List;
 
 import com.lootsafe.mod.Main;
 import com.lootsafe.mod.init.EntityInit;
-import com.lootsafe.mod.util.handlers.GuiHandler;
-import com.lootsafe.mod.util.handlers.LootHandler;
-import com.lootsafe.mod.util.handlers.PlayerHandler;
-import com.lootsafe.mod.util.handlers.RegistryHandlerServer;
+import com.lootsafe.mod.util.handlers.HandlerGui;
+import com.lootsafe.mod.util.handlers.HandlerLoot;
+import com.lootsafe.mod.util.handlers.HandlerPlayer;
+import com.lootsafe.mod.util.handlers.HandlerServerRegistry;
 import com.lootsafe.mod.util.network.NetworkResponse;
 import com.lootsafe.mod.util.network.HandlerNetwork;
 
@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 @SuppressWarnings("deprecation")
 public class CommonProxy {
 	
-	private PlayerHandler playerHandler;
+	private HandlerPlayer playerHandler;
 	private HandlerNetwork networkHandler;
 	
 	/* Server Proxy More So */
@@ -29,14 +29,14 @@ public class CommonProxy {
 	public void preInitRegistries() 
 	{
 		EntityInit.registerEntities();		
-		FMLCommonHandler.instance().bus().register(new RegistryHandlerServer());
-		playerHandler = new PlayerHandler();
+		FMLCommonHandler.instance().bus().register(new HandlerServerRegistry());
+		playerHandler = new HandlerPlayer();
 		networkHandler = new HandlerNetwork();
 	}
 	
 	public void initRegistries() 
 	{
-		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new HandlerGui());
 	}
 	
 	public void registerItemRenderer(Item item, int meta, String id)
@@ -91,7 +91,7 @@ public class CommonProxy {
 	public boolean addTokenizedItemStr(String playerName,String itemUnlocalisedName)
 	{			
 		String playerWalletAddress = playerHandler.getPlayerWalletAddress(playerName);
-		String itemAddress = LootHandler.getInstance().getLootAddressByName(itemUnlocalisedName);
+		String itemAddress = HandlerLoot.getInstance().getLootAddressByName(itemUnlocalisedName);
 		
 		if(networkHandler.GivePlayerItem(playerName, playerWalletAddress, itemAddress))
 		{

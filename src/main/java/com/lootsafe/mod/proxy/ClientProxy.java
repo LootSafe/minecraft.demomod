@@ -6,10 +6,10 @@ import com.lootsafe.mod.Main;
 import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.init.EntityInit;
 import com.lootsafe.mod.items.ItemBase;
-import com.lootsafe.mod.util.handlers.GuiHandler;
-import com.lootsafe.mod.util.handlers.PlayerHandler;
-import com.lootsafe.mod.util.handlers.RegistryHandlerClient;
-import com.lootsafe.mod.util.handlers.RenderHandler;
+import com.lootsafe.mod.util.handlers.HandlerGui;
+import com.lootsafe.mod.util.handlers.HandlerPlayer;
+import com.lootsafe.mod.util.handlers.HandlerClientRegistry;
+import com.lootsafe.mod.util.handlers.HandlerRender;
 import com.lootsafe.mod.util.network.NetworkResponse;
 import com.lootsafe.mod.util.network.HandlerNetwork;
 
@@ -31,7 +31,7 @@ public class ClientProxy extends CommonProxy {
 	
 	public void initRegistries()
 	{		
-		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());	
+		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new HandlerGui());	
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -39,8 +39,8 @@ public class ClientProxy extends CommonProxy {
 	{	
 		EntityInit.registerEntities();		
 		
-		FMLCommonHandler.instance().bus().register(new RegistryHandlerClient());		
-		RenderHandler.registerAllEntityRenders(Reference.GLOBAL_BOSSMOB_SIZE);	
+		FMLCommonHandler.instance().bus().register(new HandlerClientRegistry());		
+		HandlerRender.registerAllEntityRenders(Reference.GLOBAL_BOSSMOB_SIZE);	
 	}
 	
 	public void registerItemRenderer(Item item, int meta, String id)

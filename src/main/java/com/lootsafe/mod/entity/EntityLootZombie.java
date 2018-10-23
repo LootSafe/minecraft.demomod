@@ -1,6 +1,6 @@
 package com.lootsafe.mod.entity;
 
-import com.lootsafe.mod.util.handlers.LootTableHandler;
+import com.lootsafe.mod.util.handlers.HandlerLootTable;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -22,7 +22,7 @@ public class EntityLootZombie extends EntityZombie {
 	
 	protected ResourceLocation getLootTable()
 	{
-		return LootTableHandler.ZOMBIE;
+		return HandlerLootTable.ZOMBIE;
 	}
 	
 	protected void applyEntityAttributes()

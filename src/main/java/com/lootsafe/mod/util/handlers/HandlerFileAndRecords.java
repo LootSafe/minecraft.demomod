@@ -25,7 +25,7 @@ import com.lootsafe.mod.ServerConfig;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
 @SuppressWarnings("unchecked")
-public class ServerRecordHandler {
+public class HandlerFileAndRecords {
 			
 	/* File Writing & File Updating */
 	
@@ -58,11 +58,11 @@ public class ServerRecordHandler {
 		return new ServerConfig();
 	}
 	
-	public ArrayList<LootPlayer> LoadServerRecords() {
+	public ArrayList<HandlerLootPlayer> LoadServerRecords() {
 		
 		//System.out.println(Reference.CONSOLE_TAG + "Loading player records..");
 		
-		ArrayList<LootPlayer> lootPlayers = new ArrayList<LootPlayer>();
+		ArrayList<HandlerLootPlayer> lootPlayers = new ArrayList<HandlerLootPlayer>();
 				
 		if(!doesFileExist(Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA))
 		{
@@ -95,7 +95,7 @@ public class ServerRecordHandler {
 		    ArrayList<String> defeatedBosses = (ArrayList<String>) jsonObject.get("defeatedBossesList");
 		    ArrayList<String> latestLocalTokenizedItemList = (ArrayList<String>) jsonObject.get("latestLocalTokenizedItemList");	
 		    
-		    LootPlayer lootPlayer = new LootPlayer(playerName, playerWalletAddress, defeatedBosses, latestLocalTokenizedItemList);		    
+		    HandlerLootPlayer lootPlayer = new HandlerLootPlayer(playerName, playerWalletAddress, defeatedBosses, latestLocalTokenizedItemList);		    
 		    lootPlayers.add(lootPlayer);
 		}
 		
@@ -104,7 +104,7 @@ public class ServerRecordHandler {
 		return lootPlayers;
 	}
 	
-	public boolean UpdateServerRecords(ArrayList<LootPlayer> lootPlayers){
+	public boolean UpdateServerRecords(ArrayList<HandlerLootPlayer> lootPlayers){
 		
 		if(!doesFileExist(Reference.DIR_PLAYERDATA + Reference.FILENAME_PLAYERDATA))
 		{
@@ -120,7 +120,7 @@ public class ServerRecordHandler {
     	JSONArray defeatedBossesList = new JSONArray();
     	JSONArray latestLocalTokenizedItemList = new JSONArray();
         
-        for(LootPlayer lootplayer : lootPlayers){
+        for(HandlerLootPlayer lootplayer : lootPlayers){
         	
         	JSONObject tempPlayer = new JSONObject();
             defeatedBossesList = new JSONArray();
@@ -195,7 +195,7 @@ public class ServerRecordHandler {
 			//System.out.println(Reference.CONSOLE_TAG  + "File created @ " + filename);
 			
 			if(isDatafile){
-				UpdateServerRecords(new ArrayList<LootPlayer>());
+				UpdateServerRecords(new ArrayList<HandlerLootPlayer>());
 				// Writing empty array to file so it reads back properly
 			}
 			

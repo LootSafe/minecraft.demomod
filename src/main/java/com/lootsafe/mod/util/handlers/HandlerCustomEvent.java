@@ -18,7 +18,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class CustomEventHandler {
+public class HandlerCustomEvent {
 	
 	/* Server Events */
 	
@@ -91,7 +91,7 @@ public class CustomEventHandler {
 					 
 					 if(firstEmpty != -1)
 					 {				
-						 String lootcoin_gold_address = LootHandler.getInstance().getLootAddressByName("");
+						 String lootcoin_gold_address = HandlerLoot.getInstance().getLootAddressByName("");
 						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_gold_address);						 
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));			
 						 
@@ -121,7 +121,7 @@ public class CustomEventHandler {
 					 
 					 if(firstEmpty != -1)
 					 {						 
-						 String lootcoin_silver_address = LootHandler.getInstance().getLootAddressByName("");
+						 String lootcoin_silver_address = HandlerLoot.getInstance().getLootAddressByName("");
 						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_silver_address);						 
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));			
 						 
@@ -152,7 +152,7 @@ public class CustomEventHandler {
 					 
 					 if(firstEmpty != -1)
 					 {				
-						 String lootcoin_gold_address = LootHandler.getInstance().getLootAddressByName("");
+						 String lootcoin_gold_address = HandlerLoot.getInstance().getLootAddressByName("");
 						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_gold_address);						 
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));			
 						 

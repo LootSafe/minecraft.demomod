@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 @EventBusSubscriber(value = Side.SERVER)
-public class RegistryHandlerServer {
+public class HandlerServerRegistry {
 	
 	/* Important Stuff Here */
 	
@@ -25,7 +25,7 @@ public class RegistryHandlerServer {
 	public static void onBlockRegister(RegistryEvent.Register<Block> event)
 	{
 		event.getRegistry().registerAll(BlockInit.BLOCKS.toArray(new Block[0]));		
-		TileEntityHandler.registerTileEntities();		
+		HandlerTileEntity.registerTileEntities();		
 	}
 	
 	@SubscribeEvent

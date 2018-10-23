@@ -3,14 +3,14 @@ package com.lootsafe.mod.util.handlers;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LootPlayer {
+public class HandlerLootPlayer {
 	
 	private String playerName;
 	private String playerWalletAddress;
 	private List<String> defeatedBossesList;
 	private List<String> latestLocalTokenizedItemList;
 	
-	public LootPlayer(String playerName, String playerWalletAddress)
+	public HandlerLootPlayer(String playerName, String playerWalletAddress)
 	{
 		this.playerName = playerName;
 		this.playerWalletAddress = playerWalletAddress;
@@ -18,7 +18,7 @@ public class LootPlayer {
 		this.latestLocalTokenizedItemList = new ArrayList<String>();
 	}	
 	
-	public LootPlayer(String playerName, String playerWalletAddress, ArrayList<String> defeatedBosses, ArrayList<String> latestLocalTokenizedItemList)
+	public HandlerLootPlayer(String playerName, String playerWalletAddress, ArrayList<String> defeatedBosses, ArrayList<String> latestLocalTokenizedItemList)
 	{
 		this.playerName = playerName;
 		this.playerWalletAddress = playerWalletAddress;

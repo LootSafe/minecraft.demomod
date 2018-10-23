@@ -1,16 +1,16 @@
 package com.lootsafe.mod.util.handlers;
-public class LootHandler {
+public class HandlerLoot {
 
 	public static String lootcoin_gold_address = "0xabcdef0123456789012345";
 	public static String lootcoin_silver_address = "0xbcdefa0123456789012345";
 	public static String lootcoin_copper_address = "0xcdefab0123456789012345";
 	
-	private static LootHandler instance;
+	private static HandlerLoot instance;
 	
-	public static LootHandler getInstance()
+	public static HandlerLoot getInstance()
 	{
 		if(instance == null){
-			instance = new LootHandler();
+			instance = new HandlerLoot();
 		}
 		
 		return instance;

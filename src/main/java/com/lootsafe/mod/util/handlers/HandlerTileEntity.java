@@ -6,7 +6,7 @@ import com.lootsafe.mod.blocks.tileenity.TileEntityLootChest;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class TileEntityHandler {
+public class HandlerTileEntity {
 	
 	public static void registerTileEntities()
 	{
