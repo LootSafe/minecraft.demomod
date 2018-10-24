@@ -1,4 +1,10 @@
 package com.lootsafe.mod.util.handlers;
+
+import com.lootsafe.mod.init.ItemInit;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+
 public class HandlerLoot {
 
 	public static String lootcoin_gold_address = "0xabcdef0123456789012345";
@@ -14,6 +20,29 @@ public class HandlerLoot {
 		}
 		
 		return instance;
+	}
+	
+	public boolean RestoreItem(EntityPlayer player, String itemName)
+	{
+		try
+		{
+			if(itemName.equals("item.lootcoin-gold")){
+				player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));
+				return true;
+			}
+			else if(itemName.equals("item.lootcoin-silver")){
+				player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));
+				return true;
+			}
+			else if(itemName.equals("item.lootcoin-copper")){
+				player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinCopper));
+				return true;
+			}
+			else {
+				return false;
+			}			
+		}
+		catch(Exception e) { return false; }
 	}
 	
 	public void setGoldAddress(String gold_address )
