@@ -31,8 +31,10 @@ public class AdminForceSave implements ICommand {
 			else
 			{				
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument"));
-			}			
+			}
+			
 		}
+		
 	}
 	
 	@Override

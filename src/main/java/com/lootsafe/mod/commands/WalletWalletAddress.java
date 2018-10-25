@@ -40,9 +40,12 @@ public class WalletWalletAddress implements ICommand {
 				else
 				{
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "You aren't registered."));
-				}				
-			}			
+				}	
+				
+			}
+			
 		}
+		
 	}
 	
 	@Override

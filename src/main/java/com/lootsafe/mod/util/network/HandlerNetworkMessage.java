@@ -19,7 +19,7 @@ public class HandlerNetworkMessage implements IMessageHandler<NetworkMessage, IM
 		
 		if(success){
 			statusCode = 200;			
-			System.out.println("API Success! " + playerName + " : " + itemName);
+			System.out.println("API Success transferring item for " + playerName + " : " + itemName);
 		} 
 		
 		return new NetworkResponse(statusCode, itemName);		

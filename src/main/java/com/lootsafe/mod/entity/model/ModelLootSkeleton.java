@@ -6,10 +6,6 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-/**
- * ModelSkeleton - Either Mojang or a mod author
- * Created using Tabula 7.0.0
- */
 public class ModelLootSkeleton extends ModelBase {
     public ModelRenderer field_178723_h;
     public ModelRenderer field_178721_j;

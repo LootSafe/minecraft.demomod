@@ -71,11 +71,11 @@ public class ClientProxy extends CommonProxy {
 		}
 		else
 		{
-			player.sendMessage(new TextComponentString(Reference.SendingItemText + TextFormatting.RED + " Error sending item!"));	
+			player.sendMessage(new TextComponentString(TextFormatting.RED + " Error sending item!"));	
 			
 			// Put item back in the inventory, bad stuff happened.
 			
-			HandlerLoot.getInstance().RestoreItem(player, itemName);			
+			HandlerLoot.getInstance().RestoreItem(player, itemName);	
 		}
 		
 		player.closeScreen();

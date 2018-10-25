@@ -1,5 +1,6 @@
 package com.lootsafe.mod;
 
+import com.lootsafe.mod.blocks.gui.LootStoreTab;
 import com.lootsafe.mod.commands.AdminAddressGold;
 import com.lootsafe.mod.commands.AdminAddressSilver;
 import com.lootsafe.mod.commands.AdminForceSave;
@@ -12,7 +13,6 @@ import com.lootsafe.mod.commands.WalletShowLoot;
 import com.lootsafe.mod.commands.WalletUnregisterPlayer;
 import com.lootsafe.mod.commands.WalletWalletAddress;
 import com.lootsafe.mod.proxy.CommonProxy;
-import com.lootsafe.mod.util.LootStoreTab;
 import com.lootsafe.mod.util.handlers.HandlerCustomEvent;
 import com.lootsafe.mod.util.network.NetworkMessage;
 import com.lootsafe.mod.util.network.HandlerNetworkMessage;

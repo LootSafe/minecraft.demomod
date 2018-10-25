@@ -8,8 +8,8 @@ import com.lootsafe.mod.util.handlers.HandlerGui;
 import com.lootsafe.mod.util.handlers.HandlerLoot;
 import com.lootsafe.mod.util.handlers.HandlerPlayer;
 import com.lootsafe.mod.util.handlers.HandlerServerRegistry;
-import com.lootsafe.mod.util.network.NetworkResponse;
 import com.lootsafe.mod.util.network.HandlerNetwork;
+import com.lootsafe.mod.util.network.NetworkResponse;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -112,8 +112,6 @@ public class CommonProxy {
 		playerHandler.removePlayerTokenizedItem(playerName, uniqueItemAddress);	
 	}
 	
-	public void handleNetworkResponse(NetworkResponse message, MessageContext ctx)
-	{
-		//Override, doesn't do anything
-	}
+	public void handleNetworkResponse(NetworkResponse message, MessageContext ctx){}
+	
 }

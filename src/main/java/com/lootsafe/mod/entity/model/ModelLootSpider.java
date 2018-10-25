@@ -6,10 +6,6 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-/**
- * ModelSpider - Either Mojang or a mod author
- * Created using Tabula 7.0.0
- */
 public class ModelLootSpider extends ModelBase {
     public ModelRenderer field_78207_b;
     public ModelRenderer field_78205_d;

@@ -20,8 +20,7 @@ public class AdminAddressCopper implements ICommand {
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException 
 	{
 		if(sender instanceof EntityPlayer)
-		{
-			
+		{			
 			EntityPlayer player = (EntityPlayer) sender;				
 			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Replacing Copper Coin Address..."));
 			
@@ -33,8 +32,10 @@ public class AdminAddressCopper implements ICommand {
 			else
 			{				
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument"));
-			}			
+			}
+			
 		}
+		
 	}
 	
 	@Override

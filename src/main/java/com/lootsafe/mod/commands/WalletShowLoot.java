@@ -30,24 +30,20 @@ public class WalletShowLoot implements ICommand {
 				if(Main.proxy.isPlayerRegistered(player.getName()))
 				{							
 					// Return Wallet Items Here.
-					
-					/*
-					for(String item : Main.proxy.getPlayerTokenizedItemList(player.getName()))
-					{
-						player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.WHITE + item));												
-					}
-					*/
 				}
 				else
 				{
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please register address to account."));
-				}					
+				}	
+				
 			}
 			else
 			{
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument."));
-			}			
+			}
+			
 		}
+		
 	}
 	
 	@Override

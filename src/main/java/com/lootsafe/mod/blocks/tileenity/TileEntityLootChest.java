@@ -150,7 +150,9 @@ public class TileEntityLootChest extends TileEntityLockableLoot implements ITick
             {
                 this.lidAngle = 0.0F;
             }
-        }		
+            
+        }	
+        
 	}
 	
 	public void openInventory(EntityPlayer player)
