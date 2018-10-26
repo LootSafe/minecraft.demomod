@@ -5,7 +5,7 @@ import java.util.List;
 import com.lootsafe.mod.Main;
 import com.lootsafe.mod.init.EntityInit;
 import com.lootsafe.mod.util.handlers.HandlerGui;
-import com.lootsafe.mod.util.handlers.HandlerLoot;
+import com.lootsafe.mod.util.handlers.HandlerLootDispenser;
 import com.lootsafe.mod.util.handlers.HandlerPlayer;
 import com.lootsafe.mod.util.handlers.HandlerServerRegistry;
 import com.lootsafe.mod.util.network.HandlerNetwork;
@@ -91,7 +91,7 @@ public class CommonProxy {
 	public boolean addTokenizedItemStr(String playerName,String itemUnlocalisedName)
 	{			
 		String playerWalletAddress = playerHandler.getPlayerWalletAddress(playerName);
-		String itemAddress = HandlerLoot.getInstance().getLootAddressByName(itemUnlocalisedName);
+		String itemAddress = HandlerLootDispenser.getInstance().getLootAddressByName(itemUnlocalisedName);
 		
 		if(networkHandler.GivePlayerItem(playerName, playerWalletAddress, itemAddress))
 		{

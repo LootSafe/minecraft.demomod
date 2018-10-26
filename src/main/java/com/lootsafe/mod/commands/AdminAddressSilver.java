@@ -3,7 +3,7 @@ package com.lootsafe.mod.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lootsafe.mod.util.handlers.HandlerLoot;
+import com.lootsafe.mod.util.handlers.HandlerLootDispenser;
 
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -26,7 +26,7 @@ public class AdminAddressSilver implements ICommand {
 			
 			if(args.length == 1)
 			{				
-				HandlerLoot.getInstance().setSilverAddress(args[0]);
+				HandlerLootDispenser.getInstance().setSilverAddress(args[0]);
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Silver Coin Set to: " + args[0]));			
 			}
 			else

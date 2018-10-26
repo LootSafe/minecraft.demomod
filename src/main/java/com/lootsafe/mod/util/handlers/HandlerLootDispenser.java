@@ -5,18 +5,18 @@ import com.lootsafe.mod.init.ItemInit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
-public class HandlerLoot {
+public class HandlerLootDispenser {
 
 	public static String lootcoin_gold_address = "0xabcdef0123456789012345";
 	public static String lootcoin_silver_address = "0xbcdefa0123456789012345";
 	public static String lootcoin_copper_address = "0xcdefab0123456789012345";
 	
-	private static HandlerLoot instance;
+	private static HandlerLootDispenser instance;
 	
-	public static HandlerLoot getInstance()
+	public static HandlerLootDispenser getInstance()
 	{
 		if(instance == null){
-			instance = new HandlerLoot();
+			instance = new HandlerLootDispenser();
 		}
 		
 		return instance;
@@ -26,21 +26,20 @@ public class HandlerLoot {
 	{
 		try
 		{
-			if(itemName.equals("item.lootcoin-gold")){
-				player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));
-				return true;
-			}
-			else if(itemName.equals("item.lootcoin-silver")){
-				player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));
-				return true;
-			}
-			else if(itemName.equals("item.lootcoin-copper")){
-				player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinCopper));
-				return true;
-			}
-			else {
-				return false;
-			}			
+			switch(itemName)
+			{
+				case "item.lootcoin-gold":
+					player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));
+					return true;
+				case "item.lootcoin-silver":
+					player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));
+					return true;
+				case "item.lootcoin-copper":
+					player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinCopper));
+					return true;
+				default:
+					return false;
+			}		
 		}
 		catch(Exception e) { return false; }
 	}

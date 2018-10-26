@@ -7,7 +7,7 @@ import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.init.EntityInit;
 import com.lootsafe.mod.items.ItemBase;
 import com.lootsafe.mod.util.handlers.HandlerGui;
-import com.lootsafe.mod.util.handlers.HandlerLoot;
+import com.lootsafe.mod.util.handlers.HandlerLootDispenser;
 import com.lootsafe.mod.util.handlers.HandlerPlayer;
 import com.lootsafe.mod.util.handlers.HandlerClientRegistry;
 import com.lootsafe.mod.util.handlers.HandlerRender;
@@ -71,13 +71,14 @@ public class ClientProxy extends CommonProxy {
 		}
 		else
 		{
-			player.sendMessage(new TextComponentString(TextFormatting.RED + " Error sending item!"));	
+			player.sendMessage(new TextComponentString(TextFormatting.RED + "Error sending item!"));	
 			
 			// Put item back in the inventory, bad stuff happened.
 			
-			HandlerLoot.getInstance().RestoreItem(player, itemName);	
+			HandlerLootDispenser.getInstance().RestoreItem(player, itemName);	
 		}
 		
 		player.closeScreen();
 	}
+	
 }

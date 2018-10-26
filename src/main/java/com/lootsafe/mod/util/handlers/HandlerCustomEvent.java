@@ -91,7 +91,7 @@ public class HandlerCustomEvent {
 					 
 					 if(firstEmpty != -1)
 					 {				
-						 String lootcoin_gold_address = HandlerLoot.getInstance().getLootAddressByName("");
+						 String lootcoin_gold_address = HandlerLootDispenser.getInstance().getLootAddressByName("");
 						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_gold_address);						 
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));			
 						 
@@ -121,7 +121,7 @@ public class HandlerCustomEvent {
 					 
 					 if(firstEmpty != -1)
 					 {						 
-						 String lootcoin_silver_address = HandlerLoot.getInstance().getLootAddressByName("");
+						 String lootcoin_silver_address = HandlerLootDispenser.getInstance().getLootAddressByName("");
 						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_silver_address);						 
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));			
 						 
@@ -152,7 +152,7 @@ public class HandlerCustomEvent {
 					 
 					 if(firstEmpty != -1)
 					 {				
-						 String lootcoin_gold_address = HandlerLoot.getInstance().getLootAddressByName("");
+						 String lootcoin_gold_address = HandlerLootDispenser.getInstance().getLootAddressByName("");
 						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_gold_address);						 
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));			
 						 
