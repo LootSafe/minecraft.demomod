@@ -59,26 +59,23 @@ public class ClientProxy extends CommonProxy {
 	public void handleNetworkResponse(NetworkResponse message, MessageContext ctx)
 	{
 		int statusCode = message.getStatusCode();		
-		String itemName = message.getItemName();
-		
+		String itemName = message.getItemName();		
 		EntityPlayer player = Minecraft.getMinecraft().player;	
+	
+		player.closeScreen();
 		
 		player.sendMessage(new TextComponentString(Reference.TryingSendingItemText));
 		
 		if(statusCode == 200)
 		{
-			player.sendMessage(new TextComponentString(Reference.SendingItemText));	
+			player.sendMessage(new TextComponentString(Reference.SendingItemText));
 		}
 		else
 		{
-			player.sendMessage(new TextComponentString(TextFormatting.RED + "Error sending item!"));	
-			
+			player.sendMessage(new TextComponentString(TextFormatting.RED + "Error sending item!"));			
 			// Put item back in the inventory, bad stuff happened.
-			
-			HandlerLootDispenser.getInstance().RestoreItem(player, itemName);	
+			HandlerLootDispenser.getInstance().RestoreItemToPlayer(player, itemName);	
 		}
-		
-		player.closeScreen();
 	}
 	
 }

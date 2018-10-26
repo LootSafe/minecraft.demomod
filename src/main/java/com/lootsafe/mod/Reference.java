@@ -40,6 +40,7 @@ public class Reference {
 		
 	/* Description Text */
 
+	public static final String BUM_ADDRESS = "0x9999999999999999999999";
 	public static final String CONSOLE_TAG = "[LOOTSAFE MOD] - ";	
 	public static final String RecievedItemText = TextFormatting.DARK_PURPLE + "* Received ";	
 	public static final String SendingItemText = TextFormatting.DARK_PURPLE + "Your loot is now safe with LootSafe!";

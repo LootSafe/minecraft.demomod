@@ -12,6 +12,7 @@ import com.lootsafe.mod.util.network.HandlerNetwork;
 import com.lootsafe.mod.util.network.NetworkResponse;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -113,5 +114,5 @@ public class CommonProxy {
 	}
 	
 	public void handleNetworkResponse(NetworkResponse message, MessageContext ctx){}
-	
+
 }

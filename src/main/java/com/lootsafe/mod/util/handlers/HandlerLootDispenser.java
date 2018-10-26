@@ -1,5 +1,6 @@
 package com.lootsafe.mod.util.handlers;
 
+import com.lootsafe.mod.Reference;
 import com.lootsafe.mod.init.ItemInit;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -7,9 +8,9 @@ import net.minecraft.item.ItemStack;
 
 public class HandlerLootDispenser {
 
-	public static String lootcoin_gold_address = "0xabcdef0123456789012345";
-	public static String lootcoin_silver_address = "0xbcdefa0123456789012345";
-	public static String lootcoin_copper_address = "0xcdefab0123456789012345";
+	public static String lootcoin_gold_address = Reference.BUM_ADDRESS;
+	public static String lootcoin_silver_address = Reference.BUM_ADDRESS;
+	public static String lootcoin_copper_address = Reference.BUM_ADDRESS;
 	
 	private static HandlerLootDispenser instance;
 	
@@ -22,26 +23,37 @@ public class HandlerLootDispenser {
 		return instance;
 	}
 	
-	public boolean RestoreItem(EntityPlayer player, String itemName)
+	public boolean RestoreItemToPlayer(EntityPlayer player, String itemName)
 	{
+		boolean flag = false;
+		
 		try
 		{
 			switch(itemName)
 			{
 				case "item.lootcoin-gold":
-					player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));
-					return true;
+					flag = player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));
+					break;
 				case "item.lootcoin-silver":
-					player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));
-					return true;
+					flag = player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));
+					break;
 				case "item.lootcoin-copper":
-					player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinCopper));
-					return true;
+					flag = player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinCopper));
+					break;
 				default:
 					return false;
 			}		
 		}
 		catch(Exception e) { return false; }
+		
+		if(flag)
+		{
+			player.inventoryContainer.detectAndSendChanges();
+			return true;
+		}
+			
+		return false;
+		
 	}
 	
 	public void setGoldAddress(String gold_address )
@@ -71,7 +83,7 @@ public class HandlerLootDispenser {
 			return lootcoin_copper_address;
 		}
 		
-		return "0x9999999999999999999999";
+		return Reference.BUM_ADDRESS;
 	}
 	
 	public String getGoldAddress() 
