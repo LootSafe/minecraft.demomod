@@ -1,6 +1,11 @@
 {
-   "parent": "item/generated",
+   "parent": "block/loot_chest",
    "textures": {
-       "layer0": "lsm:blocks/loot_chest"
+      "down": "lsm:loot_chest",
+      "up": "lsm:loot_chest",
+      "east": "lsm:loot_chest",
+      "west": "lsm:loot_chest",
+      "north": "lsm:loot_chest",
+      "south": "lsm:loot_chest"   
    }
 }

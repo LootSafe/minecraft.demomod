@@ -3,6 +3,8 @@ package com.lootsafe.mod;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lootsafe.mod.util.ServerConfig;
+
 import net.minecraft.util.text.TextFormatting;
 
 @SuppressWarnings("serial")

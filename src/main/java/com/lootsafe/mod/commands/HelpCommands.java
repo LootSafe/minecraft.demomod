@@ -25,10 +25,11 @@ public class HelpCommands implements ICommand {
 			
 			if(args.length == 0)
 			{	
-				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "/wallet - Shows if your wallet status."));
+				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "/walletstatus - Shows if your wallet status."));
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "/register 0x00 - Registers a wallet address."));
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "/unregister - Unregisters current wallet address."));
 				
+				/*
 				if(sender.canUseCommand(1, getName()) == true)
 				{
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/registerhost"));
@@ -36,8 +37,8 @@ public class HelpCommands implements ICommand {
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/registergold"));
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/wipeplayer playername"));
 					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "/lootsave"));
-				}	
-				
+				}
+				*/				
 			}
 			else
 			{

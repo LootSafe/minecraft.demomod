@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderLootChest extends TileEntitySpecialRenderer<TileEntityLootChest>{
+	
 	private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID + ":textures/blocks/loot_chest.png");
 	private final ModelLootChest MODEL = new ModelLootChest();
 

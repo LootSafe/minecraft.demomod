@@ -1,4 +1,4 @@
-package com.lootsafe.mod;
+package com.lootsafe.mod.util;
 
 public class ServerConfig {
 	

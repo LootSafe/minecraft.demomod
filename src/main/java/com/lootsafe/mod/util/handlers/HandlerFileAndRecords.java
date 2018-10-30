@@ -20,7 +20,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.lootsafe.mod.Reference;
-import com.lootsafe.mod.ServerConfig;
+import com.lootsafe.mod.util.ServerConfig;
 
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
