@@ -79,14 +79,15 @@ public class Main {
 		event.registerServerCommand(new AdminHostAddress());
 		event.registerServerCommand(new AdminForceSave());
 		event.registerServerCommand(new AdminAddressGold());
-		event.registerServerCommand(new AdminAddressSilver());
 		event.registerServerCommand(new AdminWipeProgess());
 		event.registerServerCommand(new BlankChat());
 		event.registerServerCommand(new WalletRegisterPlayer());
 		event.registerServerCommand(new WalletUnregisterPlayer());
 		event.registerServerCommand(new WalletWalletAddress());
 		event.registerServerCommand(new HelpCommands());		
-		event.registerServerCommand(new WalletShowLoot());	
+
+		//event.registerServerCommand(new AdminAddressSilver());
+		//event.registerServerCommand(new WalletShowLoot());	
 	}
 	
 	@EventHandler

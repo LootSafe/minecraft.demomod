@@ -32,8 +32,7 @@ public class HandlerCustomEvent {
     public void onEntityJoinWorldEvent(EntityJoinWorldEvent event) {    	
     	if (event.getEntity().world.isRemote && event.getEntity() == Minecraft.getMinecraft().player) {
 	        EntityPlayer player = (EntityPlayer) event.getEntity();
-	        player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Welcome!"));	
-	        player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Use /loothelp to see wallet commands!"));			
+	        player.sendMessage(Reference.WELCOME_MESSAGE);				
     	}    	
     }
 	
@@ -95,7 +94,7 @@ public class HandlerCustomEvent {
 						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_gold_address);
 						 
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));									 
-						 player.sendMessage(new TextComponentString(Reference.RecievedItemText + Reference.description_lootcoin_gold.get(0)));
+						 player.sendMessage(new TextComponentString(Reference.RECEIVED_ITEM + Reference.description_lootcoin_gold.get(0)));
 					 }					 
 				}								
 			}
@@ -125,7 +124,7 @@ public class HandlerCustomEvent {
 						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_silver_address);	
 						 
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));									 
-						 player.sendMessage(new TextComponentString(Reference.RecievedItemText + Reference.description_lootcoin_silver.get(0)));
+						 player.sendMessage(new TextComponentString(Reference.RECEIVED_ITEM + Reference.description_lootcoin_silver.get(0)));
 					 }
 				}
 								
@@ -156,7 +155,7 @@ public class HandlerCustomEvent {
 						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_gold_address);		
 						 
 						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));									 
-						 player.sendMessage(new TextComponentString(Reference.RecievedItemText + Reference.description_lootcoin_gold.get(0)));
+						 player.sendMessage(new TextComponentString(Reference.RECEIVED_ITEM + Reference.description_lootcoin_gold.get(0)));
 					 }					 
 				}								
 			}

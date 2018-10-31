@@ -21,10 +21,11 @@ Save the current state of the players loot token inventory to file
 
 ## Demo Commands
 
-* **/loothelp** <-- Shows all the commands available to the demo user
 * **/register <playerwallet>** <-- Wallet address that you want items spawned into.
 * **/unregister** <-- You don't need this but it lets you re-register your address in case you.
 * **/walletstatus** <-- Shows your current address.
+
+* **/lootsafehelp** <-- Shows all the commands available to the demo user
 * **/blank** <-- Clears chat.
 
 ## Unused at the moment

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.lootsafe.mod.util.ServerConfig;
 
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 
 @SuppressWarnings("serial")
@@ -42,12 +43,15 @@ public class Reference {
 		
 	/* Description Text */
 
-	public static final String CLEAR_SCREEN = TextFormatting.BOLD + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+
+	public static final TextComponentString WELCOME_MESSAGE = new TextComponentString(TextFormatting.BOLD + "Welcome!\n" + TextFormatting.GREEN + "Use /lootsafehelp to see wallet commands!");
+
 	public static final String BUM_ADDRESS = "0x9999999999999999999999";
+	public static final String CLEAR_SCREEN = TextFormatting.BOLD + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	public static final String CONSOLE_TAG = "[LOOTSAFE MOD] - ";	
-	public static final String RecievedItemText = TextFormatting.DARK_PURPLE + "* Received ";	
-	public static final String SendingItemText = TextFormatting.DARK_PURPLE + "Your loot is now safe with LootSafe!";
-	public static final String TryingSendingItemText = TextFormatting.DARK_PURPLE + "Trying to sending item.";
+	public static final String RECEIVED_ITEM = TextFormatting.DARK_PURPLE + "* Received ";	
+	public static final String SENDING_ITEM = TextFormatting.DARK_PURPLE + "Your loot is now safe with LootSafe!";
+	public static final String TRYING_SENDING_ITEM = TextFormatting.DARK_PURPLE + "Trying to sending item.";
 	
 	public static List<String> description_lootcoin_gold =
 			new ArrayList<String>() {{

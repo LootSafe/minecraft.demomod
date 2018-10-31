@@ -65,11 +65,11 @@ public class ClientProxy extends CommonProxy {
 		player.closeScreen();
 		
 		player.sendMessage(new TextComponentString(Reference.CLEAR_SCREEN));
-		player.sendMessage(new TextComponentString(Reference.TryingSendingItemText));
+		player.sendMessage(new TextComponentString(Reference.TRYING_SENDING_ITEM));
 		
 		if(statusCode == 200)
 		{
-			player.sendMessage(new TextComponentString(Reference.SendingItemText));
+			player.sendMessage(new TextComponentString(Reference.SENDING_ITEM));
 		}
 		else
 		{

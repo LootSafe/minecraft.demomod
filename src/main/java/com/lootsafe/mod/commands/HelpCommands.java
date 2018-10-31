@@ -24,7 +24,7 @@ public class HelpCommands implements ICommand {
 			EntityPlayer player = (EntityPlayer) sender;
 			
 			player.sendMessage(new TextComponentString(Reference.CLEAR_SCREEN));
-			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "-- Loot Commands! --"));
+			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "-- LootSafe Wallet Commands! --"));
 			
 			if(args.length == 0)
 			{	
@@ -55,7 +55,7 @@ public class HelpCommands implements ICommand {
 	public List<String> getAliases() 
 	{
 		List<String> commandAliases = new ArrayList<String>();
-		commandAliases.add("loothelp");
+		commandAliases.add("lootsafehelp");
 		return commandAliases;
 	}
 
