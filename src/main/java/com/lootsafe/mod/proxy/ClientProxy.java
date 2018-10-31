@@ -64,6 +64,7 @@ public class ClientProxy extends CommonProxy {
 	
 		player.closeScreen();
 		
+		player.sendMessage(new TextComponentString(Reference.CLEAR_SCREEN));
 		player.sendMessage(new TextComponentString(Reference.TryingSendingItemText));
 		
 		if(statusCode == 200)
