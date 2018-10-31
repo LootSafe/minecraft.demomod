@@ -6,7 +6,6 @@ To manually register the populated item address (you'll have to grab this from t
 These are the commands to do 
 
 * **/registergold coinaddress**
-* **/registersilver coinaddress**
 * **/registerhost hostaddress**
 * **/registerport hostport**
   
@@ -22,11 +21,16 @@ Save the current state of the players loot token inventory to file
 
 ## Demo Commands
 
+* **/loothelp** <-- Shows all the commands available to the demo user
 * **/register <playerwallet>** <-- Wallet address that you want items spawned into.
 * **/unregister** <-- You don't need this but it lets you re-register your address in case you.
-* **/wallet** <-- Shows your current address.
-* **/loot** <-- Shows id's received.
+* **/walletstatus** <-- Shows your current address.
 * **/blank** <-- Clears chat.
+
+## Unused at the moment
+
+* **/loot** <-- Shows id's received.
+* **/registersilver coinaddress**
 
 ## Items to Spawn
 
