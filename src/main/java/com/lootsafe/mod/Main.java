@@ -1,17 +1,17 @@
 package com.lootsafe.mod;
 
 import com.lootsafe.mod.blocks.gui.LootStoreTab;
-import com.lootsafe.mod.commands.AdminAddressGold;
-import com.lootsafe.mod.commands.AdminAddressSilver;
-import com.lootsafe.mod.commands.AdminForceSave;
-import com.lootsafe.mod.commands.AdminHostAddress;
-import com.lootsafe.mod.commands.AdminWipeProgess;
-import com.lootsafe.mod.commands.BlankChat;
-import com.lootsafe.mod.commands.WalletRegisterPlayer;
 import com.lootsafe.mod.commands.HelpCommands;
-import com.lootsafe.mod.commands.WalletShowLoot;
-import com.lootsafe.mod.commands.WalletUnregisterPlayer;
-import com.lootsafe.mod.commands.WalletWalletAddress;
+import com.lootsafe.mod.commands.admin.AdminAddressGold;
+import com.lootsafe.mod.commands.admin.AdminAddressSilver;
+import com.lootsafe.mod.commands.admin.AdminForceSave;
+import com.lootsafe.mod.commands.admin.AdminHostAddress;
+import com.lootsafe.mod.commands.admin.AdminWipeProgess;
+import com.lootsafe.mod.commands.player.BlankChat;
+import com.lootsafe.mod.commands.player.WalletRegisterPlayer;
+import com.lootsafe.mod.commands.player.WalletShowLoot;
+import com.lootsafe.mod.commands.player.WalletUnregisterPlayer;
+import com.lootsafe.mod.commands.player.WalletWalletAddress;
 import com.lootsafe.mod.proxy.CommonProxy;
 import com.lootsafe.mod.util.handlers.HandlerCustomEvent;
 import com.lootsafe.mod.util.network.NetworkMessage;

@@ -92,9 +92,9 @@ public class HandlerCustomEvent {
 					 if(firstEmpty != -1)
 					 {				
 						 String lootcoin_gold_address = HandlerLootDispenser.getInstance().getLootAddressByName("");
-						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_gold_address);						 
-						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));			
+						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_gold_address);
 						 
+						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));									 
 						 player.sendMessage(new TextComponentString(Reference.RecievedItemText + Reference.description_lootcoin_gold.get(0)));
 					 }					 
 				}								
@@ -122,9 +122,9 @@ public class HandlerCustomEvent {
 					 if(firstEmpty != -1)
 					 {						 
 						 String lootcoin_silver_address = HandlerLootDispenser.getInstance().getLootAddressByName("");
-						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_silver_address);						 
-						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));			
+						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_silver_address);	
 						 
+						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));									 
 						 player.sendMessage(new TextComponentString(Reference.RecievedItemText + Reference.description_lootcoin_silver.get(0)));
 					 }
 				}
@@ -153,9 +153,9 @@ public class HandlerCustomEvent {
 					 if(firstEmpty != -1)
 					 {				
 						 String lootcoin_gold_address = HandlerLootDispenser.getInstance().getLootAddressByName("");
-						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_gold_address);						 
-						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));			
+						 Main.proxy.RegisterBossLoot(player.getName(), BOSS_NAME, lootcoin_gold_address);		
 						 
+						 player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));									 
 						 player.sendMessage(new TextComponentString(Reference.RecievedItemText + Reference.description_lootcoin_gold.get(0)));
 					 }					 
 				}								

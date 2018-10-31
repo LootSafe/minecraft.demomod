@@ -1,7 +1,9 @@
-package com.lootsafe.mod.commands;
+package com.lootsafe.mod.commands.admin;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.lootsafe.mod.Main;
 
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -12,39 +14,62 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 
-public class BlankChat implements ICommand {
+public class AdminWipeProgess implements ICommand {
 
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException 
-	{
+	{				
 		if(sender instanceof EntityPlayer)
 		{			
 			EntityPlayer player = (EntityPlayer) sender;				
-			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"));						
+			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Wiping player progress..."));
+			
+			if(args.length == 1)
+			{			
+				String playerName = args[0];
+				
+				boolean result = Main.proxy.wipePlayerProgress(playerName);
+				
+				if(result)
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Wiped player progress for " + playerName));
+				}
+				else
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Couldn't find player " + playerName));
+				}
+				
+			}
+			else
+			{				
+				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument"));
+			}	
+			
 		}
+		
 	}
 	
 	@Override
 	public String getName()
 	{
-		return "clearscreen";
+		return "wipeplayerprogress";
 	}
 
 	@Override
-	public String getUsage(ICommandSender sender)
+	public String getUsage(ICommandSender sender) 
 	{
-		return "Clears the screen";
+		return "Wipes a players progress...";
 	}
 
 	@Override
-	public List<String> getAliases()
+	public List<String> getAliases() 
 	{
 		List<String> commandAliases = new ArrayList<String>();
-		commandAliases.add("blank");
+		commandAliases.add("wipeplayer");
 		return commandAliases;
 	}
-	
-	public boolean canCommandSenderUse(MinecraftServer server, ICommandSender sender)
+
+	public boolean canCommandSenderUse(MinecraftServer server, ICommandSender sender) 
 	{ 		
 		if(sender.getName() == null)
 		{

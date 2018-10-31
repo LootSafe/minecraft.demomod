@@ -1,9 +1,9 @@
-package com.lootsafe.mod.commands;
+package com.lootsafe.mod.commands.player;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lootsafe.mod.util.handlers.HandlerLootDispenser;
+import com.lootsafe.mod.Reference;
 
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -14,7 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 
-public class AdminAddressGold implements ICommand {
+public class BlankChat implements ICommand {
 
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException 
@@ -22,43 +22,31 @@ public class AdminAddressGold implements ICommand {
 		if(sender instanceof EntityPlayer)
 		{			
 			EntityPlayer player = (EntityPlayer) sender;				
-			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Replacing Gold Coin Address..."));
-			
-			if(args.length == 1)
-			{				
-				HandlerLootDispenser.getInstance().setGoldAddress(args[0]);
-				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Gold Coin Set to: " + args[0]));			
-			}
-			else
-			{				
-				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument"));
-			}
-			
+			player.sendMessage(new TextComponentString(TextFormatting.BOLD + Reference.CLEAR_SCREEN));						
 		}
-		
 	}
 	
 	@Override
-	public String getName() 
+	public String getName()
 	{
-		return "setgoldaddress";
+		return "clearscreen";
 	}
 
 	@Override
-	public String getUsage(ICommandSender sender) 
+	public String getUsage(ICommandSender sender)
 	{
-		return "Registers the gold coin...";
+		return "Clears the screen";
 	}
 
 	@Override
-	public List<String> getAliases() 
+	public List<String> getAliases()
 	{
 		List<String> commandAliases = new ArrayList<String>();
-		commandAliases.add("registergold");
+		commandAliases.add("blank");
 		return commandAliases;
 	}
-
-	public boolean canCommandSenderUse(MinecraftServer server, ICommandSender sender) 
+	
+	public boolean canCommandSenderUse(MinecraftServer server, ICommandSender sender)
 	{ 		
 		if(sender.getName() == null)
 		{

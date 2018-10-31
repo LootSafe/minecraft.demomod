@@ -1,4 +1,4 @@
-package com.lootsafe.mod.commands;
+package com.lootsafe.mod.commands.admin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 
-public class AdminWipeProgess implements ICommand {
+public class AdminForceSave implements ICommand {
 
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException 
@@ -22,50 +22,38 @@ public class AdminWipeProgess implements ICommand {
 		if(sender instanceof EntityPlayer)
 		{			
 			EntityPlayer player = (EntityPlayer) sender;				
-			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Wiping player progress..."));
 			
-			if(args.length == 1)
-			{			
-				String playerName = args[0];
-				
-				boolean result = Main.proxy.wipePlayerProgress(playerName);
-				
-				if(result)
-				{
-					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Wiped player progress for " + playerName));
-				}
-				else
-				{
-					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Couldn't find player " + playerName));
-				}
-				
+			if(args.length == 0)
+			{								
+				Main.proxy.UpdateServerRecords();
+				player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Players Loot Saved!"));
 			}
 			else
 			{				
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument"));
-			}	
+			}
 			
 		}
 		
 	}
 	
 	@Override
-	public String getName()
+	public String getName() 
 	{
-		return "wipeplayerprogress";
+		return "saveplayerdata";
 	}
 
 	@Override
 	public String getUsage(ICommandSender sender) 
 	{
-		return "Wipes a players progress...";
+		return "Saves player data...";
 	}
 
 	@Override
-	public List<String> getAliases() 
+	public List<String> getAliases()
 	{
 		List<String> commandAliases = new ArrayList<String>();
-		commandAliases.add("wipeplayer");
+		commandAliases.add("lootsave");
 		return commandAliases;
 	}
 

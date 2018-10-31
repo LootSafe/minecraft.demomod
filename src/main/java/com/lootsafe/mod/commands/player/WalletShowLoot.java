@@ -1,9 +1,10 @@
-package com.lootsafe.mod.commands;
+package com.lootsafe.mod.commands.player;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.lootsafe.mod.Main;
+import com.lootsafe.mod.Reference;
 
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -14,34 +15,33 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 
-public class WalletWalletAddress implements ICommand {
+public class WalletShowLoot implements ICommand {
 
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException 
 	{
 		if(sender instanceof EntityPlayer)
-		{			
-			EntityPlayer player = (EntityPlayer) sender;	
+		{
+			EntityPlayer player = (EntityPlayer) sender;
 			
-			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Showing Wallet Status..."));
+			player.sendMessage(new TextComponentString(Reference.CLEAR_SCREEN));
+			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Checking Loot..."));
 			
-			if(args.length != 0)
-			{
-				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument."));
-			}
-			else
-			{						
-				String walletAddress = Main.proxy.getPlayerWalletAddress(player.getName());				
-				
-				if(walletAddress != null)
-				{
-					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | Registered to address @ " + TextFormatting.GREEN + walletAddress));
+			if(args.length == 0)
+			{				
+				if(Main.proxy.isPlayerRegistered(player.getName()))
+				{							
+					// Return Wallet Items Here.
 				}
 				else
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "You aren't registered."));
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please register address to account."));
 				}	
 				
+			}
+			else
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument."));
 			}
 			
 		}
@@ -49,25 +49,25 @@ public class WalletWalletAddress implements ICommand {
 	}
 	
 	@Override
-	public String getName() 
+	public String getName()
 	{
-		return "walletstatus";
+		return "showwalletitems";
 	}
 
 	@Override
 	public String getUsage(ICommandSender sender) 
 	{
-		return "Shows wallet status.";
+		return "Shows a list of players items.";
 	}
 
 	@Override
-	public List<String> getAliases()
+	public List<String> getAliases() 
 	{
 		List<String> commandAliases = new ArrayList<String>();
-		commandAliases.add("walletstatus");
+		commandAliases.add("loot");
 		return commandAliases;
 	}
-
+	
 	/*
 	 * Required and Redundant 
 	 */
@@ -84,5 +84,5 @@ public class WalletWalletAddress implements ICommand {
 
 	@Override
 	public boolean isUsernameIndex(String[] args, int index) { return false; }
-	
+
 }

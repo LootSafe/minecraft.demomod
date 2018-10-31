@@ -1,9 +1,10 @@
-package com.lootsafe.mod.commands;
+package com.lootsafe.mod.commands.player;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.lootsafe.mod.Main;
+import com.lootsafe.mod.Reference;
 
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -14,7 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 
-public class WalletUnregisterPlayer implements ICommand {
+public class WalletRegisterPlayer implements ICommand {
 
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException 
@@ -23,21 +24,23 @@ public class WalletUnregisterPlayer implements ICommand {
 		{			
 			EntityPlayer player = (EntityPlayer) sender;	
 			
-			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Unregistering Wallet..."));
+			player.sendMessage(new TextComponentString(Reference.CLEAR_SCREEN));
+			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Register Wallet Address..."));
 			
-			if(args.length != 0)
+			if(args.length != 1)
 			{
 				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument"));
 			}
 			else
-			{				
-				if(Main.proxy.unregisterPlayerWallet(player.getName()))
+			{					
+				if(Main.proxy.isPlayerRegistered(player.getName()) == false)
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Unregistered Wallet."));
+					Main.proxy.RegisterPlayerWallet(player.getName(), args[0]);
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Registered!"));
 				}
 				else
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "You aren't registered."));
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Already Registered!"));
 				}	
 				
 			}	
@@ -49,20 +52,20 @@ public class WalletUnregisterPlayer implements ICommand {
 	@Override
 	public String getName() 
 	{
-		return "unregisterwalletaddress";
+		return "registerplayerwallet";
 	}
 
 	@Override
 	public String getUsage(ICommandSender sender) 
 	{
-		return "Unregisters a players wallet.";
+		return "Registers a players wallet";
 	}
 
 	@Override
 	public List<String> getAliases() 
 	{
 		List<String> commandAliases = new ArrayList<String>();
-		commandAliases.add("unregister");
+		commandAliases.add("register");
 		return commandAliases;
 	}
 

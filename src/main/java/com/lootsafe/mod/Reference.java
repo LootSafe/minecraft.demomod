@@ -42,6 +42,7 @@ public class Reference {
 		
 	/* Description Text */
 
+	public static final String CLEAR_SCREEN = TextFormatting.BOLD + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	public static final String BUM_ADDRESS = "0x9999999999999999999999";
 	public static final String CONSOLE_TAG = "[LOOTSAFE MOD] - ";	
 	public static final String RecievedItemText = TextFormatting.DARK_PURPLE + "* Received ";	

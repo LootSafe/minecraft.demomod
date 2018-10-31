@@ -1,9 +1,10 @@
-package com.lootsafe.mod.commands;
+package com.lootsafe.mod.commands.player;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.lootsafe.mod.Main;
+import com.lootsafe.mod.Reference;
 
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -14,58 +15,59 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 
-public class WalletShowLoot implements ICommand {
+public class WalletUnregisterPlayer implements ICommand {
 
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException 
 	{
 		if(sender instanceof EntityPlayer)
-		{
-			EntityPlayer player = (EntityPlayer) sender;
+		{			
+			EntityPlayer player = (EntityPlayer) sender;	
 			
-			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Checking Loot..."));
+			player.sendMessage(new TextComponentString(Reference.CLEAR_SCREEN));
+			player.sendMessage(new TextComponentString(TextFormatting.BOLD + "Unregistering Wallet..."));
 			
-			if(args.length == 0)
+			if(args.length != 0)
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument"));
+			}
+			else
 			{				
-				if(Main.proxy.isPlayerRegistered(player.getName()))
-				{							
-					// Return Wallet Items Here.
+				if(Main.proxy.unregisterPlayerWallet(player.getName()))
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.GREEN + "Unregistered Wallet."));
 				}
 				else
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please register address to account."));
+					player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "You aren't registered."));
 				}	
 				
-			}
-			else
-			{
-				player.sendMessage(new TextComponentString(TextFormatting.BOLD + " | " + TextFormatting.RED + "Please use command with only 1 argument."));
-			}
+			}	
 			
 		}
 		
 	}
 	
 	@Override
-	public String getName()
+	public String getName() 
 	{
-		return "showwalletitems";
+		return "unregisterwalletaddress";
 	}
 
 	@Override
 	public String getUsage(ICommandSender sender) 
 	{
-		return "Shows a list of players items.";
+		return "Unregisters a players wallet.";
 	}
 
 	@Override
 	public List<String> getAliases() 
 	{
 		List<String> commandAliases = new ArrayList<String>();
-		commandAliases.add("loot");
+		commandAliases.add("unregister");
 		return commandAliases;
 	}
-	
+
 	/*
 	 * Required and Redundant 
 	 */
@@ -82,5 +84,5 @@ public class WalletShowLoot implements ICommand {
 
 	@Override
 	public boolean isUsernameIndex(String[] args, int index) { return false; }
-
+	
 }
