@@ -44,18 +44,6 @@ public class ClientProxy extends CommonProxy {
 		HandlerRender.registerAllEntityRenders(Reference.GLOBAL_BOSSMOB_SIZE);	
 	}
 	
-	public void registerItemRenderer(Item item, int meta, String id)
-	{
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
-	}
-	
-	public boolean isPlayerRegistered(String playerName)
-	{
-		// Disabling the chest in singleplayer.
-		// Otherwise things crash when the server isn't there.
-		return false;
-	}
-	
 	public void handleNetworkResponse(NetworkResponse message, MessageContext ctx)
 	{
 		int statusCode = message.getStatusCode();		
@@ -78,5 +66,19 @@ public class ClientProxy extends CommonProxy {
 			HandlerLootDispenser.getInstance().RestoreItemToPlayer(player, itemName);	
 		}
 	}
+	
+	public void registerItemRenderer(Item item, int meta, String id)
+	{
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
+	}
+	
+	public boolean isPlayerRegistered(String playerName)
+	{
+		// Disabling the chest in singleplayer.
+		// Otherwise things crash when the server isn't there.
+		return false;
+	}
+	
+	public void UpdateServerRecords(){}
 	
 }

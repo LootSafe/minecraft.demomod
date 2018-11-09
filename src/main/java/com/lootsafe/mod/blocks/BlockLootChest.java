@@ -42,7 +42,7 @@ public class BlockLootChest extends BlockContainer
 		BlockInit.BLOCKS.add(this);
 		ItemInit.ITEMS.add(new ItemBlock(this).setRegistryName(name));
 		
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.SOUTH));
 	}	
 	
 	@Override
@@ -128,7 +128,7 @@ public class BlockLootChest extends BlockContainer
 
         if (enumfacing.getAxis() == EnumFacing.Axis.Y)
         {
-            enumfacing = EnumFacing.NORTH;
+            enumfacing = EnumFacing.SOUTH;
         }
 
         return getDefaultState().withProperty(FACING, enumfacing);
