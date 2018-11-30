@@ -4,7 +4,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.json.JsonObject;
 
 import com.lootsafe.mod.Main;
@@ -37,7 +36,7 @@ public class HandlerNetwork {
 		else 
 		{
 		    throw new RuntimeException("Could not start up the LootSafe Service! Is your config in order?");
-		}	    			
+		}		
     }
     
     public boolean GivePlayerItem(String playerName, String playerAddress, String uniqueItemAddress) 
