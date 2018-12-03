@@ -31,7 +31,7 @@ public class HandlerFileAndRecords {
 	
 	public ServerConfig getServerConfig()
 	{
-		String privateKey,hostAddress,hostPort, version, otp;
+		String privateKey,hostAddress,hostPort, version, otp, gold, silver, copper;
 		boolean debug;
 		
 		if(doesFileExist(Reference.DIR_PLAYERDATA + Reference.FILENAME_CONFIG))
@@ -50,7 +50,11 @@ public class HandlerFileAndRecords {
 				otp = (String) jsonObject.get("otp");
 				debug = (boolean) jsonObject.get("debug");
 				
-				return new ServerConfig(privateKey, hostAddress, hostPort, version, otp, debug);
+				gold = (String) jsonObject.get("goldAddress");
+				silver  = (String) jsonObject.get("silverAddress");
+				copper = (String) jsonObject.get("copperAddress");
+				
+				return new ServerConfig(privateKey, hostAddress, hostPort, version, otp, debug, gold, silver, copper);
 			} 
 			catch (Exception e) { e.printStackTrace(); return new ServerConfig(); } 
 		}

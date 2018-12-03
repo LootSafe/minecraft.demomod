@@ -42,8 +42,8 @@ public class HandlerNetwork {
     public boolean GivePlayerItem(String playerName, String playerAddress, String uniqueItemAddress) 
     {	
         try 
-        {            
-        	JsonObject response = nh.postSpawnItem(uniqueItemAddress, playerAddress);
+        {          	
+        	JsonObject response = nh.mintAssetRaw(playerAddress, uniqueItemAddress, 1);
         	
         	if (response.getInt("status") == 200) 
         	{

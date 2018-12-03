@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lootsafe.mod.util.ServerConfig;
+import com.lootsafe.mod.util.handlers.HandlerLootDispenser;
 
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
@@ -86,6 +87,10 @@ public class Reference {
 		version = serverConfig.getVersion();
 		debug = serverConfig.getDebug();
 		otp = serverConfig.getOtp();
+		
+		HandlerLootDispenser.getInstance().setGoldAddress(serverConfig.getDefGoldAddress());
+		HandlerLootDispenser.getInstance().setSilverAddress(serverConfig.getDefSilverAddress());
+		HandlerLootDispenser.getInstance().setCopperAddress(serverConfig.getDefCopperAddress());
 	}
 	
 }
