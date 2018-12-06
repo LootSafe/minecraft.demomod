@@ -83,9 +83,6 @@ public class Main {
 		event.registerServerCommand(new WalletUnregisterPlayer());
 		event.registerServerCommand(new WalletWalletAddress());
 		event.registerServerCommand(new HelpCommands());		
-
-		//event.registerServerCommand(new AdminAddressSilver());
-		//event.registerServerCommand(new WalletShowLoot());	
 	}
 	
 	@EventHandler

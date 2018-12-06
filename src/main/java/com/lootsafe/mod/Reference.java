@@ -44,7 +44,6 @@ public class Reference {
 		
 	/* Description Text */
 
-
 	public static final TextComponentString WELCOME_MESSAGE = new TextComponentString(TextFormatting.BOLD + "Welcome!\n" + TextFormatting.GREEN + "Use /lootsafehelp to see wallet commands!");
 
 	public static final String BUM_ADDRESS = "0x9999999999999999999999";

@@ -31,20 +31,21 @@ public class ContainerLootChest extends Container
 		
 		Slot slot;
 		ItemStack itemStack;
-				
+		
 		if(slotId < 0) { return super.slotClick(slotId, dragType, clickTypeIn, player); }
 			
 		slot = this.inventorySlots.get(slotId);
 		itemStack = slot.getStack();
 		
-		if(dragging && isPlayerSlot(slotId))
-		{					
+		if(!dragging && isPlayerSlot(slotId))
+		{								
 			if(itemStack.getItem() instanceof ItemBase)
 			{
 				selectedItem = (ItemBase) itemStack.getItem();
 			}
+			
 			// Disables right click selecting object from chest, causes issues
-			return ItemStack.EMPTY;
+			//return ItemStack.EMPTY;
 		}
 						
 		if(!(itemStack.getItem() instanceof ItemBase))
