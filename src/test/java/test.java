@@ -1,6 +1,7 @@
 import io.lootsafe.api.Requests.NodeHandler;
 import io.lootsafe.api.ServiceProvider;
 import io.lootsafe.api.U;
+import org.junit.Test;
 
 public class test {
 
@@ -16,8 +17,7 @@ public class test {
             .withPrivateKey("changememeow")
             .withVersion("1")
             .build();
-
-    
+    @Test
     public void getMetadata() {
         NodeHandler nh = sv.startService().getNodeHandler();
         U.info(nh.getMetadataRaw().toString());
