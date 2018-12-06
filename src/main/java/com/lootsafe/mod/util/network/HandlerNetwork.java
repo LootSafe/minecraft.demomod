@@ -29,6 +29,7 @@ public class HandlerNetwork {
 		    nh = sv.getNodeHandler();
 		    nh.test();
 		} 
+
 		else 
 		{
 		    throw new RuntimeException("Could not start up the LootSafe Service! Is your config in order?");
@@ -39,11 +40,8 @@ public class HandlerNetwork {
     {	
         try 
         {   
-        	//JsonObject response = nh.mintAssetRaw(playerAddress, uniqueItemAddress, 1);
+        	JsonObject response = nh.mintAssetRaw(playerAddress, uniqueItemAddress, 1);
         	
-        	System.out.println("RESPONSE: " + nh.mintAsset(playerAddress, uniqueItemAddress, 1));
-        	
-        	/*
         	if (response.getInt("status") == 200) 
         	{
         		Main.proxy.PlayerItemWalletSuccess(playerName, uniqueItemAddress);
@@ -54,9 +52,7 @@ public class HandlerNetwork {
         		System.out.println("ERROR CALLING THE API: " + response.getInt("status")); 
         		return false;        		
         	}
-        	*/
         	
-        	return true;
         } 
         catch (Exception e) 
         {
