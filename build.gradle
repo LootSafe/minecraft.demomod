@@ -64,8 +64,8 @@ dependencies {
 
 shadowJar {
     dependencies {
-    	//include(dependency('io.lootsafe::'))
     }
+
     classifier = "complete"
 }
 
