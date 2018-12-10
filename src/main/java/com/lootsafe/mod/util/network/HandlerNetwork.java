@@ -1,5 +1,8 @@
 package com.lootsafe.mod.util.network;
 
+import javax.json.JsonObject;
+
+import com.lootsafe.mod.Main;
 import com.lootsafe.mod.Reference;
 
 import io.lootsafe.api.ServiceProvider;

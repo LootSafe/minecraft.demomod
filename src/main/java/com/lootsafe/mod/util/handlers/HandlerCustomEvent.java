@@ -105,7 +105,9 @@ public class HandlerCustomEvent {
 
 		}	
 		
-		/* EntityLootSpider - Death detection and spawning item into players inventory */		
+		/*
+		
+		//EntityLootSpider - Death detection and spawning item into players inventory		
 		
 		if (event.getEntity() instanceof EntityLootSpider && event.getSource().getTrueSource() instanceof EntityPlayer) 
 		{		
@@ -136,7 +138,7 @@ public class HandlerCustomEvent {
 
 		}	
 
-		/* EntityLootZombie - Death detection and spawning item into players inventory */
+		// EntityLootZombie - Death detection and spawning item into players inventory
 		
 		if (event.getEntity() instanceof EntityLootZombie && event.getSource().getTrueSource() instanceof EntityPlayer)
 		{			
@@ -164,7 +166,9 @@ public class HandlerCustomEvent {
 				player.sendMessage(new TextComponentString(TextFormatting.RED + "Can't give LOOT to unregistered player."));
 			}			
 
-		}	
+		}
+		
+		*/
 		
 	}	
 

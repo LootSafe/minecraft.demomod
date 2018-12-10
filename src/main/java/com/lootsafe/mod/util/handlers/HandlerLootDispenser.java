@@ -35,10 +35,10 @@ public class HandlerLootDispenser {
 					flag = player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinGold));
 					break;
 				case "item.lootcoin-silver":
-					flag = player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));
+					//flag = player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinSilver));
 					break;
 				case "item.lootcoin-copper":
-					flag = player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinCopper));
+					//flag = player.inventory.addItemStackToInventory(new ItemStack(ItemInit.LootCoinCopper));
 					break;
 				default:
 					return false;
