@@ -43,9 +43,12 @@ public class ContainerLootChest extends Container
 			{
 				selectedItem = (ItemBase) itemStack.getItem();
 			}
-			
+		}
+		
+		if(selectedItem != null && dragging)
+		{
 			// Disables right click selecting object from chest, causes issues
-			//return ItemStack.EMPTY;
+			return ItemStack.EMPTY;
 		}
 						
 		if(!(itemStack.getItem() instanceof ItemBase))

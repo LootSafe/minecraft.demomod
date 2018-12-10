@@ -33,7 +33,8 @@ public class HandlerNetwork {
 		else 
 		{
 		    throw new RuntimeException("Could not start up the LootSafe Service! Is your config in order?");
-		}		
+		}
+		
     }
     
     public boolean GivePlayerItem(String playerName, String playerAddress, String uniqueItemAddress) 
