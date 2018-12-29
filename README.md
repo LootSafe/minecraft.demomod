@@ -21,7 +21,7 @@ Save the current state of the players loot token inventory to file
 
 ## Demo Commands
 
-* **/register <playerwallet>** <-- Wallet address that you want items spawned into.
+* **/register playerwallet** <-- Wallet address that you want items spawned into.
 * **/unregister** <-- You don't need this but it lets you re-register your address in case you.
 * **/walletstatus** <-- Shows your current address.
 
@@ -35,7 +35,7 @@ Save the current state of the players loot token inventory to file
 
 ## Items to Spawn
 
-* LootSafe Safe <Looks like an enderchest>
+* LootSafe Safe - Looks like an enderchest
 * Spawn LootSafe Boss Skeleton **- Drops Gold Once...** 
 * Spawn LootSafe Boss Spider **- Drops Silver Once...**
 
